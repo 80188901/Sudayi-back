@@ -1,0 +1,10 @@
+---
+:orm: mongoid
+:test: none
+:mock: none
+:script: none
+:renderer: erb
+:stylesheet: none
+:namespace: Fancyshpv2
+:migration_format: number
+:admin_renderer: erb
