@@ -1,0 +1,65 @@
+<% error = @address.errors.include?(:planet_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :planet_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.select(:planet, :collection => Planet.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <span class='help-inline'><%= error ? f.error_message_on(:planet_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @address.errors.include?(:country_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :country_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.select(:country, :collection => Country.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <span class='help-inline'><%= error ? f.error_message_on(:country_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @address.errors.include?(:province_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :province_id, :class => 'control-label' %>
+  <div class='controls'>
+     <%= f.select(:Province, :collection => Province.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <span class='help-inline'><%= error ? f.error_message_on(:province_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @address.errors.include?(:city_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :city_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.select(:city, :collection => City.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <span class='help-inline'><%= error ? f.error_message_on(:city_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @address.errors.include?(:area_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :area_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.select(:city, :collection => City.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <span class='help-inline'><%= error ? f.error_message_on(:area_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @address.errors.include?(:street_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :street_id, :class => 'control-label' %>
+  <div class='controls'>
+     <%= f.select(:street, :collection => Street.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <span class='help-inline'><%= error ? f.error_message_on(:street_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @address.errors.include?(:detail_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :detail_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.select(:detail, :collection => Detail.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <span class='help-inline'><%= error ? f.error_message_on(:detail_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+
+
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:addresses, :index), :class => 'btn btn-default' %>
+</div>
