@@ -38,6 +38,7 @@
         </th>
                 <th class=header> <%= mat(:country, :created_at) %></th>
                 <th class=header> <%= mat(:country, :updated_at) %></th>
+                <th class=header> <%= mat(:country, :planet_id) %></th>
                 <th class=header> <%= mat(:country, :name) %></th>
                 <th class="header list-row-action-header"></th>
       </tr>
@@ -51,6 +52,7 @@
            </td>
           <td class=list-column> <%= time_ago_in_words country.created_at %></td>
           <td class=list-column> <%= time_ago_in_words country.updated_at %></td>
+          <td class=list-column> <%= country.planet_id %> </td>
           <td class=list-column> <%= country.name %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>

@@ -38,6 +38,7 @@
         </th>
                 <th class=header> <%= mat(:city, :created_at) %></th>
                 <th class=header> <%= mat(:city, :updated_at) %></th>
+                <th class=header> <%= mat(:city, :province_id) %></th>
                 <th class=header> <%= mat(:city, :name) %></th>
                 <th class="header list-row-action-header"></th>
       </tr>
@@ -51,6 +52,7 @@
            </td>
           <td class=list-column> <%= time_ago_in_words city.created_at %></td>
           <td class=list-column> <%= time_ago_in_words city.updated_at %></td>
+          <td class=list-column> <%= city.province_id %> </td>
           <td class=list-column> <%= city.name %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
