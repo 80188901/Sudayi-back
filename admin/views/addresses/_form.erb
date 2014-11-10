@@ -2,7 +2,7 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :planet_id, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.select(:planet, :collection => Planet.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <%= f.select(:planet_id, :collection => Planet.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
     <span class='help-inline'><%= error ? f.error_message_on(:planet_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
@@ -10,7 +10,7 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :country_id, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.select(:country, :collection => Country.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <%= f.select(:country_id, :collection => Country.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
     <span class='help-inline'><%= error ? f.error_message_on(:country_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
@@ -18,7 +18,7 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :province_id, :class => 'control-label' %>
   <div class='controls'>
-     <%= f.select(:Province, :collection => Province.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+     <%= f.select(:province_id, :collection => Province.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
     <span class='help-inline'><%= error ? f.error_message_on(:province_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
@@ -26,7 +26,7 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :city_id, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.select(:city, :collection => City.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <%= f.select(:city_id, :collection => City.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
     <span class='help-inline'><%= error ? f.error_message_on(:city_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
@@ -34,7 +34,7 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :area_id, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.select(:city, :collection => City.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <%= f.select(:area_id, :collection => Area.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
     <span class='help-inline'><%= error ? f.error_message_on(:area_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
@@ -42,7 +42,7 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :street_id, :class => 'control-label' %>
   <div class='controls'>
-     <%= f.select(:street, :collection => Street.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+     <%= f.select(:street_id, :collection => Street.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
     <span class='help-inline'><%= error ? f.error_message_on(:street_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
@@ -50,7 +50,7 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :detail_id, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.select(:detail, :collection => Detail.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <%= f.select(:detail_id, :collection => Detail.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
     <span class='help-inline'><%= error ? f.error_message_on(:detail_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>

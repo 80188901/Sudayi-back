@@ -57,13 +57,13 @@
            </td>
           <td class=list-column> <%= time_ago_in_words address.created_at %></td>
           <td class=list-column> <%= time_ago_in_words address.updated_at %></td>
-          <td class=list-column> <%= address.planet_id %> </td>
-          <td class=list-column> <%= address.country_id %> </td>
-          <td class=list-column> <%= address.province_id %> </td>
-          <td class=list-column> <%= address.city_id %> </td>
-          <td class=list-column> <%= address.area_id %> </td>
-          <td class=list-column> <%= address.street_id %> </td>
-          <td class=list-column> <%= address.detail_id %> </td>
+          <td class=list-column> <%= address.planet.name %> </td>
+          <td class=list-column> <%= address.country.name %> </td>
+          <td class=list-column> <%= address.province.name %> </td>
+          <td class=list-column> <%= address.city.name %> </td>
+          <td class=list-column> <%= address.area.name %> </td>
+          <td class=list-column> <%= address.street.name %> </td>
+          <td class=list-column> <%= address.detail.name %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:addresses, :edit, :id => address.id), :rel => :tooltip, :title => "#{pat(:edit)} address", :class => 'list-row-action-wrapper-link' %>
