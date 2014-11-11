@@ -1,0 +1,33 @@
+<% error = @city_distance.errors.include?(:city_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :city_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :city_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:city_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @city_distance.errors.include?(:fee) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :fee, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :fee, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:fee) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @city_distance.errors.include?(:tocity) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :tocity, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :tocity, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:tocity) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+
+
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:city_distances, :index), :class => 'btn btn-default' %>
+</div>

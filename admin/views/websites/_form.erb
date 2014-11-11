@@ -34,8 +34,16 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :owner, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.hidden_field :owner, :class => 'form-control input-xlarge input-with-feedback' ,  :value => current_account.id%>
+    <%= f.text_field :owner, :class => 'form-control input-xlarge input-with-feedback' %>
     <span class='help-inline'><%= error ? f.error_message_on(:owner) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @website.errors.include?(:level) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :level, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :level, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:level) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 

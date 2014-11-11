@@ -6,6 +6,30 @@
     <span class='help-inline'><%= error ? f.error_message_on(:website_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
+<% error = @product.errors.include?(:payment_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :payment_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :payment_id, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:payment_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @product.errors.include?(:store_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :store_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :store_id, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:store_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @product.errors.include?(:state_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :state_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :state_id, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:state_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
 <% error = @product.errors.include?(:name) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :name, :class => 'control-label' %>
@@ -28,6 +52,22 @@
   <div class='controls'>
     <%= f.text_field :price, :class => 'form-control input-xlarge input-with-feedback' %>
     <span class='help-inline'><%= error ? f.error_message_on(:price) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @product.errors.include?(:storage) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :storage, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :storage, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:storage) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @product.errors.include?(:level) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :level, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :level, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:level) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 

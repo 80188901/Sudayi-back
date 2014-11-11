@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs">
+  <li> <%= link_to tag_icon(:list, pat(:list)), url(:area_distances, :index) %></li>
+  <li> <%= link_to tag_icon(:plus, pat(:new)), url(:area_distances, :new) %></li>
+  <li class="active"> <%= link_to tag_icon(:edit, pat(:edit)), url(:area_distances, :edit, :id => @area_distance.id) %></li>
+</ul>
+<div class="tabs-content">
+  <% form_for :area_distance, url(:area_distances, :update, :id => @area_distance.id), :method => :put, :class => 'form-horizontal' do |f| %>
+    <%= partial 'area_distances/form', :locals => { :f => f } %>
+  <% end %>
+</div>

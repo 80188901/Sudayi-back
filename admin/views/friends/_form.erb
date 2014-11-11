@@ -1,0 +1,33 @@
+<% error = @friend.errors.include?(:account_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :account_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :account_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:account_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @friend.errors.include?(:firend) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :firend, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :firend, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:firend) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @friend.errors.include?(:bind) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :bind, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :bind, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:bind) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+
+
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:friends, :index), :class => 'btn btn-default' %>
+</div>

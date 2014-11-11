@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs">
+  <li> <%= link_to tag_icon(:list, pat(:list)), url(:city_distances, :index) %></li>
+  <li class="active"> <%= link_to tag_icon(:plus, pat(:new)), url(:city_distances, :new) %></li>
+</ul>
+<div class="tabs-content">
+  <% form_for :city_distance, url(:city_distances, :create), :class => 'form-horizontal' do |f| %>
+    <%= partial 'city_distances/form', :locals => { :f => f } %>
+ <% end %>
+</div>

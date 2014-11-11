@@ -43,7 +43,7 @@
                 <th class=header> <%= mat(:website, :domain) %></th>
                 <th class=header> <%= mat(:website, :description) %></th>
                 <th class=header> <%= mat(:website, :owner) %></th>
-                 <th class=header> <%= mat(:website, :level) %></th>
+                <th class=header> <%= mat(:website, :level) %></th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -60,7 +60,7 @@
           <td class=list-column> <%= website.name %> </td>
           <td class=list-column> <%= website.domain %> </td>
           <td class=list-column> <%= website.description %> </td>
-          <td class=list-column> <%= Account.find(website.owner ).email %> </td>
+          <td class=list-column> <%= website.owner %> </td>
           <td class=list-column> <%= website.level %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>

@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs">
+  <li> <%= link_to tag_icon(:list, pat(:list)), url(:image_items, :index) %></li>
+  <li> <%= link_to tag_icon(:plus, pat(:new)), url(:image_items, :new) %></li>
+  <li class="active"> <%= link_to tag_icon(:edit, pat(:edit)), url(:image_items, :edit, :id => @image_item.id) %></li>
+</ul>
+<div class="tabs-content">
+  <% form_for :image_item, url(:image_items, :update, :id => @image_item.id), :method => :put, :class => 'form-horizontal' do |f| %>
+    <%= partial 'image_items/form', :locals => { :f => f } %>
+  <% end %>
+</div>

@@ -32,6 +32,18 @@ module Fancyshpv2
     end
 
     access_control.roles_for :admin do |role|
+      role.project_module :stores, '/stores'
+      role.project_module :massages, '/massages'
+      role.project_module :states, '/states'
+      role.project_module :thumbups, '/thumbups'
+      role.project_module :coments, '/coments'
+      role.project_module :posts, '/posts'
+      role.project_module :city_distances, '/city_distances'
+      role.project_module :area_distances, '/area_distances'
+      role.project_module :image_items, '/image_items'
+      role.project_module :payments, '/payments'
+      role.project_module :orders, '/orders'
+      role.project_module :friends, '/friends'
       role.project_module :addresses, '/addresses'
       role.project_module :details, '/details'
       role.project_module :streets, '/streets'
