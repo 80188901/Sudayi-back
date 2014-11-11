@@ -4,6 +4,7 @@ class Friend
    belongs_to :account
    field :firend, :type => String
    field :bind, :type => Integer
+   field :block, :type => Integer
 
   # field <name>, :type => <type>, :default => <value>
   

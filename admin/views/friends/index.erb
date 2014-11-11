@@ -41,6 +41,7 @@
                 <th class=header> <%= mat(:friend, :account_id) %></th>
                 <th class=header> <%= mat(:friend, :firend) %></th>
                 <th class=header> <%= mat(:friend, :bind) %></th>
+                <th class=header> <%= mat(:friend, :block) %></th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -56,6 +57,7 @@
           <td class=list-column> <%= friend.account_id %> </td>
           <td class=list-column> <%= friend.firend %> </td>
           <td class=list-column> <%= friend.bind %> </td>
+          <td class=list-column> <%= friend.block %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:friends, :edit, :id => friend.id), :rel => :tooltip, :title => "#{pat(:edit)} friend", :class => 'list-row-action-wrapper-link' %>
