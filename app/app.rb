@@ -6,51 +6,51 @@ module Fancyshpv2
     enable :sessions
     
  get '/' do
-    render 'index/index'
+    render('index/index', :layout => :index) 
   end
 
   get :category do
-    render 'index/category'
+    render('index/category', :layout => :index) 
   end
 
   get :error do
-    render 'index/404_error'
+    render('index/404_error', :layout => :index) 
   end
 
   get :blog do
-    render 'index/blog'
+  render('index/blog', :layout => :index) 
   end
 
   get :about do
-    render 'index/about_us'
+     render('index/about_us', :layout => :index) 
   end
 
   get :index_2 do
-    render 'index/index-2'
+    render('index/index-2', :layout => :index) 
   end 
 
   get :view do 
-    render 'index/view'
+   render('index/view', :layout => :index) 
   end
 
   get :cart do
-    render 'index/cart'
+    render('index/cart', :layout => :index) 
   end
 
   get :faq do
-     render 'index/faq'
+     render('index/faq', :layout => :index) 
   end
 
   get :account_create do
-    render 'index/account_create'
+    render('index/account_create', :layout => :index) 
  end
 
   get :account_login do
-    render 'index/account_login'
+   render('index/account_login', :layout => :index) 
   end
 
   get :contact_us do
-    render 'index/contact_us'
+   render('index/contact_us', :layout => :index) 
   end
     ##
     # Caching support.
