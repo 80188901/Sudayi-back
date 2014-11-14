@@ -25,13 +25,20 @@ module Fancyshpv2
 
     enable  :sessions
     disable :store_location
-
+   CarrierWave.root = File.join(Padrino.root, "public")
     access_control.roles_for :any do |role|
       role.protect '/'
       role.allow   '/sessions'
     end
 
     access_control.roles_for :admin do |role|
+      role.project_module :desired_prodcuts, '/desired_prodcuts'
+      role.project_module :wishes, '/wishes'
+      role.project_module :website_collections, '/website_collections'
+      role.project_module :product_collections, '/product_collections'
+      role.project_module :account_collections, '/account_collections'
+      role.project_module :post_collections, '/post_collections'
+      role.project_module :templetes, '/templetes'
       role.project_module :stores, '/stores'
       role.project_module :massages, '/massages'
       role.project_module :states, '/states'

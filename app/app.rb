@@ -2,9 +2,56 @@ module Fancyshpv2
   class App < Padrino::Application
     register Padrino::Mailer
     register Padrino::Helpers
-
+     
     enable :sessions
+    
+ get '/' do
+    render 'index/index'
+  end
 
+  get :category do
+    render 'index/category'
+  end
+
+  get :error do
+    render 'index/404_error'
+  end
+
+  get :blog do
+    render 'index/blog'
+  end
+
+  get :about do
+    render 'index/about_us'
+  end
+
+  get :index_2 do
+    render 'index/index-2'
+  end 
+
+  get :view do 
+    render 'index/view'
+  end
+
+  get :cart do
+    render 'index/cart'
+  end
+
+  get :faq do
+     render 'index/faq'
+  end
+
+  get :account_create do
+    render 'index/account_create'
+ end
+
+  get :account_login do
+    render 'index/account_login'
+  end
+
+  get :contact_us do
+    render 'index/contact_us'
+  end
     ##
     # Caching support.
     #

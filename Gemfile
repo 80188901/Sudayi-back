@@ -12,6 +12,10 @@ source 'https://rubygems.org'
 
 # Project requirements
 gem 'rake'
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+gem "rmagick"
 
 # Component requirements
 gem 'bcrypt'

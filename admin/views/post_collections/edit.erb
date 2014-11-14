@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs">
+  <li> <%= link_to tag_icon(:list, pat(:list)), url(:post_collections, :index) %></li>
+  <li> <%= link_to tag_icon(:plus, pat(:new)), url(:post_collections, :new) %></li>
+  <li class="active"> <%= link_to tag_icon(:edit, pat(:edit)), url(:post_collections, :edit, :id => @post_collection.id) %></li>
+</ul>
+<div class="tabs-content">
+  <% form_for :post_collection, url(:post_collections, :update, :id => @post_collection.id), :method => :put, :class => 'form-horizontal' do |f| %>
+    <%= partial 'post_collections/form', :locals => { :f => f } %>
+  <% end %>
+</div>

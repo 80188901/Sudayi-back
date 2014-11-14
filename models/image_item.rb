@@ -1,15 +1,16 @@
 class ImageItem
   include Mongoid::Document
   include Mongoid::Timestamps # adds created_at and updated_at fields
+
+
    belongs_to :product
    belongs_to :account
    belongs_to :website
-
+   #mount_uploader :url, ImageUploader
   # field <name>, :type => <type>, :default => <value>
   field :name, :type => String
   field :url, :type => String
   field :iscover, :type => Integer
-
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>
 

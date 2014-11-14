@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs">
+  <li> <%= link_to tag_icon(:list, pat(:list)), url(:templetes, :index) %></li>
+  <li> <%= link_to tag_icon(:plus, pat(:new)), url(:templetes, :new) %></li>
+  <li class="active"> <%= link_to tag_icon(:edit, pat(:edit)), url(:templetes, :edit, :id => @templete.id) %></li>
+</ul>
+<div class="tabs-content">
+  <% form_for :templete, url(:templetes, :update, :id => @templete.id), :method => :put, :class => 'form-horizontal' do |f| %>
+    <%= partial 'templetes/form', :locals => { :f => f } %>
+  <% end %>
+</div>
