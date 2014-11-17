@@ -1,0 +1,21 @@
+﻿table{
+	width:100%;
+	background:#fff;
+	margin-bottom: 10px;
+}
+td{
+	border-bottom:1px solid #C5C5C5;
+	text-align:center;
+}
+h2{
+	color:red;
+}
+.time{
+	color:red;
+	font-size: 25px;
+	font-weight: bold;
+}
+th{
+	height: 40px;
+	border-bottom:1px solid #C5C5C5;
+}

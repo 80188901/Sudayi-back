@@ -1,4 +1,5 @@
-class ImageUploader < CarrierWave::Uploader::Base
+  require 'carrierwave/mongoid'
+class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
   storage :file

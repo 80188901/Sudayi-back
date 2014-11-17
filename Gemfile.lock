@@ -103,7 +103,6 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
-  carrierwave
   carrierwave-mongoid
   erubis (~> 2.7.0)
   mongoid (~> 3.0.0)

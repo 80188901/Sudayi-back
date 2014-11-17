@@ -1,3 +1,4 @@
+  require 'carrierwave/mongoid'
 Fancyshpv2::Admin.controllers :image_items do
   get :index do
     @title = "Image_items"

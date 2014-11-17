@@ -1,0 +1,18 @@
+.ui-content{
+	padding: 0 5px;
+}
+table{
+	font-size: 15px;
+	background: #fff;
+	margin-top: 20px;
+}
+td{
+	height: 40px;
+	border-bottom: 1px solid #eee;
+}
+.address{
+	font-size: 14px;
+}
+img{
+	border-radius: 40px;
+}

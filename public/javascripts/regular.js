@@ -1,0 +1,37 @@
+$(function(){
+	$("#submit").click(function(){
+		$ck_user=/\w{6,18}/;
+		$ck_pwd=/\S{6,18}/;
+		$ck_apwd=/\S{6,18}/;
+		$ck_email=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		$ck_tel=/\d{11}/;
+		$user=$("#user").val();
+		$pwd=$("#pwd").val();
+		$apwd=$("#apwd").val();
+		$email=$("#email").val();
+		$tel=$("#tel").val();
+		$p=""
+		if($ck_user.test($user)==false){
+			$p+="*账户不合法,不能使用特殊字符<br>";
+		}
+		if($ck_pwd.test($pwd)==false){
+			$p+="*密码设置错误。密码长度过小<br>";
+		}
+		if($ck_apwd.test($apwd)==false){
+			$p+="*密码不能为空<br>";
+		}
+		if($pwd!=$apwd){
+			$p+="*密码输入不一致<br>";
+		}
+		if($ck_email.test($email)==false){
+			$p+="*邮箱格式错误<br>"
+		}
+		if($ck_tel.test($tel)==false){
+			$p+="*手机格式错误<br>";
+		}
+		if($ck_user.test($user) && $ck_pwd.test($pwd) && $ck_apwd.test($apwd) && $ck_email.test($email) && $ck_tel.test($tel)){
+			$("#form").submit();
+		}
+		$("#hint").html($p);
+	})
+})

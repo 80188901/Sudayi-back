@@ -2,11 +2,10 @@ class ImageItem
   include Mongoid::Document
   include Mongoid::Timestamps # adds created_at and updated_at fields
 
-
    belongs_to :product
    belongs_to :account
    belongs_to :website
-   #mount_uploader :url, ImageUploader
+   mount_uploader :url, AvatarUploader
   # field <name>, :type => <type>, :default => <value>
   field :name, :type => String
   field :url, :type => String

@@ -35,4 +35,6 @@ end
 # Mounts the core application for this project
 
 Padrino.mount("Fancyshpv2::Admin", :app_file => Padrino.root('admin/app.rb')).to("/admin")
+
+Padrino.mount('Fancyshpv2::MobileAdmin', :app_file => Padrino.root('mobile_admin/app.rb')).to('/mobile_admin')
 Padrino.mount('Fancyshpv2::App', :app_file => Padrino.root('app/app.rb')).to('/')
