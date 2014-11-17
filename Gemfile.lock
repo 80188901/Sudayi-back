@@ -9,10 +9,10 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (3.2.20)
-      activesupport (= 3.2.20)
+    activemodel (3.2.21)
+      activesupport (= 3.2.21)
       builder (~> 3.0.0)
-    activesupport (3.2.20)
+    activesupport (3.2.21)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     bcrypt (3.1.9)
