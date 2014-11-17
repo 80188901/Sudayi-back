@@ -1,4 +1,13 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+<%= javascript_include_tag 'jquery'%>
+<%= javascript_include_tag 'jquery.mobile-1.3.2'%>
+<%= javascript_include_tag 'public'%>
 <style type="text/css">
 	p{color:red;}
 </style>
@@ -9,12 +18,30 @@
   <h1>速达易</h1>
   </div>
 <%= javascript_include_tag 'rule'%>
-
   <div data-role="content">
-      <% form_for :account, url(:mobile_reg, :create), :class => 'form-horizontal' do |f| %>
-    <%= partial 'mobile_reg/form', :locals => { :f => f } %>
-    <% end %>
+    <form method="post" action="create">
+  	<div data-role="fieldcontain">
+  	<label for="user">登陆名：</label>
+  	<input type="text" name="user" id="user">
+  	<p class="user"></p>
+    <label for="tel">手机号：</label>
+    <input type="text" name="tel" id="tel">
+    <p class="tel"></p>
+    <label for="pwd">登陆密码：</label>
+    <input type="password" name="pwd" id="pwd">
+    <p class="pwd"></p>
+    <label for="apwd">确认密码：</label>
+    <input type="password" name="apwd" id="apwd">
+    <p class="apwd"></p>
+ 	</div>
 
+  <fieldset data-role="controlgroup">
+        <input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked">
+        <label for="radio-choice-1">供应商-上传商品有人帮你卖 </label>
+        <input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2">
+        <label for="radio-choice-2">代理商-加盟速达易配送网</label>
+  </fieldset>
+ 	</form>
  	<input type="button" value="注册" id="finish">
  	
  	 <div class="button" style="text-align:center;">
@@ -22,3 +49,15 @@
  	 </div>
   	</div>
   	
+
+  <div data-role="footer" data-theme="b" data-position="fixed">
+     <div data-role="navbar">
+	      <ul>
+	        <li><a href="login.html" data-icon="arrow-l">返回</a></li>
+	        <li><a href="#" data-icon="info">帮助</a></li>
+	      </ul>
+    </div>
+  </div>
+</div> 
+</body>
+</html>
