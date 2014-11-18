@@ -8,7 +8,7 @@ Fancyshpv2::MobileAdmin.controllers :mobile_reg do
     	if params[:role] .to_s== 'agency'
     	    redirect_to(url(:mobile_reg, :agency_intro ))
     	elsif params[:role].to_s == 'provider'
-    	    redirect_to(url(:mobile_reg, :agency_intro ))
+    	    redirect_to(url(:mobile_reg, :approve_intro ))
     	else
     	     flash.now[:error] = '提交信息有误(没有role)'
                     redirect_to(url(:mobile_reg, :iagency_intro ))
