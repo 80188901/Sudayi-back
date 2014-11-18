@@ -3,6 +3,7 @@ class Account
   include Mongoid::Timestamps 
   attr_accessor :password, :password_confirmation
   belongs_to  :website
+  belongs_to  :state
 
   # Fields
   field :name,             :type => String
@@ -35,11 +36,11 @@ class Account
   def self.authenticate(email, password)
     account = where(:email => /#{Regexp.escape(email)}/i).first if email.present?
     account && account.has_password?(password) ? account : nil
-   # if account.admin != 1s
-     #   nil
-    #else
-     #  account
-    #end
+   if account.admin != 1
+        nil
+    else
+       account
+    end
   end
 
   ##
