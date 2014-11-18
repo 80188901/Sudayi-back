@@ -15,7 +15,7 @@ Fancyshpv2::MobileAdmin.controllers :mobile_reg do
     	end
      else
        flash.now[:error] = '提交信息有误'
-       redirect_to(url(:mobile_reg, :agency_intro ))
+       #redirect_to(url(:mobile_reg, :agency_intro ))
     end
    end
 
