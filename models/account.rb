@@ -3,6 +3,7 @@ class Account
   include Mongoid::Timestamps 
   attr_accessor :password, :password_confirmation
   belongs_to  :website
+  belongs_to  :state
 
   # Fields
   field :name,             :type => String
