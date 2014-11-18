@@ -10,11 +10,12 @@ Fancyshpv2::MobileAdmin.controllers :mobile_reg do
     	elsif params[:role].to_s == 'provider'
     	    render('approve_intro', :layout => 'mobile_admin')
     	else
-         redirect :index
+    	     flash.now[:error] = '提交信息有误'
+                    redirect_to(url(:mobile_reg, :index))
     	end
     else
       flash.now[:error] = '提交信息有误'
-     redirect_to(url(:mobile_reg, :index))
+      redirect_to(url(:mobile_reg, :index))
    end
  end
 end
