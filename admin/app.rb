@@ -14,7 +14,7 @@ module Fancyshpv2
     # set :public_folder, "foo/bar"   # Location for static assets (default root/public)
     # set :reload, false              # Reload application files (default in development)
     # set :default_builder, "foo"     # Set a custom form builder (default 'StandardFormBuilder')
-    # set :locale_path, "bar"         # Set path for I18n translations (default your_app/locales)
+   #set :locale_path, "zh_CN"         # Set path for I18n translations (default your_app/locales)
     # disable :sessions               # Disabled sessions by default (enable if needed)
     # disable :flash                  # Disables sinatra-flash (enabled by default if Sinatra::Flash is defined)
     # layout  :my_layout              # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
@@ -32,6 +32,7 @@ module Fancyshpv2
     end
 
     access_control.roles_for :admin do |role|
+      role.project_module :statics, '/statics'
       role.project_module :categories, '/categories'
       role.project_module :desired_prodcuts, '/desired_prodcuts'
       role.project_module :wishes, '/wishes'

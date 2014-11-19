@@ -36,6 +36,7 @@ CarrierWave.root = File.join(Padrino.root, "public")
 # Add your before (RE)load hooks here
 #
 Padrino.before_load do
+     I18n.locale = :de
 end
 
 ##
@@ -43,5 +44,6 @@ end
 #
 Padrino.after_load do
 end
+require 'padrino-contrib/auto_locale'
 
 Padrino.load!
