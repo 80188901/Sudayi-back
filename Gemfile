@@ -15,19 +15,18 @@ gem 'rake'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 gem "rmagick"
+gem 'i18n', '~> 0.6.11'
 
 # Component requirements
+gem 'padrino-contrib'
 gem 'bcrypt'
 gem 'erubis', '~> 2.7.0'
 gem 'mongoid', '~>3.0.0'
 
-# Test requirements
-
-# Padrino Stable Gem
-gem 'padrino', '0.12.4'
 
 # Or Padrino Edge
-# gem 'padrino', :github => 'padrino/padrino-framework'
+gem 'padrino'
+gem 'padrino-support'
 
 # Or Individual Gems
 # %w(core support gen helpers cache mailer admin).each do |g|
