@@ -22,6 +22,7 @@ module Fancyshpv2
 
     set :admin_model, 'Account'
     set :login_page,  '/sessions/new'
+     I18n.default_locale = :zh_cn
 
     enable  :sessions
     disable :store_location
@@ -32,6 +33,8 @@ module Fancyshpv2
     end
 
     access_control.roles_for :admin do |role|
+      role.project_module :lang_dicts, '/lang_dicts'
+      role.project_module :lang_cates, '/lang_cates'
       role.project_module :statics, '/statics'
       role.project_module :categories, '/categories'
       role.project_module :desired_prodcuts, '/desired_prodcuts'

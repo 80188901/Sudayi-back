@@ -1,7 +1,7 @@
 module Fancyshpv2
   class App < Padrino::Application
-    register Padrino::Contrib::AutoLocale
-  # set :locales, [:en, :ru, :de] # First locale is the default locale
+    #register Padrino::Contrib::AutoLocale
+  #set :locales, [:en, :ru, :de] # First locale is the default locale
     register Padrino::Mailer
     register Padrino::Helpers
      

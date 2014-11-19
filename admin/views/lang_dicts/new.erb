@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs">
+  <li> <%= link_to tag_icon(:list, pat(:list)), url(:lang_dicts, :index) %></li>
+  <li class="active"> <%= link_to tag_icon(:plus, pat(:new)), url(:lang_dicts, :new) %></li>
+</ul>
+<div class="tabs-content">
+  <% form_for :lang_dict, url(:lang_dicts, :create), :class => 'form-horizontal' do |f| %>
+    <%= partial 'lang_dicts/form', :locals => { :f => f } %>
+ <% end %>
+</div>
