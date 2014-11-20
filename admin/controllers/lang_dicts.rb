@@ -15,7 +15,7 @@ Fancyshpv2::Admin.controllers :lang_dicts do
     @lang_dict = LangDict.new(params[:lang_dict])
     if @lang_dict.save
       @title = pat(:create_title, :model => "lang_dict #{@lang_dict.id}")
-      flash[:success] = pat(:create_success, :model => 'LangDict')
+      flash[:success] = pat(:create_success, :model => '字典词条')
       params[:save_and_continue] ? redirect(url(:lang_dicts, :index)) : redirect(url(:lang_dicts, :edit, :id => @lang_dict.id))
     else
       @title = pat(:create_title, :model => 'lang_dict')
