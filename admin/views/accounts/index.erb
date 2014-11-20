@@ -36,17 +36,16 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:account, :created_at) %></th>
-                <th class=header> <%= mat(:account, :updated_at) %></th>
-                <th class=header> <%= mat(:account, :website_id) %></th>
-                <th class=header> <%= mat(:account, :name) %></th>
-                <th class=header> <%= mat(:account, :surname) %></th>
-                <th class=header> <%= mat(:account, :email) %></th>
-                <th class=header> <%= mat(:account, :crypted_password) %></th>
-                <th class=header> <%= mat(:account, :role) %></th>
-                <th class=header> <%= mat(:account, :admin) %></th>
-                <th class=header> <%= mat(:account, :mobile) %></th>
-                <th class=header> <%= mat(:account, :credit_url) %></th>
+                <th class=header>创建于</th>
+                <th class=header> 更新于</th>
+                <th class=header> 注册网站</th>
+                <th class=header> 用户名</th>
+                <th class=header>昵称</th>
+                <th class=header>邮箱</th>
+                <th class=header>角色</th>
+                <th class=header>是否是管理员</th>
+                <th class=header>手机</th>
+                <th class=header>认证</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -57,13 +56,12 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'account_ids[]', :value => account.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words account.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words account.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words account.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words account.updated_at %>前</td>
           <td class=list-column> <%= account.website_id %> </td>
           <td class=list-column> <%= account.name %> </td>
           <td class=list-column> <%= account.surname %> </td>
           <td class=list-column> <%= account.email %> </td>
-          <td class=list-column> <%= account.crypted_password %> </td>
           <td class=list-column> <%= account.role %> </td>
           <td class=list-column> <%= account.admin %> </td>
           <td class=list-column> <%= account.mobile %> </td>
