@@ -36,10 +36,10 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:country, :created_at) %></th>
-                <th class=header> <%= mat(:country, :updated_at) %></th>
-                <th class=header> <%= mat(:country, :planet_id) %></th>
-                <th class=header> <%= mat(:country, :name) %></th>
+                <th class=header> 创建于</th>
+                <th class=header> 更新于</th>
+                <th class=header> 所属星球</th>
+                <th class=header> 国家名</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -50,8 +50,8 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'country_ids[]', :value => country.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words country.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words country.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words country.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words country.updated_at %>前</td>
           <td class=list-column> <%= country.planet.name %> </td>
           <td class=list-column> <%= country.name %> </td>
           <td class="list-column list-row-action">

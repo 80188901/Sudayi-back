@@ -1,49 +1,45 @@
 <% error = @website.errors.include?(:account_id) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :account_id, :class => 'control-label' %>
+  <%= f.label :创建者, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :account_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
-    <span class='help-inline'><%= error ? f.error_message_on(:account_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @website.errors.include?(:name) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :name, :class => 'control-label' %>
+  <%= f.label :站点名, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:name) : "Ex: a simple text" %></span>
+   
   </div>
 </fieldset>
 <% error = @website.errors.include?(:domain) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :domain, :class => 'control-label' %>
+  <%= f.label :域名, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :domain, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:domain) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @website.errors.include?(:description) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :description, :class => 'control-label' %>
+  <%= f.label :站点简介, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :description, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:description) : "Ex: a simple text" %></span>
+    >
   </div>
 </fieldset>
 <% error = @website.errors.include?(:owner) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :owner, :class => 'control-label' %>
+  <%= f.label :拥有者, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :owner, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:owner) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @website.errors.include?(:level) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :level, :class => 'control-label' %>
+  <%= f.label :代理等级, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :level, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:level) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 

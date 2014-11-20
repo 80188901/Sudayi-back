@@ -36,12 +36,12 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:thumbup, :created_at) %></th>
-                <th class=header> <%= mat(:thumbup, :updated_at) %></th>
-                <th class=header> <%= mat(:thumbup, :account_id) %></th>
-                <th class=header> <%= mat(:thumbup, :post_id) %></th>
-                <th class=header> <%= mat(:thumbup, :product_id) %></th>
-                <th class=header> <%= mat(:thumbup, :image_item_id) %></th>
+                <th class=header>创建于</th>
+                <th class=header>更新于</th>
+                <th class=header>称赞者</th>
+                <th class=header> 分享编号</th>
+                <th class=header>商品编号</th>
+                <th class=header> 图片编号</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -52,8 +52,8 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'thumbup_ids[]', :value => thumbup.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words thumbup.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words thumbup.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words thumbup.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words thumbup.updated_at %>前</td>
           <td class=list-column> <%= thumbup.account_id %> </td>
           <td class=list-column> <%= thumbup.post_id %> </td>
           <td class=list-column> <%= thumbup.product_id %> </td>

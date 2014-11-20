@@ -36,10 +36,10 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:static, :created_at) %></th>
-                <th class=header> <%= mat(:static, :updated_at) %></th>
-                <th class=header> <%= mat(:static, :total) %></th>
-                <th class=header> <%= mat(:static, :name) %></th>
+                <th class=header> 创建于</th>
+                <th class=header> 更新于</th>
+                <th class=header>总量</th>
+                <th class=header> 统计对象</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -50,8 +50,8 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'static_ids[]', :value => static.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words static.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words static.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words static.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words static.updated_at %>前</td>
           <td class=list-column> <%= static.total %> </td>
           <td class=list-column> <%= static.name %> </td>
           <td class="list-column list-row-action">

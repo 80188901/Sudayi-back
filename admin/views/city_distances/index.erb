@@ -36,11 +36,11 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:city_distance, :created_at) %></th>
-                <th class=header> <%= mat(:city_distance, :updated_at) %></th>
-                <th class=header> <%= mat(:city_distance, :city_id) %></th>
-                <th class=header> <%= mat(:city_distance, :fee) %></th>
-                <th class=header> <%= mat(:city_distance, :tocity) %></th>
+                <th class=header>创建于</th>
+                <th class=header>更新于</th>
+                <th class=header> 出发城市</th>
+                <th class=header>费用</th>
+                <th class=header> 到达城市</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -51,8 +51,8 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'city_distance_ids[]', :value => city_distance.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words city_distance.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words city_distance.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words city_distance.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words city_distance.updated_at %>前</td>
           <td class=list-column> <%= city_distance.city_id %> </td>
           <td class=list-column> <%= city_distance.fee %> </td>
           <td class=list-column> <%= city_distance.tocity %> </td>

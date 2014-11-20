@@ -36,13 +36,13 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:coment, :created_at) %></th>
-                <th class=header> <%= mat(:coment, :updated_at) %></th>
-                <th class=header> <%= mat(:coment, :post_id) %></th>
-                <th class=header> <%= mat(:coment, :product_id) %></th>
-                <th class=header> <%= mat(:coment, :image_item_id) %></th>
-                <th class=header> <%= mat(:coment, :account_id) %></th>
-                <th class=header> <%= mat(:coment, :content) %></th>
+                <th class=header> 创建于</th>
+                <th class=header> 更新于</th>
+                <th class=header> 分享号</th>
+                <th class=header>商品号</th>
+                <th class=header> 图片号</th>
+                <th class=header> 商家号</th>
+                <th class=header> 内容</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -53,8 +53,8 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'coment_ids[]', :value => coment.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words coment.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words coment.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words coment.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words coment.updated_at %>前</td>
           <td class=list-column> <%= coment.post_id %> </td>
           <td class=list-column> <%= coment.product_id %> </td>
           <td class=list-column> <%= coment.image_item_id %> </td>

@@ -36,10 +36,10 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:website_collection, :created_at) %></th>
-                <th class=header> <%= mat(:website_collection, :updated_at) %></th>
-                <th class=header> <%= mat(:website_collection, :website_id) %></th>
-                <th class=header> <%= mat(:website_collection, :account_id) %></th>
+                <th class=header> 创建于</th>
+                <th class=header> 更新于</th>
+                <th class=header> 被收藏的网站</th>
+                <th class=header> 收藏者</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -50,8 +50,8 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'website_collection_ids[]', :value => website_collection.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words website_collection.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words website_collection.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words website_collection.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words website_collection.updated_at %>前</td>
           <td class=list-column> <%= website_collection.website_id %> </td>
           <td class=list-column> <%= website_collection.account_id %> </td>
           <td class="list-column list-row-action">

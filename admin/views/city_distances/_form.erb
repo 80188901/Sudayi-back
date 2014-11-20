@@ -1,25 +1,24 @@
 <% error = @city_distance.errors.include?(:city_id) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :city_id, :class => 'control-label' %>
+  <%= f.label :出发城市, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :city_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
-    <span class='help-inline'><%= error ? f.error_message_on(:city_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @city_distance.errors.include?(:fee) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :fee, :class => 'control-label' %>
+  <%= f.label :费用, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :fee, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:fee) : "Ex: a simple text" %></span>
+    
   </div>
 </fieldset>
 <% error = @city_distance.errors.include?(:tocity) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :tocity, :class => 'control-label' %>
+  <%= f.label :到达城市, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :tocity, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:tocity) : "Ex: a simple text" %></span>
+    
   </div>
 </fieldset>
 

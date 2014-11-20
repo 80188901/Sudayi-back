@@ -36,12 +36,12 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:friend, :created_at) %></th>
-                <th class=header> <%= mat(:friend, :updated_at) %></th>
-                <th class=header> <%= mat(:friend, :account_id) %></th>
-                <th class=header> <%= mat(:friend, :firend) %></th>
-                <th class=header> <%= mat(:friend, :bind) %></th>
-                <th class=header> <%= mat(:friend, :block) %></th>
+                <th class=header>请求发送于</th>
+                <th class=header>请求更新于</th>
+                <th class=header> 用户名</th>
+                <th class=header> 他（她）的朋友</th>
+                <th class=header> 是否答应成为朋友</th>
+                <th class=header> 是否屏蔽此朋友</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -52,8 +52,8 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'friend_ids[]', :value => friend.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words friend.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words friend.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words friend.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words friend.updated_at %>前</td>
           <td class=list-column> <%= friend.account_id %> </td>
           <td class=list-column> <%= friend.firend %> </td>
           <td class=list-column> <%= friend.bind %> </td>
