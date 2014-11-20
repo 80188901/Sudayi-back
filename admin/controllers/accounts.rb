@@ -1,5 +1,6 @@
 Fancyshpv2::Admin.controllers :accounts do
   get :index do
+     I18n.default_locale = :zh_cn
     @title = "Accounts"
     @accounts = Account.all
     render 'accounts/index'
