@@ -36,10 +36,10 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:city, :created_at) %></th>
-                <th class=header> <%= mat(:city, :updated_at) %></th>
-                <th class=header> <%= mat(:city, :province_id) %></th>
-                <th class=header> <%= mat(:city, :name) %></th>
+                <th class=header> 创建于</th>
+                <th class=header> 更新于</th>
+                <th class=header> 所属省份</th>
+                <th class=header> 城市名</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -50,8 +50,8 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'city_ids[]', :value => city.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words city.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words city.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words city.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words city.updated_at %>前</td>
           <td class=list-column> <%= city.province.name %> </td>
           <td class=list-column> <%= city.name %> </td>
           <td class="list-column list-row-action">

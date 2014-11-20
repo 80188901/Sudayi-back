@@ -36,9 +36,9 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:planet, :created_at) %></th>
-                <th class=header> <%= mat(:planet, :updated_at) %></th>
-                <th class=header> <%= mat(:planet, :name) %></th>
+                <th class=header> 创建于</th>
+                <th class=header>更新于</th>
+                <th class=header> 星球名</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -49,8 +49,8 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'planet_ids[]', :value => planet.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words planet.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words planet.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words planet.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words planet.updated_at %>前</td>
           <td class=list-column> <%= planet.name %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>

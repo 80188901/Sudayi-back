@@ -36,11 +36,11 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:wish, :created_at) %></th>
-                <th class=header> <%= mat(:wish, :updated_at) %></th>
-                <th class=header> <%= mat(:wish, :account_id) %></th>
-                <th class=header> <%= mat(:wish, :title) %></th>
-                <th class=header> <%= mat(:wish, :content) %></th>
+                <th class=header>创建于</th>
+                <th class=header>更新于</th>
+                <th class=header>许愿者</th>
+                <th class=header> 许愿标题</th>
+                <th class=header>许愿内容</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -51,8 +51,8 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'wish_ids[]', :value => wish.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words wish.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words wish.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words wish.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words wish.updated_at %>前</td>
           <td class=list-column> <%= wish.account_id %> </td>
           <td class=list-column> <%= wish.title %> </td>
           <td class=list-column> <%= wish.content %> </td>

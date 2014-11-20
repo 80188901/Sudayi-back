@@ -1,17 +1,15 @@
 <% error = @lang_cate.errors.include?(:name) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :name, :class => 'control-label' %>
+  <%= f.label :分类名, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
-    <span class='help-inline'><%= error ? f.error_message_on(:name) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @lang_cate.errors.include?(:short) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :short, :class => 'control-label' %>
+  <%= f.label :简写, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :short, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:short) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 

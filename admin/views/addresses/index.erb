@@ -36,15 +36,15 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:address, :created_at) %></th>
-                <th class=header> <%= mat(:address, :updated_at) %></th>
-                <th class=header> <%= mat(:address, :planet_id) %></th>
-                <th class=header> <%= mat(:address, :country_id) %></th>
-                <th class=header> <%= mat(:address, :province_id) %></th>
-                <th class=header> <%= mat(:address, :city_id) %></th>
-                <th class=header> <%= mat(:address, :area_id) %></th>
-                <th class=header> <%= mat(:address, :street_id) %></th>
-                <th class=header> <%= mat(:address, :detail_id) %></th>
+                <th class=header>创建于</th>
+                <th class=header> 更新于</th>
+                <th class=header>星球</th>
+                <th class=header>国家</th>
+                <th class=header> 省／州</th>
+                <th class=header> 城市</th>
+                <th class=header>区域</th>
+                <th class=header>街道</th>
+                <th class=header> 详细</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -55,8 +55,8 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'address_ids[]', :value => address.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words address.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words address.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words address.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words address.updated_at %>前</td>
           <td class=list-column> <%= address.planet.name %> </td>
           <td class=list-column> <%= address.country.name %> </td>
           <td class=list-column> <%= address.province.name %> </td>

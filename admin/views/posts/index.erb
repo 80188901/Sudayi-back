@@ -36,13 +36,13 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:post, :created_at) %></th>
-                <th class=header> <%= mat(:post, :updated_at) %></th>
-                <th class=header> <%= mat(:post, :account_id) %></th>
-                <th class=header> <%= mat(:post, :order_id) %></th>
-                <th class=header> <%= mat(:post, :product_id) %></th>
-                <th class=header> <%= mat(:post, :image_item_id) %></th>
-                <th class=header> <%= mat(:post, :content) %></th>
+                <th class=header>创建于</th>
+                <th class=header> 更新于</th>
+                <th class=header>分享者</th>
+                <th class=header> 订单号</th>
+                <th class=header> 商品号</th>
+                <th class=header> 图片号</th>
+                <th class=header> 自定义内容</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -53,8 +53,8 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'post_ids[]', :value => post.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words post.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words post.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words post.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words post.updated_at %>前</td>
           <td class=list-column> <%= post.account_id %> </td>
           <td class=list-column> <%= post.order_id %> </td>
           <td class=list-column> <%= post.product_id %> </td>

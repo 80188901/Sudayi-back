@@ -1,17 +1,17 @@
 <% error = @detail.errors.include?(:street_id) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :street_id, :class => 'control-label' %>
+  <%= f.label :所属街道, :class => 'control-label' %>
   <div class='controls'>
    <%= f.select(:street_id, :collection => Street.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
-    <span class='help-inline'><%= error ? f.error_message_on(:street_id) : "Ex: a simple text" %></span>
+    
   </div>
 </fieldset>
 <% error = @detail.errors.include?(:name) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :name, :class => 'control-label' %>
+  <%= f.label :具体地址, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:name) : "Ex: a simple text" %></span>
+    
   </div>
 </fieldset>
 
