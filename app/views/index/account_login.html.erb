@@ -3,62 +3,54 @@
 <section class="content-wrapper">
 	<div class="content-container container">
 		<div class="main">
-			<h1 class="page-title">Login or Create an Account</h1>
+			<h1 class="page-title">登录或者创建一个新的帐号</h1>
 			<div class="account-login">
 				<div class="col-1 new-users">
 					<div class="content">
-						<h2>New Customers</h2>
-						<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+						<h2>新用户</h2>
+						<p>亲，有了帐号，您就可以更快速购买的商品了，拥有更多优惠，甚至您可以挣到一部分额外收入哦</p>
 					</div>
 					<div class="buttons-set">
-						<a class="colors-btn" title="Create an Account" href="account_create"><span><span>Create an Account</span></span></a>
+						<a class="colors-btn" title="Create an Account" href="account_create"><span><span>立即注册一个帐号</span></span></a>
 						<div class="clear"></div>
 					</div>
 				</div>
 				<div class="col-2 registered-users">
 					<div class="content">
-						<h2>Registered Customers</h2>
-						<p>If you have an account with us, please log in.</p>
+						<h2>已有帐号的亲们</h2>
+						<p>马上登录吧</p>
+						   <%=  flash_tag %>
+						   <% form_tag url(:login), :class=>"login form-horizontal" do %>
 						<ul class="form-list">
 							<li>
-								<label class="required" for="email">Email Address<em>*</em></label>
+								<label class="required" for="email">邮箱<em>*</em></label>
 								<div class="input-box">
-									<input type="text" title="Email Address" class="input-text required-entry validate-email" value="" />
+									<%= email_field_tag :email, :id => :email, :value => params[:email], :autofocus => true, :class => 'form-control' %>
 								</div>
 								<div class="clear"></div>
 							</li>
 							<li>
-								<label class="required" for="pass">Password<em>*</em></label>
+								<label class="required" for="pass">密码<em>*</em></label>
 								<div class="input-box">
-									<input type="password" title="Password" class="input-text required-entry validate-password" />
+									<%= password_field_tag :password, :id => :password, :class => 'form-control' %>
+									  <label class="login-bypass-label checkbox"><%= check_box_tag :bypass %> 记住我</label>
 								</div>
+
 								<div class="clear"></div>
 							</li>
 						</ul>
-						<p class="required">* Required Fields</p>
+						<p class="required">* 必要选项</p>
 					</div>
 					<div class="buttons-set">
-						<a class="f-left" href="#">Forgot Your Password?</a>
-						<a class="colors-btn"  title="Login"><span><span>Login</span></span></a>
+						<a class="f-left" href="#">忘记密码?</a>
+						<button type='submit' class="colors-btn"  title="Login"><span><span>立即登录</span></span></button>
 						<div class="clear"></div>
 					</div>
+					<% end %>
             	</div>
 				<div class="clear"></div>
 			</div>
 		</div>
 		<div class="clearfix"></div>
-		<div class="news-letter-container">
-			<div class="free-shipping-block">
-				<h1>ENJOY FREE SHIPPING</h1>
-				<p>on all orders as our holiday gift for you!</p>
-			</div>
-			<div class="news-letter-block">
-				<h2>SIGN UP FOR OUR NEWSLETTER</h2>
-				<input type="text" value="Enter email address" title="" />
-				<input type="submit" value="Submit" title="Submit" />
-			</div>
-		</div>	
-	</div>
-</section>
-</div>
+		
 <!--Footer Block-->

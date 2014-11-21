@@ -24,6 +24,7 @@ module Fancyshpv2
   end
 
   get :about do
+     @image_item = ImageItem.where(:account_id => 'simon').first
      render('index/about_us', :layout => :index) 
   end
 
@@ -47,8 +48,37 @@ module Fancyshpv2
     render('index/account_create', :layout => :index) 
  end
 
+ post :new_account do
+    @account = Account.new(params[:account])
+    if @account.save
+      params[:save_and_continue] ? redirect(url('/')) : redirect(url( '/', :id => @account.id))
+    else
+      render( 'index/index', :layout => :index)
+    end
+ end
+
   get :account_login do
    render('index/account_login', :layout => :index) 
+  end
+
+  post :login  do
+    if account = Account.login(params[:email], params[:password])
+      session[:account]=account
+       redirect url('/')
+    elsif Padrino.env == :development && params[:bypass]
+      account = Account.first
+      session[:account]=account
+       redirect url('/')
+    else
+      params[:email] = h(params[:email])
+      flash.now[:error] = '请检查您的输入是否有误，或者您尚未成为本站的管理员'
+      render "index/account_login", nil, :layout => false
+    end
+  end
+
+  get :login_out do
+     session[:account] = nil
+     redirect url('/')
   end
 
   get :contact_us do
@@ -102,13 +132,13 @@ module Fancyshpv2
     ##
     # You can manage errors like:
     #
-    #   error 404 do
-    #     render 'errors/404'
-    #   end
+    error 404 do
+         render 'index/404_error'
+     end
     #
-    #   error 500 do
-    #     render 'errors/500'
-    #   end
+       error 500 do
+         render 'errors/500_error'
+       end
     #
   end
 end
