@@ -6,16 +6,17 @@
 			<h1 class="page-title">新建一个帐号</h1>
 			<div class="fieldset">
 	            <h2 class="legend">请填写个人信息</h2>
+	             <% form_for :account, url(:new_account), :class => 'form-horizontal' do |f| %>
 				<ul class="form-list">
 					<li class="fields">
 						<div class="customer-name">
 							<div class="input-box name-firstname">
-								<label for="firstname">First Name<em>*</em></label>
-								<input type="text" class="required-entry input-text" title="First Name" value="" name="firstname" id="firstname">
+								<label for="firstname">用户名<em>*</em></label>
+								<%= f.text_field :name, :class => 'required-entry input-text', :title => 'username', :autofocus => true %>
 							</div>
 							<div class="input-box name-lastname">
-								<label for="lastname">Last Name<em>*</em></label>
-								<input type="text" class="required-entry input-text" title="Last Name" value="" name="lastname" id="lastname">
+								<label for="lastname">昵称<em>*</em></label>
+								<%= f.text_field :surname, :class => 'required-entry input-text',  :title => 'surname' %>
 							</div>
 							<div class="clear"></div>
 	
@@ -24,55 +25,45 @@
 						
 						<div class="input-box">
 							<label class="required" for="email_address">邮箱<em>*</em></label>
-							<input type="text" class="input-text validate-email required-entry" title="Email Address" value="" id="email_address" name="email">
+							 <%= f.text_field :email, :class => 'input-text validate-email required-entry', :title => 'Email Address' %>
 						</div>
 						<div class="clear"></div>
 					</li>
 					<li class="control">
 						<div class="input-box">
-							<input type="checkbox" class="checkbox" id="is_subscribed" value="1" title="Sign Up for Newsletter" name="is_subscribed">
-							<label for="is_subscribed">Sign Up for Newsletter</label>
+							<input type="checkbox" class="checkbox" id="is_subscribed" value="1" title="Sign Up for Newsletter" >
+							<label for="is_subscribed">订阅我们的邮箱</label>
 						</div>
 						<div class="clear"></div>
 					</li>
 				</ul>
-				<h2 class="legend">Login Information</h2>
+				<h2 class="legend">登录必要信息</h2>
 				<ul class="form-list">
 					<li class="fields">
 						<div class="customer-name">
 							<div class="input-box name-firstname">
-								<label for="firstname">Password<em>*</em></label>
-								<input type="password" class="required-entry input-text" title="First Name" value="" name="firstname" id="firstname">
+								<label for="firstname">密码<em>*</em></label>
+								<%= f.password_field :password, :class => 'required-entry input-text' %>
 							</div>
 							<div class="input-box name-lastname">
-								<label for="lastname">Confirm Password<em>*</em></label>
-								<input type="password" class="required-entry input-text" title="Last Name" value="" name="lastname" id="lastname">
+								<label for="lastname">再次输入密码以确认<em>*</em></label>
+								<%= f.password_field :password_confirmation, :class => 'required-entry input-text' %>
 							</div>
 							<div class="clear"></div>
 						</div>
 					</li>
 				</ul>
 				<div class="buttons-set">
-					<p class="required">* Required Fields</p>
-					<a href="account_login.html" title="Back" class="f-left">&laquo; Back</a>
-					<a title="Submit" class="colors-btn"><span><span>Submit</span></span></a>
+					<p class="required">* 必填项目</p>
+					<a href="account_login" title="Back" class="f-left">&laquo; 返回登录</a>
+					<button type="submit" title="Submit" class="colors-btn"><span>
+						<%= f.hidden_field :role,:value => 'buyer', :class => 'required-entry input-text' %>
+					<span>同意条款并注册</span></span></button>
+					 <% end %>
 					<div class="clear"></div>
 				</div>
         </div>
 		</div>
 		<div class="clearfix"></div>
-		<div class="news-letter-container">
-			<div class="free-shipping-block">
-				<h1>ENJOY FREE SHIPPING</h1>
-				<p>on all orders as our holiday gift for you!</p>
-			</div>
-			<div class="news-letter-block">
-				<h2>SIGN UP FOR OUR NEWSLETTER</h2>
-				<input type="text" value="Enter email address" title="" />
-				<input type="submit" value="Submit" title="Submit" />
-			</div>
-		</div>	
-	</div>
-</section>
-</div>
+		
 <!--Footer Block-->

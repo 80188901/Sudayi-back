@@ -52,8 +52,11 @@
                             <li class=""><a href="error" title="My Account">我的帐号</a></li>
                             <li class="my-wishlist"><a href="error" title="My Wishlist">我的愿望</a></li>
                             <li class="contact-us"><a href="contact_us" title="Contact Us">联系我们</a></li>
-                            <li class="checkout"><a href="error" title="Checkout">登出</a></li>
+                            <% if session[:account] %>
+                            <li class="checkout"><a href="login_out" title="Checkout">登出</a></li>
+                            <% else %>
                             <li class="log-in"><a href="account_login" title="Log In">登录</a></li>
+                            <% end %>
                       </ul>
                     </ul>
                   <section class="header-bottom">
@@ -183,39 +186,46 @@
               </header>
 
 <%= yield %>
-
+<div class="news-letter-container">
+      <div class="free-shipping-block">
+        <h1>送货神速的平台</h1>
+        <p>稳定的物流保障</p>
+      </div>
+      <div class="news-letter-block">
+        <h2>订阅我们的邮件吧</h2>
+        <input type="text" value="给出您的邮箱" title="" />
+        <input type="submit" value="Submit" title="Submit" />
+      </div>
+    </div>  
+  </div>
+</section>
+</div>
 
                   <!--Footer Block-->
             <section class="footer-wrapper">
               <footer class="container">
                 <div class="link-block">
                   <ul>
-                    <li class="link-title"><a href="about_us.html" title="ABOUT US">ABOUT US</a></li>
-                    <li><a href="about_us.html" title="About Us">About Us</a></li>
-                    <li><a href="#" title="Customer Service">Customer Service</a></li>
-                    <li><a href="#" title="Privacy Policy">Privacy Policy</a></li>
+                    <li class="link-title"><a href="about" title="ABOUT US">关于我们</a></li>
+                    <li><a href="#" title="Customer Service">客户服务</a></li>
+                    <li><a href="#" title="Privacy Policy">隐私政策</a></li>
                   </ul>
                   <ul>
-                    <li class="link-title"><a href="#" title="CUSTOMER SERVICES">CUSTOMER SERVICES</a></li>
-                    <li><a href="#" title="Shipping & Returns">Shipping & Returns</a></li>
-                    <li><a href="#" title="Secure Shopping">Secure Shopping</a></li>
-                    <li><a href="contact_us.html" title="Contact Us">Contact Us</a></li>
+                    <li class="link-title"><a href="#" title="CUSTOMER SERVICES">物流系统</a></li>
+                    <li><a href="#" title="Shipping & Returns">最新优惠</a></li>
+                    <li><a href="#" title="Secure Shopping">安全指南</a></li>
+                    <li><a href="contact_us" title="Contact Us">联系我们</a></li>
                   </ul>
                   <ul>
-                    <li class="link-title"><a href="#" title="TERMS & CONDITIONS">TERMS & CONDITIONS</a></li>
-                    <li><a href="#" title="Press Room">Press Room</a></li>
-                    <li><a href="#" title="Help">Help</a></li>
-                    <li><a href="#" title="Terms & Conditions">Terms & Conditions</a></li>
+                    <li class="link-title"><a href="#" title="TERMS & CONDITIONS">限制条例</a></li>
+                    <li><a href="#" title="Help">帮助</a></li>
                   </ul>
                   <ul>
-                    <li class="link-title"><a href="#" title="ABOUTUS">ABOUT US</a></li>
-                    <li class="aboutus-block">Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit. Vivamus sit
-                      amet ligula lectus, a mollis diam. Nulla
-                      porttitor pulvinar elit... <a href="about_us.html" title="read more">read more</a> </li>
+                    <li class="link-title"><a href="#" title="ABOUTUS">关于</a></li>
+                    <li class="aboutus-block">本店主营服装．．．<a href="about" title="read more">更多</a> </li>
                   </ul>
                   <ul class="stay-connected-blcok">
-                    <li class="link-title"><a href="#" title="STAY CONNECTED...">STAY CONNECTED...</a></li>
+                    <li class="link-title"><a href="#" title="STAY CONNECTED...">保持联系......</a></li>
                     <li>
                          <ul class="social-links">
                             <li><a data-tooltip="Like us on facebook" href="#"><img alt="facebook" src="images/facebook.png"></a></li>
@@ -231,12 +241,12 @@
                 </div>
                 <div class="footer-bottom-block">
                   <ul class="bottom-links">
-                    <li><a href="index_2" title="Home">HOME</a></li>
-                    <li><a href="#" title="Pages">PAGES</a></li>
-                    <li><a href="about_us" title="About">ABOUT</a></li>
-                    <li><a href="contact_us" title="Contact">CONTACT</a></li>
+                    <li><a href="index_2" title="Home">首页</a></li>
+                    <li><a href="#" title="Pages">导航</a></li>
+                    <li><a href="about" title="About">关于</a></li>
+                    <li><a href="contact_us" title="Contact">联系我们</a></li>
                   </ul>
-                  <p class="copyright-block">© 2012 Magento Demo Store, All Rights Reserved.Collect from</p>
+                  <p class="copyright-block">© 2012 速达易, 保留所有解释权</p>
                 </div>
               </footer>
             </section>

@@ -69,6 +69,17 @@ module Fancyshpv2
       role.project_module :websites, '/websites'
       role.project_module :accounts, '/accounts'
     end
+     access_control.roles_for :website do |role|
+     
+      role.project_module :product_collections, '/product_collections'
+      role.project_module :account_collections, '/account_collections'
+      role.project_module :post_collections, '/post_collections'
+      role.project_module :templetes, '/templetes'
+      role.project_module :stores, '/stores'
+      role.project_module :massages, '/massages'
+      role.project_module :states, '/states'
+      role.project_module :accounts, '/accounts'
+    end
 
     # Custom error management 
     error(403) { @title = "Error 403"; render('errors/403', :layout => :error) }

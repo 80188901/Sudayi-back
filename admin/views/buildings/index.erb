@@ -36,9 +36,9 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:building, :created_at) %></th>
-                <th class=header> <%= mat(:building, :updated_at) %></th>
-                <th class=header> <%= mat(:building, :name) %></th>
+                <th class=header>创建于</th>
+                <th class=header>更新于</th>
+                <th class=header>大楼名</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -49,8 +49,8 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'building_ids[]', :value => building.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words building.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words building.updated_at %></td>
+          <td class=list-column> <%= time_ago_in_words building.created_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words building.updated_at %>前</td>
           <td class=list-column> <%= building.name %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>

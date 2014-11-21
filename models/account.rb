@@ -36,11 +36,18 @@ class Account
   def self.authenticate(email, password)
     account = where(:email => /#{Regexp.escape(email)}/i).first if email.present?
     account && account.has_password?(password) ? account : nil
+    if account
    if account.admin != 1
         nil
     else
        account
     end
+  end
+  end
+ 
+  def self.login(email, password)
+    account = where(:email => /#{Regexp.escape(email)}/i).first if email.present?
+    account && account.has_password?(password) ? account : nil
   end
 
   ##
