@@ -49,17 +49,19 @@
               <header class="container">
                 <div class="head-right">
                       <ul class="top-nav">
-                            <li class=""><a href="error" title="My Account">我的帐号</a></li>
-                            <li class="my-wishlist"><a href="error" title="My Wishlist">我的愿望</a></li>
-                            <li class="contact-us"><a href="contact_us" title="Contact Us">联系我们</a></li>
                             <% if session[:account] %>
+                             <li class=""><a href="error" title="My Account">个人中心</a></li>
+                            <li class="my-wishlist"><a href="error" title="My Wishlist">我的愿望</a></li>
                             <li class="checkout"><a href="login_out" title="Checkout">登出</a></li>
                             <% else %>
+                             <li class="contact-us"><a href="contact_us" title="Contact Us">联系我们</a></li>
                             <li class="log-in"><a href="account_login" title="Log In">登录</a></li>
+                            <li class="log-in"><a href="account_create" title="Log In">注册</a></li>
                             <% end %>
                       </ul>
                     </ul>
                   <section class="header-bottom">
+                    <% if session[:account] %>
                     <div class="cart-block">
                     <ul>
                         <li>(2)</li>
@@ -105,6 +107,7 @@
                          </ol>
                     </div>
                 </div>
+                <% end %>
                     <div class="search-block">
                       <input type="text" value="搜索" />
                       <input type="submit" value="搜索" title="搜索" />
@@ -194,7 +197,7 @@
       <div class="news-letter-block">
         <h2>订阅我们的邮件吧</h2>
         <input type="text" value="给出您的邮箱" title="" />
-        <input type="submit" value="Submit" title="Submit" />
+        <input type="submit" value="提交" title="Submit" />
       </div>
     </div>  
   </div>

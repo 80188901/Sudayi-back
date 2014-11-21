@@ -71,8 +71,8 @@ module Fancyshpv2
        redirect url('/')
     else
       params[:email] = h(params[:email])
-      flash.now[:error] = '请检查您的输入是否有误，或者您尚未成为本站的管理员'
-      render "index/account_login", nil, :layout => false
+      @flash = '帐号或密码错误'
+      render("index/account_login", :layout => :index)
     end
   end
 
