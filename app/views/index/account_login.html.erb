@@ -19,7 +19,6 @@
 					<div class="content">
 						<h2>已有帐号的亲们</h2>
 						<p>马上登录吧</p>
-						   <%=  flash_tag %>
 						   <% form_tag url(:login), :class=>"login form-horizontal" do %>
 						<ul class="form-list">
 							<li>
@@ -34,6 +33,7 @@
 								<div class="input-box">
 									<%= password_field_tag :password, :id => :password, :class => 'form-control' %>
 									  <label class="login-bypass-label checkbox"><%= check_box_tag :bypass %> 记住我</label>
+									  <p><%= @flash %></p>
 								</div>
 
 								<div class="clear"></div>
