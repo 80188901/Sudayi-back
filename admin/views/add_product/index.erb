@@ -1,0 +1,39 @@
+<h3>选择您要上传的商品等级</h3>
+<% form_tag(url(:add_product, :set_level), :method => 'post' ) do%>
+  <input type='hidden'  id='pro_level' value='1' name="pro_level"/>
+   <div style='left: 90%; position: relative;'><button type="submit" class="btn btn-primary">下一步</button></div>
+<% end %>
+<br>
+<div class="list-group">
+
+  <a href="#" class="product_level list-group-item active">A级
+  	<p>最好质量的图片，最详尽的资料</p>
+  </a>
+  <a href="#" class="product_level list-group-item">B级别</a>
+  <a href="#" class="product_level list-group-item">C级别</a>
+  <a href="#" class="product_level list-group-item">D级别</a>
+</div>
+<%= javascript_include_tag 'jquery-1.11.0.min', :application %>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.product_level').each(function(index){
+			$(this).click(function(){
+				$('.product_level').removeClass('active');
+				$(this).addClass('active');
+				if (index==0) 
+				{
+					$("#pro_level").val('1');
+				}
+				if (index==1) {
+					$("#pro_level").val('2');
+				}
+				if(index==2){
+					$("#pro_level").val("3");
+				}
+				if (index==3) {
+					$("#pro_level").val("4");
+				}
+			});
+		});
+	});
+</script>

@@ -39,6 +39,7 @@
                 <% end %>
                 </li>
             <% end %>
+             <li> <%= link_to "上传商品",  url(:add_product, :index), :remote => true %></li>
           </ul>
         </div>
       </div>
@@ -46,7 +47,7 @@
 
     <div class='container main'>
       <div class='main-wrapper'>
-        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
         <%= {:error => 'danger', :warning => 'warning', :success => 'success', :notice => 'info'}.map { |type, class_name| flash_tag(type, :class => "alert alert-#{class_name} fade in", :bootstrap => true) }.join.html_safe %>
         <div class='row'><%= yield %></div>
         <div class='main-wrapper-push'></div>
@@ -60,5 +61,6 @@
     </footer>
 
     <%= javascript_include_tag 'jquery-1.11.0.min', (Padrino.env == :production ? 'bootstrap/bootstrap.min' : %w[bootstrap/affix bootstrap/alert bootstrap/button bootstrap/carousel bootstrap/collapse bootstrap/dropdown  bootstrap/tooltip bootstrap/transition  bootstrap/modal bootstrap/popover bootstrap/scrollspy bootstrap/tab]), :application %>
+    
   </body>
 </html>
