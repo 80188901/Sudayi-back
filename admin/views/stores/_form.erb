@@ -2,17 +2,11 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :所属站点, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_field :website_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+       <%= f.select(:website_id, :collection => Website.all, :fields => [:domain, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
   </div>
 </fieldset>
 <% error = @store.errors.include?(:account_id) %>
-<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :所属商家编号, :class => 'control-label' %>
-  <div class='controls'>
-    <%= f.text_field :account_id, :class => 'form-control input-xlarge input-with-feedback' %>
-    
-  </div>
-</fieldset>
+    <%= f.hidden_field :account_id, :value => current_account.id %>
 <% error = @store.errors.include?(:address_id) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :地址编号, :class => 'control-label' %>
