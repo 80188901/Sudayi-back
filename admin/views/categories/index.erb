@@ -52,8 +52,12 @@
            </td>
           <td class=list-column> <%= time_ago_in_words category.created_at %></td>
           <td class=list-column> <%= time_ago_in_words category.updated_at %></td>
-          <td class=list-column> <%= category.category_id %> </td>
-          <td class=list-column> <%= category.name %> </td>
+          <% if category.category#根的父节点是无 %>
+          <td class=list-column> <%= category.category.name %> </td>
+          <% else %>
+            <td class=list-column> 无 </td>
+            <% end %>
+           <td class=list-column> <%= category.name %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:categories, :edit, :id => category.id), :rel => :tooltip, :title => "#{pat(:edit)} category", :class => 'list-row-action-wrapper-link' %>

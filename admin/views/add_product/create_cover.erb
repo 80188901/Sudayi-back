@@ -1,0 +1,76 @@
+<h2>填写商品信息</h2>
+<%= image_tag @image_item.url.thumb if @image_item.url? %>
+  <% form_for :product, url(:products, :create), :class => 'form-horizontal' do |f| %>
+    <% error = @product.errors.include?(:website_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+	
+  <%= f.label :所属网站, :class => 'control-label' , :value => @host%>
+  <div class='controls'><p><%= @website.name %></p>
+    <%= f.hidden_field :website_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true , :value => @website.id%>
+    
+  </div>
+</fieldset>
+<% error = @product.errors.include?(:payment_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :默认付款方式, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.select(:payment_id, :collection => Payment.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+  </div>
+</fieldset>
+<% error = @product.errors.include?(:store_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :所属仓库, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :store_id, :class => 'form-control input-xlarge input-with-feedback' %>
+  </div>
+</fieldset>
+<% error = @product.errors.include?(:state_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :状态, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :state_id, :class => 'form-control input-xlarge input-with-feedback' %>
+  </div>
+</fieldset>
+<% error = @product.errors.include?(:category_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :商品分类, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :category_id, :class => 'form-control input-xlarge input-with-feedback' %>
+  </div>
+</fieldset>
+<% error = @product.errors.include?(:name) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :商品名, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
+  </div>
+</fieldset>
+<% error = @product.errors.include?(:description) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :商品描述, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_area :description, :class => 'form-control input-xlarge input-with-feedback' %>
+  </div>
+</fieldset>
+<% error = @product.errors.include?(:price) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :价格, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :price, :class => 'form-control input-xlarge input-with-feedback' %>
+  </div>
+</fieldset>
+<% error = @product.errors.include?(:storage) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :库存, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :storage, :class => 'form-control input-xlarge input-with-feedback' %>
+  </div>
+</fieldset>
+<% error = @product.errors.include?(:level) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :商品等级, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :level, :class => 'form-control input-xlarge input-with-feedback' %>
+  </div>
+</fieldset>
+ <% end %>

@@ -1,0 +1,17 @@
+<h1>
+	上传封面
+</h1>
+  <% form_for :image_item, url(:add_product, :create_cover), :class => 'form-horizontal' do |f| %>
+<div style='left: 90%; position: relative;'><button type="submit" class="btn btn-primary">下一步</button></div>
+
+    <%= f.hidden_field :account_id, :value => current_account.id %>
+    <%= hidden_field_tag :level, :value => @level %>
+<fieldset class='control-group '>
+  <%= f.label :上传图片, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.file_field :url, :class => 'form-control input-xlarge input-with-feedback' %>
+  </div>
+</fieldset>
+
+    <%= f.hidden_field :iscover, :value => 1, :class => 'form-control input-xlarge input-with-feedback' %>
+ <% end %>
