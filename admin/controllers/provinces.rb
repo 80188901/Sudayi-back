@@ -85,4 +85,12 @@ Fancyshpv2::Admin.controllers :provinces do
     end
     redirect url(:provinces, :index)
   end
+
+  get :get_country_select do
+    if params[:planet_id]!=''
+      @countries = Country.where(:planet_id =>Planet.find(params[:planet_id]).id).to_json
+    else
+      nil.to_json
+    end
+  end
 end

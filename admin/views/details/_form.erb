@@ -1,17 +1,57 @@
 <% error = @detail.errors.include?(:street_id) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :所属街道, :class => 'control-label' %>
+  <%= f.label :street_id, :class => 'control-label' %>
   <div class='controls'>
-   <%= f.select(:street_id, :collection => Street.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
-    
+    <%= f.text_field :street_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:street_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @detail.errors.include?(:city_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :city_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :city_id, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:city_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @detail.errors.include?(:area_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :area_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :area_id, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:area_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @detail.errors.include?(:province_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :province_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :province_id, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:province_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @detail.errors.include?(:country_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :country_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :country_id, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:country_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @detail.errors.include?(:planet_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :planet_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :planet_id, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:planet_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @detail.errors.include?(:name) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :具体地址, :class => 'control-label' %>
+  <%= f.label :name, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
-    
+    <span class='help-inline'><%= error ? f.error_message_on(:name) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 
