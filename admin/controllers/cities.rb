@@ -85,4 +85,31 @@ Fancyshpv2::Admin.controllers :cities do
     end
     redirect url(:cities, :index)
   end
+
+    get :get_city_select do
+    if params[:province_id]!=''
+      @cites = City.where(:province_id =>Province.find(params[:province_id]).id).to_json
+    else
+      nil.to_json
+    end
+
+    get :get_country_select do
+    if params[:planet_id]!=''
+      @countries = Country.where(:planet_id =>Planet.find(params[:planet_id]).id).to_json
+    else
+      nil.to_json
+    end
+    end
+
+      get :get_province_select do
+       if params[:planet_id]!=''
+        @countries = Country.where(:planet_id =>Planet.find(params[:planet_id]).id).to_json
+       else
+        nil.to_json
+       end
+     end
+
+
+  end
+
 end
