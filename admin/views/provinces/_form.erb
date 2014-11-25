@@ -1,18 +1,20 @@
 <% error = @province.errors.include?(:country_id) %>
-<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :所属国家, :class => 'control-label' %>
-  <div class='controls'>
-    <%= f.select(:country_id, :collection => Country.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
-  </div>
-</fieldset>
-<% error = @province.errors.include?(:name) %>
+<div id="select-group">
+  <% error = @province.errors.include?(:name) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :省（州）名, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
   </div>
 </fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :所属星球, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.select(:planet_id, :collection => Planet.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true, :include_blank => true) %>
+  </div>
+</fieldset> 
 
+</div>
 
 <div class="form-actions">
   <%= f.submit pat(:save), :class => 'btn btn-primary' %>
@@ -21,3 +23,25 @@
   &nbsp;
   <%= link_to pat(:cancel), url(:provinces, :index), :class => 'btn btn-default' %>
 </div>
+<%= javascript_include_tag 'jquery-1.11.0.min', :application %>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#province_planet_id").change(function(){
+    $('#province_country_new').remove();
+   $.get( "get_country_select?planet_id="+$(this).val(), function( data ) {
+      var head = '<fieldset class="control-group" id="province_country_new"><label for="province_所属国家" value="" class="control-label">所属国家: </label><div class="controls"><select name="province[country_id]" id="province_country_id" class="form-control input-xlarge input-with-feedback" autofocus="autofocus">';
+       var body = '<option></option>';
+       var obj =JSON.parse(data)
+      for(var i=0; i<obj.length ; i++){
+          body+= '<option value="'+obj[i]._id+'">'+obj[i].name+'</option>'
+      }
+       var end = '</select></div></fieldset>';
+     $('#select-group').append(head+body+end);
+
+
+       
+    });
+  });
+});
+  
+</script>

@@ -52,7 +52,11 @@
            </td>
           <td class=list-column> <%= time_ago_in_words province.created_at %></td>
           <td class=list-column> <%= time_ago_in_words province.updated_at %></td>
+          <% if province.country%>
           <td class=list-column> <%= province.country.name %> </td>
+          <% else%>
+          <td class=list-column>无</td>
+          <%  end %>
           <td class=list-column> <%= province.name %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>

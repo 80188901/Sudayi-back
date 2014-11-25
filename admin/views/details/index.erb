@@ -36,10 +36,15 @@
             </ul>
           </div>
         </th>
-                <th class=header>创建于</th>
-                <th class=header>更新于</th>
-                <th class=header> 所属街道</th>
-                <th class=header> 具体地址</th>
+                <th class=header> <%= mat(:detail, :created_at) %></th>
+                <th class=header> <%= mat(:detail, :updated_at) %></th>
+                <th class=header> <%= mat(:detail, :street_id) %></th>
+                <th class=header> <%= mat(:detail, :city_id) %></th>
+                <th class=header> <%= mat(:detail, :area_id) %></th>
+                <th class=header> <%= mat(:detail, :province_id) %></th>
+                <th class=header> <%= mat(:detail, :country_id) %></th>
+                <th class=header> <%= mat(:detail, :planet_id) %></th>
+                <th class=header> <%= mat(:detail, :name) %></th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -52,7 +57,12 @@
            </td>
           <td class=list-column> <%= time_ago_in_words detail.created_at %></td>
           <td class=list-column> <%= time_ago_in_words detail.updated_at %></td>
-          <td class=list-column> <%= detail.street.name%> </td>
+          <td class=list-column> <%= detail.street_id %> </td>
+          <td class=list-column> <%= detail.city_id %> </td>
+          <td class=list-column> <%= detail.area_id %> </td>
+          <td class=list-column> <%= detail.province_id %> </td>
+          <td class=list-column> <%= detail.country_id %> </td>
+          <td class=list-column> <%= detail.planet_id %> </td>
           <td class=list-column> <%= detail.name %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
