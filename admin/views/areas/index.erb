@@ -52,7 +52,11 @@
            </td>
           <td class=list-column> <%= time_ago_in_words area.created_at %>前</td>
           <td class=list-column> <%= time_ago_in_words area.updated_at %>前</td>
+          <% if area.city %>
           <td class=list-column> <%= area.city.name %> </td>
+          <%  else %>
+          <td class=list-column> 无</td>
+          <%  end %>
           <td class=list-column> <%= area.name %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>

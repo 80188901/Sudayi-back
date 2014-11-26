@@ -102,4 +102,20 @@ Fancyshpv2::Admin.controllers :details do
     end
   end
 
+    get :get_city_select do
+        if params[:province_id]!=''
+      @cities = City.where(:province_id => Province.find(params[:province_id]).id).to_json
+      else
+      nil.to_json
+      end
+    end
+
+     get :get_area_select do
+      if params[:city_id]!=''
+        @areas = Area.where(:city_id => City.find(params[:city_id]).id).to_json
+      else
+        nil.to_json
+      end
+    end
+
 end
