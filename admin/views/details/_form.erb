@@ -1,4 +1,13 @@
-<% error = @detail.errors.include?(:street_id) %>
+<div id="select-group">
+  <% error = @detail.errors.include?(:name) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :name, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:name) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+  <% error = @detail.errors.include?(:street_id) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :street_id, :class => 'control-label' %>
   <div class='controls'>
@@ -40,21 +49,12 @@
 </fieldset>
 <% error = @detail.errors.include?(:planet_id) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :planet_id, :class => 'control-label' %>
+  <%= f.label :所属星球, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_field :planet_id, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:planet_id) : "Ex: a simple text" %></span>
+    <%= f.select(:planet_id, :collection => Planet.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true, :include_blank => true) %>
   </div>
-</fieldset>
-<% error = @detail.errors.include?(:name) %>
-<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :name, :class => 'control-label' %>
-  <div class='controls'>
-    <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:name) : "Ex: a simple text" %></span>
-  </div>
-</fieldset>
-
+</fieldset> 
+</div>
 
 <div class="form-actions">
   <%= f.submit pat(:save), :class => 'btn btn-primary' %>
@@ -63,3 +63,46 @@
   &nbsp;
   <%= link_to pat(:cancel), url(:details, :index), :class => 'btn btn-default' %>
 </div>
+<%= javascript_include_tag 'jquery-1.11.0.min', :application %>
+<script type="text/javascript">
+          function select_province(val){
+                $('#detail_province_new').remove();
+                $.get( "get_province_select?country_id="+val, function( data ) {
+                  var head= '<fieldset class="control-group" id="detail_province_new"><label for="province" value="" class="control-label">所属省份: </label><div class="controls"><select name="detail[country_id]" id="detail_province_id" class="form-control input-xlarge input-with-feedback" autofocus="autofocus" >';
+                 var body = '<option></option>';
+                 var obj =JSON.parse(data)
+                 if (obj != null) {
+                 for(var i=0; i<obj.length ; i++){
+                    body+= '<option value="'+obj[i]._id+'">'+obj[i].name+'</option>'
+                  } 
+                  var end = '</select></div></fieldset>';
+                 $('#select-group').append(head+body+end);
+               }else{
+
+               }
+                  });
+      }
+$(document).ready(function(){
+  $("#detail_planet_id").change(function(){
+    $('#detail_country_new').remove();
+   $.get( "get_country_select?planet_id="+$(this).val(), function( data ) {
+      var head = '<fieldset class="control-group" id="detail_country_new"><label for="province_所属国家" value="" class="control-label">所属国家: </label><div class="controls"><select name="detail[country_id]" id="detail_country_id" class="form-control input-xlarge input-with-feedback" autofocus="autofocus" onchange="select_province(this.value);">';
+       var body = '<option></option>';
+       var obj =JSON.parse(data)
+      for(var i=0; i<obj.length ; i++){
+          body+= '<option value="'+obj[i]._id+'">'+obj[i].name+'</option>'
+      }
+       var end = '</select></div></fieldset>';
+     $('#select-group').append(head+body+end);
+     
+
+             
+
+      });
+  });
+
+
+                
+});
+  
+</script>

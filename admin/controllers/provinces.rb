@@ -93,4 +93,5 @@ Fancyshpv2::Admin.controllers :provinces do
       nil.to_json
     end
   end
+
 end
