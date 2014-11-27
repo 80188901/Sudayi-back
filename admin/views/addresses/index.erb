@@ -60,7 +60,11 @@
           <td class=list-column> <%= address.planet.name %> </td>
           <td class=list-column> <%= address.country.name %> </td>
           <td class=list-column> <%= address.province.name %> </td>
+          <% if address.city %>
           <td class=list-column> <%= address.city.name %> </td>
+          <% else %>
+          <td class=list-column>无</td>
+          <% end %>
           <td class=list-column> <%= address.area.name %> </td>
           <td class=list-column> <%= address.street.name %> </td>
           <td class=list-column> <%= address.detail.name %> </td>

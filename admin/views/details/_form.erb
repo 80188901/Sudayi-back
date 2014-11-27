@@ -1,61 +1,21 @@
 <div id="select-group">
   <% error = @detail.errors.include?(:name) %>
-<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :name, :class => 'control-label' %>
-  <div class='controls'>
-    <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:name) : "Ex: a simple text" %></span>
-  </div>
-</fieldset>
-  <% error = @detail.errors.include?(:street_id) %>
-<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :street_id, :class => 'control-label' %>
-  <div class='controls'>
-    <%= f.text_field :street_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
-    <span class='help-inline'><%= error ? f.error_message_on(:street_id) : "Ex: a simple text" %></span>
-  </div>
-</fieldset>
-<% error = @detail.errors.include?(:city_id) %>
-<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :city_id, :class => 'control-label' %>
-  <div class='controls'>
-    <%= f.text_field :city_id, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:city_id) : "Ex: a simple text" %></span>
-  </div>
-</fieldset>
-<% error = @detail.errors.include?(:area_id) %>
-<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :area_id, :class => 'control-label' %>
-  <div class='controls'>
-    <%= f.text_field :area_id, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:area_id) : "Ex: a simple text" %></span>
-  </div>
-</fieldset>
-<% error = @detail.errors.include?(:province_id) %>
-<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :province_id, :class => 'control-label' %>
-  <div class='controls'>
-    <%= f.text_field :province_id, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:province_id) : "Ex: a simple text" %></span>
-  </div>
-</fieldset>
-<% error = @detail.errors.include?(:country_id) %>
-<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :country_id, :class => 'control-label' %>
-  <div class='controls'>
-    <%= f.text_field :country_id, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:country_id) : "Ex: a simple text" %></span>
-  </div>
-</fieldset>
+
 <% error = @detail.errors.include?(:planet_id) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :所属星球, :class => 'control-label' %>
+  <%= f.label :星球, :class => 'control-label' %>
   <div class='controls'>
     <%= f.select(:planet_id, :collection => Planet.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true, :include_blank => true) %>
   </div>
 </fieldset> 
 </div>
-
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :详细地址, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:name) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
 <div class="form-actions">
   <%= f.submit pat(:save), :class => 'btn btn-primary' %>
   &nbsp;
@@ -65,83 +25,107 @@
 </div>
 <%= javascript_include_tag 'jquery-1.11.0.min', :application %>
 <script type="text/javascript">
-        function select_area(val){
-              $('#detail_area_new').remove();
-                $.get( "get_area_select?city_id="+val, function( data ) {
-                  var head= '<fieldset class="control-group" id="detail_area_new"><label for="province" value="" class="control-label">所属区域: </label><div class="controls"><select name="detail[area_id]" id="detail_city_id" class="form-control input-xlarge input-with-feedback" autofocus="autofocus" onchange="" >';
-                 var body = '<option></option>';
+//=======================================================================
+//请求地址下拉菜单
+
+function select_newest(url, name,val,modelName,methodName,model_zh){
+  //model_zh表示这个新区域的中文名字,name为参数名，val为参数值，url为请求地址
+        $.get( url+"?"+name+"="+val, function( data ) {
+        　 var head= '<fieldset class="control-group" id="detail_'+modelName+'_new"><label for="'+modelName+'" value="" class="control-label">'+model_zh+': </label><div class="controls"><select name="detail['+modelName+'_id]" id="detail_'+modelName+'_id" class="form-control input-xlarge input-with-feedback" autofocus="autofocus" onchange="'+methodName+'(this.value)" >';
+                 var body = '<option></option><option  value="new" >新建一个'+model_zh+'</option>';
                  var obj =JSON.parse(data)
                  if (obj != null) {
                  for(var i=0; i<obj.length ; i++){
                     body+= '<option value="'+obj[i]._id+'">'+obj[i].name+'</option>'
-                  } 
+                  } //遍历json对象
                   var end = '</select></div></fieldset>';
                  $('#select-group').append(head+body+end);
                }else{
 
                }
              });
+}
+//==========================================================
+//=============各项下拉联动触发的函数
+        function select_street(val){
+              $('#detail_street_new').remove();
+　　　　select_newest('get_street_select','area_id', val, 'city','select_detail','街道');
+        }
+        function select_area(val){
+              $('#detail_area_new').remove();
+              select_newest('get_area_select','city_id', val, 'city','select_street','区域');
         }
          function select_city(val){
               $('#detail_city_new').remove();
-                $.get( "get_city_select?province_id="+val, function( data ) {
-                  var head= '<fieldset class="control-group" id="detail_city_new"><label for="province" value="" class="control-label">所属城市: </label><div class="controls"><select name="detail[city_id]" id="detail_province_id" class="form-control input-xlarge input-with-feedback" autofocus="autofocus" onchange="select_area(this.value)" >';
-                 var body = '<option></option>';
-                 var obj =JSON.parse(data)
-                 if (obj != null) {
-                 for(var i=0; i<obj.length ; i++){
-                    body+= '<option value="'+obj[i]._id+'">'+obj[i].name+'</option>'
-                  } 
-                  var end = '</select></div></fieldset>';
-                 $('#select-group').append(head+body+end);
-               }else{
-
-               }
-             });
+                 select_newest('get_city_select','province_id', val, 'city','select_area','城市');
          }
-
-          function select_province(val){
+        function select_province(val){
                 $('#detail_province_new').remove();
-                $.get( "get_province_select?country_id="+val, function( data ) {
-                  var head= '<fieldset class="control-group" id="detail_province_new"><label for="province" value="" class="control-label">所属省份: </label><div class="controls"><select name="detail[province_id]" id="detail_province_id" class="form-control input-xlarge input-with-feedback" autofocus="autofocus" onchange="select_city(this.value)" >';
-                 var body = '<option></option>';
-                 var obj =JSON.parse(data)
-                 if (obj != null) {
-                 for(var i=0; i<obj.length ; i++){
-                    body+= '<option value="'+obj[i]._id+'">'+obj[i].name+'</option>'
-                  } 
-                  var end = '</select></div></fieldset>';
-                 $('#select-group').append(head+body+end);
-               }else{
-
-               }
-                  });
+                   if ($("#detail_country_id").val()=='new') {
+                     $("#addNewDetail").modal('show');
+                     $('#addNewDetail').on('hidden.bs.modal',function(e){
+                        $('#detail_country_new').remove();
+                         $('#detail_province_new').remove();                         
+                          select_newest('get_country_select','planet_id', $('#detail_planet_id').val(), 'country','select_province','国家');
+                           e.stopPropagation();//停止事件冒泡
+                           $(this).unbind('hidden.bs.modal');//解除弹窗隐藏事件的绑定
+                           return false;
+                     });
+                   }else{
+                    select_newest('get_province_select','country_id', val, 'province','select_city','省或州');
+            }
+            return false;
       }
 $(document).ready(function(){
+  //===============================================================================
+  //=============开始联动
   $("#detail_planet_id").change(function(){
     $('#detail_country_new').remove();
      $('#detail_province_new').remove();
      $('#detail_city_new').remove();
      $('#detail_area_new').remove();
      $('#detail_street_new').remove();
-   $.get( "get_country_select?planet_id="+$(this).val(), function( data ) {
-      var head = '<fieldset class="control-group" id="detail_country_new"><label for="province_所属国家" value="" class="control-label">所属国家: </label><div class="controls"><select name="detail[country_id]" id="detail_country_id" class="form-control input-xlarge input-with-feedback" autofocus="autofocus" onchange="select_province(this.value);">';
-       var body = '<option></option>';
-       var obj =JSON.parse(data)
-      for(var i=0; i<obj.length ; i++){
-          body+= '<option value="'+obj[i]._id+'">'+obj[i].name+'</option>'
-      }
-       var end = '</select></div></fieldset>';
-     $('#select-group').append(head+body+end);
-     
-
-             
-
-      });
-  });
-
-
-                
+      select_newest('get_country_select','planet_id', $(this).val(), 'country','select_province','国家');
+  });          
 });
-  
 </script>
+<!-- 弹出窗口 -->
+<div class="modal fade" id="addNewDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+        <h4 class="modal-title" id="myModalLabel">新建国家</h4>
+      </div>
+      <div class="modal-body">
+          <% form_for :country, url(:countries, :create), :class => 'form-horizontal' do |f| %>
+
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :所属星球, :class => 'control-label' %>
+  <div class='controls'>
+   <%= f.select(:planet_id, :collection => Planet.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <span class='help-inline'><%= error ? f.error_message_on(:planet_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :国家名, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:name) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+
+
+<div class="form-actions">
+
+ 　　
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+        　<% end %>
+      </div>
+    </div>
+  </div>
+</div>

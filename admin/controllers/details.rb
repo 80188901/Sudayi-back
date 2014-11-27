@@ -118,4 +118,12 @@ Fancyshpv2::Admin.controllers :details do
       end
     end
 
+    get :get_street_select do
+     if params[:area_id]!=''
+        @streets = Street.where(:area_id => Area.find(params[:area_id]).id).to_json
+      else
+        nil.to_json
+      end
+    end
+
 end
