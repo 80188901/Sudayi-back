@@ -28,7 +28,7 @@ end
     if @account.save
        @account.admin_type.to_json
     else
-       @account.user.to_json
+       @account.name.to_json
     end
   end
 end
