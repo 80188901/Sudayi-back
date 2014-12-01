@@ -125,5 +125,7 @@ Fancyshpv2::Admin.controllers :details do
         nil.to_json
       end
     end
-
+    
+    get :create_remote do
+    end
 end

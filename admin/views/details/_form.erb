@@ -26,6 +26,13 @@
 <%= javascript_include_tag 'jquery-1.11.0.min', :application %>
 <script type="text/javascript">
 //=======================================================================
+function remote_create(name,val,fid){
+    $.get(remote_create+"?"+name+"="+val+"&fid"+fid, function( data ) {
+
+    }
+}
+
+//=======================================================================
 //请求地址下拉菜单
 
 function select_newest(url, name,val,modelName,methodName,model_zh){
@@ -98,7 +105,7 @@ $(document).ready(function(){
         <h4 class="modal-title" id="myModalLabel">新建国家</h4>
       </div>
       <div class="modal-body">
-          <% form_for :country, url(:countries, :create), :class => 'form-horizontal' do |f| %>
+          <% form_for :country, url(:countries, :create,:format => :js), :class => 'form-horizontal', :remote => true do |f| %>
 
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :所属星球, :class => 'control-label' %>
@@ -123,7 +130,7 @@ $(document).ready(function(){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-        <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+       <button type="button" class="btn btn-primary" id='modalSave' >保存</button>
         　<% end %>
       </div>
     </div>
