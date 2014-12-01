@@ -23,7 +23,7 @@ end
     end
   end
 
-  post :create_account do 
+  get :create_account do 
     @account = Account.new(:name => params[:user], :mobile => params[:tel], :password => params[:pwd], :admin_type => params[:way])
     if @account.save
        @account.admin_type.to_json
