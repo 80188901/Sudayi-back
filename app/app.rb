@@ -15,8 +15,8 @@ module Fancyshpv2
   end
 end
  get '/' do
-    #render('index/index', :layout => :index) 
-    '网站正在维护中'
+    render('index/index', :layout => :index) 
+    #'网站正在维护中'
   end
 
   get :category do
