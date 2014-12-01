@@ -46,7 +46,7 @@ class Account
   end
 
     def self.authenticate_mobile(mobile, password)
-    account = where(:mobile=> /#{Regexp.escape(mobile)}/i).first if mobile.present?
+    account = where(:mobile=> mobile).first if mobile.present?
     account && account.has_password?(password) ? account : nil
     if account
    if account.admin != 1
