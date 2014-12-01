@@ -48,6 +48,13 @@ class Account
     def self.authenticate_mobile(mobile, password)
     account = where(:mobile=> mobile).first if mobile.present?
     account && account.has_password?(password) && account.admin != 1 ? account : nil
+    if account
+   if account.admin != 1
+        nil
+    else
+       account
+    end
+  end
   end
 
  
