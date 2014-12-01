@@ -27,7 +27,6 @@ end
     @account =Account.where(:name => params[:username]).first
     if @account
        0.to_json
-    end
    else
       1.to_json
    end
