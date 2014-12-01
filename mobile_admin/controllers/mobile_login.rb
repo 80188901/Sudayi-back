@@ -48,9 +48,10 @@ end
     else
       1.to_json
    end
+ end
 
   get :create_account do 
-    @account = Account.new(:name => params[:user], :mobile => params[:tel], :password => params[:pwd], :admin_type => params[:way])
+    @account = Account.new(:name => params[:user], :mobile => params[:tel], :password => params[:pwd], :admin_type => params[:way], :email => params[:email])
     if @account.save
        @account.admin_type.to_json
     else
