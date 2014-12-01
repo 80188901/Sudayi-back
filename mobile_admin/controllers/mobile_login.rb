@@ -3,6 +3,6 @@ Fancyshpv2::MobileAdmin.controllers :mobile_login do
     render('login', :layout => 'mobile_admin') 
   end
   get :get_account do
-  	params[:username]
+  	params[:username].to_json
   end
 end
