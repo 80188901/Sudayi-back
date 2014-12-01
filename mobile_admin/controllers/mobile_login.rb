@@ -11,7 +11,7 @@ end
     render('login', :layout => 'mobile_admin') 
   end
   get :get_account do
-    if account = Account.authenticate_mobile(params[:email], params[:password])
+    if account = Account.authenticate_mobile(params[:mobile], params[:password])
      account.to_json
     elsif Padrino.env == :development && params[:bypass]
       account = Account.first
