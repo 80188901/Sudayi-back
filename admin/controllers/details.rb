@@ -85,4 +85,47 @@ Fancyshpv2::Admin.controllers :details do
     end
     redirect url(:details, :index)
   end
+
+   get :get_country_select do
+    if params[:planet_id]!=''
+      @countries = Country.where(:planet_id =>Planet.find(params[:planet_id]).id).to_json
+    else
+      nil.to_json
+    end
+  end
+
+    get :get_province_select do
+    if params[:country_id]!=''
+      @provinces = Province.where(:country_id => Country.find(params[:country_id]).id).to_json
+    else
+      nil.to_json
+    end
+  end
+
+    get :get_city_select do
+        if params[:province_id]!=''
+      @cities = City.where(:province_id => Province.find(params[:province_id]).id).to_json
+      else
+      nil.to_json
+      end
+    end
+
+     get :get_area_select do
+      if params[:city_id]!=''
+        @areas = Area.where(:city_id => City.find(params[:city_id]).id).to_json
+      else
+        nil.to_json
+      end
+    end
+
+    get :get_street_select do
+     if params[:area_id]!=''
+        @streets = Street.where(:area_id => Area.find(params[:area_id]).id).to_json
+      else
+        nil.to_json
+      end
+    end
+    
+    get :create_remote do
+    end
 end
