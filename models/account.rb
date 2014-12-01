@@ -15,6 +15,7 @@ class Account
   field :admin,             :type => Integer
   field :mobile,        :type => String
   field :credit_url ,    :type => String
+  field :admin_type,  :type => String
 
   # Validations
   validates_presence_of     :email, :role
