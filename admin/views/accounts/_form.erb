@@ -46,6 +46,22 @@
 
   </div>
 </fieldset>
+<% error = @account.errors.include?(:role) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :手机, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :mobile, :class => 'form-control input-xlarge input-with-feedback' %>
+
+  </div>
+</fieldset>
+<% error = @account.errors.include?(:role) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :是否是管理员, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :admin, :class => 'form-control input-xlarge input-with-feedback' %>
+
+  </div>
+</fieldset>
 
 
 <div class="form-actions">
