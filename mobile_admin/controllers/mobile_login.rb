@@ -28,7 +28,8 @@ end
     if @account.save
        @account.admin_type.to_json
     else
-       @account.name.to_json
+      @account2 = Account.where(:name => params[:user] ).first;
+       @account2.name.to_json
     end
   end
 end
