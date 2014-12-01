@@ -16,6 +16,8 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 gem "rmagick"
 gem 'i18n', '~> 0.6.11'
+gem 'json'
+gem 'rack-cors', :require => 'rack/cors'
 
 # Component requirements
 gem 'padrino-contrib'
