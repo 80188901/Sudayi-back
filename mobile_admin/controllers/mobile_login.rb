@@ -23,12 +23,12 @@ end
     end
   end
 
-  get :create_account do 
+  post :create_account do 
     @account = Account.new(:name => params[:user], :mobile => params[:tel], :password => params[:pwd], :admin_type => params[:way])
     if @account.save
-      　@account.admin_type.to_json
+       @account.admin_type.to_json
     else
-      '填写信息有误'.to_json
+       @account.to_json
     end
   end
 end
