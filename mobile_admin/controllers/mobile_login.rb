@@ -1,4 +1,12 @@
 Fancyshpv2::MobileAdmin.controllers :mobile_login do
+  use Rack::Cors do
+  allow do
+    # put real origins here
+    origins '*'
+    # and configure real resources here
+    resource '*', :headers => :any, :methods => [:get, :post, :options]
+  end
+end	
   get :index do
     render('login', :layout => 'mobile_admin') 
   end
