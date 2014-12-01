@@ -55,7 +55,7 @@ end
     if @account.save
        @account.admin_type.to_json
     else
-
+      '保存未成功'.to_json
     end
   end
 end
