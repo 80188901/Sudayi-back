@@ -6,7 +6,14 @@ module Fancyshpv2
     register Padrino::Helpers
      
     enable :sessions
-    
+  use Rack::Cors do
+  allow do
+    # put real origins here
+    origins '*'
+    # and configure real resources here
+    resource '*', :headers => :any, :methods => [:get, :post, :options]
+  end
+end
  get '/' do
     render('index/index', :layout => :index) 
   end
