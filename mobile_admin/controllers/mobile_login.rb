@@ -17,7 +17,7 @@ end
       account = Account.first
        account.to_json
     else
-       "密码或用户名错误".to_json
+       "密码或手机错误".to_json
     end
 
   end
