@@ -31,8 +31,9 @@ end
       1.to_json
    end
   end
+
     get :judge_same_mobile do
-    @account =Account.where(:name => params[:mobile]).first
+    @account =Account.where(:mobile => params[:mobile]).first
     if @account
        0.to_json
    else
@@ -40,13 +41,20 @@ end
    end
   end
 
+   get :judge_same_email do
+    @account =Account.where(:email => params[:email]).first
+    if @account
+      0.to_json
+    else
+      1.to_json
+   end
+
   get :create_account do 
     @account = Account.new(:name => params[:user], :mobile => params[:tel], :password => params[:pwd], :admin_type => params[:way])
     if @account.save
        @account.admin_type.to_json
     else
-      @account2 = Account.where(:name => params[:user] ).first;
-       @account2.name.to_json
+
     end
   end
 end
