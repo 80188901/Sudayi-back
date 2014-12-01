@@ -23,6 +23,16 @@ end
     end
   end
 
+  get :judge_same_username do
+    @account =Account.where(:name => params[:username]).first
+    if @account
+       0.to_json
+    end
+   else
+      1.to_json
+   end
+  end
+
   get :create_account do 
     @account = Account.new(:name => params[:user], :mobile => params[:tel], :password => params[:pwd], :admin_type => params[:way])
     if @account.save
