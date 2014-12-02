@@ -69,6 +69,7 @@ end
     @account =Account.where(:_id => params[:userid]).first;
     if @account
       @account.credit_url = params[:url]
+      @account.save
       @account.to_json
     else
       1.to_json
