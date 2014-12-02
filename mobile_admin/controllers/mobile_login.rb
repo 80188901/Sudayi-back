@@ -2,7 +2,7 @@ Fancyshpv2::MobileAdmin.controllers :mobile_login do
   use Rack::Cors do
   allow do
     # put real origins here
-    origins '*','null',''
+    origins '*'
     # and configure real resources here
     resource '*', :headers => :any, :methods => [:get, :post, :options]
   end
@@ -60,8 +60,13 @@ end
     end
   end
 
+  get :find_account do
+    @account =Account.where(:name => params[:username]).first;
+    @account.to_json
+  end
+
   post :update_account_url, :csrf_protection => false  do
-    @account =Account.find(params[:userid]);
+    @account =Account.where(:_id => params[:userid]).first;
     if @account
       @account.credit_url = params[:url]
       @account.to_json
