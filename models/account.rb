@@ -15,6 +15,7 @@ class Account
   field :admin,             :type => Integer
   field :mobile,        :type => String
   field :credit_url ,    :type => String
+  mount_uploader :credit_url, AvatarUploader
   field :admin_type,  :type => String
 
   # Validations
