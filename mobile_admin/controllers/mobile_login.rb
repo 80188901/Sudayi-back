@@ -44,7 +44,7 @@ end
    get :judge_same_email do
     @account =Account.where(:email => params[:email]).first
     if @account
-      0.to_json
+      @account.to_json
     else
       1.to_json
    end
@@ -56,6 +56,15 @@ end
        @account.admin_type.to_json
     else
       '保存未成功'.to_json
+    end
+  end
+
+  get :update_account do
+    @account =Account.find(params[:userid]);
+    if @account
+      @account.credit_url = params[:url]
+    else
+
     end
   end
 end
