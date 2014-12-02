@@ -59,7 +59,7 @@ end
     end
   end
 
-  get :update_account do
+  get :update_account_url do
     @account =Account.find(params[:userid]);
     if @account
       @account.credit_url = params[:url]
