@@ -53,7 +53,7 @@ end
   get :create_account do 
     @account = Account.new(:password_confirmation => params[:apwd], :role=>'admin', :name => params[:user], :mobile => params[:tel], :password => params[:pwd], :admin_type => params[:way], :email => params[:email])
     if @account.save
-       @account.admin_type.to_json
+       @account.to_json
     else
       '保存未成功'.to_json
     end
