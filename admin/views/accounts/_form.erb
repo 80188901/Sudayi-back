@@ -62,6 +62,13 @@
 
   </div>
 </fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :证件上传, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.file_field :credit_url, :class => 'form-control input-xlarge input-with-feedback' %>
+
+  </div>
+</fieldset>
 
 
 <div class="form-actions">
