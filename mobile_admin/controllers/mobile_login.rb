@@ -68,7 +68,8 @@ end
   post :update_account_url, :csrf_protection => false  do
     @account =Account.where(:_id => params[:userid]).first;
     if @account
-      @account.credit_url = params[:url]
+      file =  params[:url].original_filename
+      @account.credit_url = file
       @account.save
       @account.to_json
     else
