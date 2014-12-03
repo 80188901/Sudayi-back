@@ -6,6 +6,7 @@ class CreditInfo
   belongs_to :province
   belongs_to :city
   belongs_to :area
+  belongs_to :state
   field :name, :type => String
   field :email, :type => String
   field :card_id, :type => String

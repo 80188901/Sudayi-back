@@ -89,4 +89,5 @@ end
    get :get_city_id do
       @areas = Area.where(:city_id => params[:city_id]);
       @areas.to_json
+    end
 end

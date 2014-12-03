@@ -4,6 +4,7 @@ class State
 
   # field <name>, :type => <type>, :default => <value>
   field :name, :type => String
+  field :code, :type => Integer
 
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>
