@@ -74,4 +74,10 @@ end
       1.to_json
     end
   end
+   
+   get :get_province_in_china do
+     @china = Country.where(:name => '中国').first
+     @provinces = Province.where(:country_id => @china._id)
+     @provinces.to_json
+   end
 end

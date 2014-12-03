@@ -4,6 +4,7 @@ class Account
   attr_accessor :password, :password_confirmation
   belongs_to  :website
   belongs_to  :state
+  belongs_to :credit_info
 
   # Fields
   field :name,             :type => String
@@ -14,8 +15,6 @@ class Account
   field :website_id,             :type => String
   field :admin,             :type => Integer
   field :mobile,        :type => String
-  field :credit_url ,    :type => String
-  mount_uploader :credit_url, CreditUploader
   field :admin_type,  :type => String
 
   # Validations
