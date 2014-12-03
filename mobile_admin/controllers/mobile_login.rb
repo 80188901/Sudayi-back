@@ -68,7 +68,7 @@ end
   post :update_account_url, :csrf_protection => false  do
     @account =Account.where(:_id => params[:userid]).first;
     if @account
-         @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area])
+         @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => params[:url])
          @credit_info.save
          @account.credit_info_id=@credit_info._id
          @account.save
