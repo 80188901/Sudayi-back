@@ -80,4 +80,13 @@ end
      @provinces = Province.all
      @provinces.to_json
    end
+
+   get :get_province_id do
+      @cities = City.where(:province_id => params[:province_id])
+      @cities.to_json
+   end
+
+   get :get_city_id do
+      @areas = Area.where(:city_id => params[:city_id]);
+      @areas.to_json
 end
