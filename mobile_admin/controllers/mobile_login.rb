@@ -77,6 +77,12 @@ end
       1.to_json
     end
   end
+
+  get :get_account_credit do
+    @account =Account.find(params[:userid]);
+    @credit_info = CreditInfo.find(@account.credit_info_id)
+    @credit_info.to_json
+  end
    
    get :get_province_in_china do
      #@china = Country.where(:name => '中国').first
