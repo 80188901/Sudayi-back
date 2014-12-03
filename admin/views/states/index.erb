@@ -39,6 +39,7 @@
                 <th class=header> 创建于</th>
                 <th class=header> 更新于</th>
                 <th class=header>状态名</th>
+                <th class=header>代码</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -52,6 +53,7 @@
           <td class=list-column> <%= time_ago_in_words state.created_at %>前</td>
           <td class=list-column> <%= time_ago_in_words state.updated_at %>前</td>
           <td class=list-column> <%= state.name %> </td>
+           <td class=list-column> <%= state.code %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:states, :edit, :id => state.id), :rel => :tooltip, :title => "#{pat(:edit)} state", :class => 'list-row-action-wrapper-link' %>

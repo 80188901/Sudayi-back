@@ -5,6 +5,12 @@
     <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
   </div>
 </fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :代码, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :code, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+  </div>
+</fieldset>
 
 
 <div class="form-actions">
