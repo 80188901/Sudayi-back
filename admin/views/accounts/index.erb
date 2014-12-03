@@ -65,8 +65,8 @@
           <td class=list-column> <%= account.role %> </td>
           <td class=list-column> <%= account.admin %> </td>
           <td class=list-column> <%= account.mobile %> </td>
-          <% if account.credit_info_id %>
-          <td class=list-column> <%= account.credit_info.name %><%= image_tag credit_info.url.thumb if account.credit_info.url? %></td>
+          <% if account.credit_info %>
+          <td class=list-column> <%= account.credit_info.name %></td>
           <% else %>
           <td class=list-column> 无</td>
           <% end %>
