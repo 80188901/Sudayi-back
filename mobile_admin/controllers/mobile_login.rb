@@ -68,8 +68,13 @@ end
   post :update_account_url, :csrf_protection => false  do
     @account =Account.where(:_id => params[:userid]).first;
     if @account
-      @account.update_attributes(:credit_url => params[:url])
-      @account.to_json
+         @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => params[:url])
+     if @credit_info.save
+         @account.updateAttribute(:credit_info_id =>@credit_info._id)
+        ＠credit_info.to_json
+     else
+         '保存未成功'.to_json
+     end
     else
       1.to_json
     end
