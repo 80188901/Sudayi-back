@@ -66,7 +66,7 @@
           <td class=list-column> <%= account.admin %> </td>
           <td class=list-column> <%= account.mobile %> </td>
           <% if account.credit_info %>
-          <td class=list-column> <%= account.credit_info.url.thumb if account.credit_info.url? %></td>
+          <td class=list-column> <%=image_tag account.credit_info.url.thumb if account.credit_info.url? %></td>
           <% else %>
           <td class=list-column> 无</td>
           <% end %>
