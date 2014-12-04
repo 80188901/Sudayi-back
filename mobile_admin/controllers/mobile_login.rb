@@ -70,9 +70,8 @@ end
     if @account
        @state=State.where(:code => 0).first
        url = params[:url]
-       url2 = params[:url2]
-       if url and url2
-          @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => url,:url2 =>url2)
+       if url
+          @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => url)
          @credit_info.state = @state._id
          @credit_info.save
          @account.credit_info_id=@credit_info._id
@@ -89,6 +88,33 @@ end
     else
          1.to_json
     end
+  end
+
+  post :upadate_account_2url, :csrf_protection =>false do
+    @account =Account.where(:_id => params[:userid]).first;
+    if @account
+       @state=State.where(:code => 0).first
+       url = params[:url]
+       url2 = params[:url2]
+       if url and url2
+          @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => url,:url2 => url2)
+         @credit_info.state = @state._id
+         @credit_info.save
+         @account.credit_info_id=@credit_info._id
+         @account.save
+         @credit_info.to_json
+       else
+        @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area])
+         @credit_info.state = @state._id
+         @credit_info.save
+         @account.credit_info_id=@credit_info._id
+         @account.save
+         @credit_info.to_json
+       end
+    else
+         1.to_json
+    end
+
   end
 
   get :get_account_credit do
