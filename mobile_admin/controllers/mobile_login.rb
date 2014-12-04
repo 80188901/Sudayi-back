@@ -116,7 +116,7 @@ end
       Province.find(params[:province_id]).to_json
     end
     get :get_city_name do
-      City.find(params[:city_id]),to_json
+      City.find(params[:city_id]).to_json
     end
     get :get_area_name do
       Area.find(params[:area_id]).to_json
