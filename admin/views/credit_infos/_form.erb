@@ -62,6 +62,14 @@
     <span class='help-inline'><%= error ? f.error_message_on(:url) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
+<% error = @credit_info.errors.include?(:url2) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :url2, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :url2, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:url2) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
 
 
 <div class="form-actions">

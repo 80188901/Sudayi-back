@@ -70,8 +70,9 @@ end
     if @account
        @state=State.where(:code => 0).first
        url = params[:url]
-       if url
-          @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => url)
+       url2 = params[:url2]
+       if url and url2
+          @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => url,:url2 =>url2)
          @credit_info.state = @state._id
          @credit_info.save
          @account.credit_info_id=@credit_info._id
