@@ -111,4 +111,18 @@ end
       @areas = Area.where(:city_id => params[:city_id]);
       @areas.to_json
     end
+
+    get :get_province_name do
+      Province.find(params[:province_id]).to_json
+    end
+    get :get_city_name do
+      City.find(params[:city_id]),to_json
+    end
+    get :get_area_name do
+      Area.find(params[:area_id]).to_json
+    end
+
+    get :get_state_name do
+      State.find(params[:state_id]).to_json
+    end
 end
