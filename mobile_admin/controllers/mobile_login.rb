@@ -90,7 +90,7 @@ end
     end
   end
 
-  post :upadate_account_2url, :csrf_protection =>false do
+  post :update_account_2url, :csrf_protection =>false do
     @account =Account.where(:_id => params[:userid]).first;
     if @account
        @state=State.where(:code => 0).first
