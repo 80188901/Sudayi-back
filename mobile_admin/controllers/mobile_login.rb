@@ -69,14 +69,17 @@ end
     @account =Account.where(:_id => params[:userid]).first;
     if @account
        @state=State.where(:code => 0).first
-         @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => params[:url])
+       url = params[:url]
+       if url
+          @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => url)
          @credit_info.state = @state._id
          @credit_info.save
          @account.credit_info_id=@credit_info._id
          @account.save
          @credit_info.to_json
+       end
     else
-      1.to_json
+         1.to_json
     end
   end
 
