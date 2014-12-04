@@ -14,6 +14,7 @@ class CreditInfo
   mount_uploader :url2, CreditUploader
   field :url, :type => String
   field :url2, :type =>String
+  field :firm_type, :type=>Integer
 
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>
