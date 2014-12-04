@@ -66,8 +66,8 @@
           <td class=list-column> <%= credit_info.name %> </td>
           <td class=list-column> <%= credit_info.email %> </td>
           <td class=list-column> <%= credit_info.card_id %> </td>
-          <td class=list-column> <%= credit_info.url %> </td>
-          <td class=list-column> <%= credit_info.url2 %> </td>
+          <td class=list-column> <%= image_tag credit_info.url.thumb if credit_info.url? %></td>
+          <td class=list-column>  <%= image_tag credit_info.url2.thumb if credit_info.url2? %></td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:credit_infos, :edit, :id => credit_info.id), :rel => :tooltip, :title => "#{pat(:edit)} credit_info", :class => 'list-row-action-wrapper-link' %>
