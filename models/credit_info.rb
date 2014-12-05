@@ -7,6 +7,7 @@ class CreditInfo
   belongs_to :city
   belongs_to :area
   belongs_to :state
+  belongs_to :firm_type
   field :name, :type => String
   field :email, :type => String
   field :card_id, :type => String
@@ -14,7 +15,6 @@ class CreditInfo
   mount_uploader :url2, CreditUploader
   field :url, :type => String
   field :url2, :type =>String
-  field :firm_type, :type=>Integer
 
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>
