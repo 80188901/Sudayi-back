@@ -67,11 +67,12 @@ end
 
   post :update_account_url, :csrf_protection => false  do
     @account =Account.where(:_id => params[:userid]).first;
+    @firm_type = FirmType.where(:name => '个人').first;
     if @account
        @state=State.where(:code => 0).first
        url = params[:url]
        if url
-          @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => url, :firm_type => 1)
+          @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => url, :firm_type => @firm_type._id)
          @credit_info.state = @state._id
          @credit_info.save
          @account.credit_info_id=@credit_info._id
@@ -90,6 +91,11 @@ end
     end
   end
 
+get :get_firm_type do
+ @firm_types =FirmType.where.not(:name => '个人')
+ @firm_types.to_json
+end
+
   post :update_account_2url, :csrf_protection =>false do
     @account =Account.where(:_id => params[:userid]).first;
     if @account
@@ -97,7 +103,7 @@ end
        url = params[:url]
        url2 = params[:url2]
        if url and url2
-          @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => url,:url2 => url2, :firm_type => 2)
+          @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => url,:url2 => url2, :firm_type => params[:p_type])
          @credit_info.state = @state._id
          @credit_info.save
          @account.credit_info_id=@credit_info._id
