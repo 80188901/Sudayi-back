@@ -93,7 +93,7 @@ end
 
 get :get_firm_type do
  @firm_types =FirmType.all
- @firm_types.delete(:name => '个人')
+ @firm_types.shift
  @firm_types.to_json
 end
 
