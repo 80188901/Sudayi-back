@@ -96,6 +96,12 @@ get :get_firm_type do
  @firm_types.to_json
 end
 
+ post :insert_url2_to_account_info do
+  @credit_info = CreditInfo.find(params[:credit_info_id])
+  @credit_info.url2 = params[:url2]
+  @credit_info.save
+ end
+
   post :update_account_2url, :csrf_protection =>false do
     @account =Account.where(:_id => params[:userid]).first;
     if @account
@@ -110,7 +116,8 @@ end
          @account.save
          @credit_info.to_json
        else
-        @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area])
+        @credit_info 
+        = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area])
          @credit_info.state = @state._id
          @credit_info.save
          @account.credit_info_id=@credit_info._id
