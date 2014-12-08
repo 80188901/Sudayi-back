@@ -45,7 +45,7 @@ end
    get :judge_same_email do
     @account =Account.where(:email => params[:email]).first
     if @account
-      @account.to_json
+      0.to_json
     else
       1.to_json
    end
