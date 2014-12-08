@@ -6,6 +6,7 @@ class Product
   belongs_to :store
   belongs_to :state
   belongs_to :category
+  belongs_to :account
   # field <name>, :type => <type>, :default => <value>
   field :name, :type => String
   field :description, :type => String
