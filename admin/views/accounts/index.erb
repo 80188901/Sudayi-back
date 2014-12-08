@@ -65,11 +65,7 @@
           <td class=list-column> <%= account.role %> </td>
           <td class=list-column> <%= account.admin %> </td>
           <td class=list-column> <%= account.mobile %> </td>
-          <% if account.credit_info %>
-          <td class=list-column> <%=account.credit_info._id if account.credit_info.url? %></td>
-          <% else %>
-          <td class=list-column> 无</td>
-          <% end %>
+          <td class=list-column> <%=account.credit_info %></td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:accounts, :edit, :id => account.id), :rel => :tooltip, :title => "#{pat(:edit)} account", :class => 'list-row-action-wrapper-link' %>
