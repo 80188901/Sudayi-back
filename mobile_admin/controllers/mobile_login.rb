@@ -96,7 +96,7 @@ get :get_firm_type do
  @firm_types.to_json
 end
 
- post :insert_url2_to_account_info do
+ post :insert_url2_to_account_info, :csrf_protection =>false do
   @credit_info = CreditInfo.find(params[:credit_info_id])
   @credit_info.url2 = params[:url2]
   @credit_info.save
