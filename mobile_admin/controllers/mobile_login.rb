@@ -165,4 +165,8 @@ end
     get :get_state_name do
       State.find(params[:state_id]).to_json
     end
+
+    get :get_firm_type_name do
+      FirmType.find(params[:firm_type_id]).to_json
+    end
 end
