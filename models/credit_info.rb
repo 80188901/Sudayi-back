@@ -12,7 +12,7 @@ class CreditInfo
   field :email, :type => String
   field :card_id, :type => String
   mount_uploader :url, CreditUploader
-  mount_uploader :url2, CreditUploader
+  mount_uploader :url2, Credit2Uploader
   field :url, :type => String
   field :url2, :type =>String
 
