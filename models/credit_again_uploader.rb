@@ -1,5 +1,5 @@
   require 'carrierwave/mongoid'
-class Credit2Uploader < CarrierWave::Uploader::Base
+class CreditAgainUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
   storage :file
