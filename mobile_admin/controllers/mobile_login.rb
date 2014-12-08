@@ -100,6 +100,7 @@ end
   @credit_info = CreditInfo.find(params[:credit_info_id])
   @credit_info.url2 = params[:url2]
   @credit_info.save
+  @credit_info.to_json
  end
 
   post :update_account_2url, :csrf_protection =>false do
