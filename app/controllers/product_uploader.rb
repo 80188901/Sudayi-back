@@ -57,4 +57,14 @@ end
     @categories .to_json
   end
 
+  get :get_nodes do
+    @category = Category.find(params[:cate_id])
+    @categories=Category.where(:category_id => @category._id)
+    if @categories
+      @categories.to_json
+    else
+      0.to_json
+    end
+  end
+
 end
