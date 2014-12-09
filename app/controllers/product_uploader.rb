@@ -74,6 +74,8 @@ end
     @product = Product.find(params[:product_id])
     @product.name = params[:good_name]
     @product.description = params[:description]
+    @product.category_id = params[:cate_id]
+    @product.account_id = params[:uid]
     @product.save
   end
 
