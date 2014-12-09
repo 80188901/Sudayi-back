@@ -2,13 +2,24 @@ Fancyshpv2::App.controllers :product_uploader do
     use Rack::Cors do
   allow do
     # put real origins here
-    origins '*', 'null'
+    origins '*','null'
     # and configure real resources here
     resource '*', :headers => :any, :methods => [:get, :post, :options]
   end
 end 
   
-  get :index do
+
+
+  post :create_adv,  :csrf_protection => false  do
+   @image_item = ImageItem.new
+   @image_item.product_id = params[:product_id]
+   @image_item.url = params[:adv_url]
+   @image_item.name = '广告'
+   @image_item.save
+   @image_item.to_json
+  end
+
+    get :index do
     @product = Product.new
     @product.save
     @product.to_json
