@@ -14,6 +14,7 @@ source 'https://rubygems.org'
 gem 'rake'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+gem 'rqrcode_png'
 gem "rmagick"
 gem 'i18n', '~> 0.6.11'
 gem 'json'

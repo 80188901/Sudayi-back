@@ -4,9 +4,7 @@ module Fancyshpv2
   #set :locales, [:en, :ru, :de] # First locale is the default locale
     register Padrino::Mailer
     register Padrino::Helpers
-     
     enable :sessions
-
  get '/' do
     render('index/index', :layout => :index) 
     #'网站正在维护中'
@@ -84,6 +82,13 @@ module Fancyshpv2
 
   get :contact_us do
    render('index/contact_us', :layout => :index) 
+  end
+
+  get :erweima do
+   qr=RQRCode::QRCode.new('http://www.29mins.com')
+png=qr.to_img  # returns an instance of ChunkyPNG
+png.resize(300, 300).save('images/foo.png')
+render('index/foo', :layout => :index) 
   end
     ##
     # Caching support.
