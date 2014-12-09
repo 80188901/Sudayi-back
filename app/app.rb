@@ -85,7 +85,7 @@ module Fancyshpv2
   end
 
   get :erweima do
-   qr=RQRCode::QRCode.new('http://www.29mins.com')
+   qr=RQRCode::QRCode.new(request.host)
 png=qr.to_img  # returns an instance of ChunkyPNG
 png.resize(300, 300).save('/home/simon/fancyshop_0.3/public/images/foo.png')
 render('index/foo', :layout => :index) 
