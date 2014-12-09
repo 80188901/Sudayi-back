@@ -24,6 +24,9 @@ end
     post :create_cover,  :csrf_protection => false  do
    @image_item = ImageItem.new
    @image_item.product_id = params[:product_id]
+   @product = Product.find(params[:product_id])
+   @product.level = params[:level]
+   @product.save
    @image_item.url = params[:cover_url]
     @image_item.account_id = params[:uid]
    @image_item.name = '封面'
@@ -65,6 +68,13 @@ end
     else
       0.to_json
     end
+  end
+
+  post :create_other_product_details do
+    @product = Product.find(params[:product_id])
+    @product.name = params[:good_name]
+    @product.description = params[:description]
+    @product.save
   end
 
 end
