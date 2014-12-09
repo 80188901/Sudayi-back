@@ -14,6 +14,13 @@ class Product
   field :storage, :type => Integer
   field :level,  :type => Integer
 
+  def self.qcode(id)
+    product = find(id)
+    url = 'http://'+request.host+'get_product?pid='+id
+    qr=RQRCode::QRCode.new(url)
+    png=qr.to_img  # returns an instance of ChunkyPNG
+    png.resize(300, 300).save('/home/simon/fancyshop_0.3/public/images/erweima/'+id+'.png')
+  end
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>
 
