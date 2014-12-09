@@ -52,7 +52,8 @@ end
   end
 
   get :get_root do
-    @categories = Category.where(:name => '根' )
+    @category = Category.where(:name => '根' ).first
+    @categories.Category.where(:category_id => @category._id)
     @categories .to_json
   end
 
