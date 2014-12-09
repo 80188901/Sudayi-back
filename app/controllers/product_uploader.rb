@@ -51,4 +51,9 @@ end
     @product.to_json
   end
 
+  get :get_root do
+    @categories = Category.where(:name => '根' )
+    @categories .to_json
+  end
+
 end
