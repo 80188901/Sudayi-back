@@ -15,6 +15,7 @@ end
    @image_item.product_id = params[:product_id]
    @image_item.url = params[:adv_url]
    @image_item.account_id = params[:uid]
+   @product.storage = 0
    @image_item.name = '广告'
    @image_item.iscover = 0
    @image_item.save
@@ -76,6 +77,7 @@ end
     @product.description = params[:description]
     @product.category_id = params[:cate_id]
     @product.account_id = params[:uid]
+    @product.storage + = 1
     @product.save
     @product.to_json
   end
