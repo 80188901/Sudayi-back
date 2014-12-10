@@ -47,6 +47,17 @@ end
    @image_item.to_json
   end
 
+   post :create_other_details,  :csrf_protection => false  do
+   @image_item = ImageItem.new
+   @image_item.product_id = params[:product_id]
+   @image_item.url = params[:file]
+    @image_item.account_id = params[:uid]
+   @image_item.name = params[:name]
+   @image_item.iscover = 0
+   @image_item.save
+   @image_item.to_json
+  end
+
 
 
     get :index do
@@ -83,5 +94,5 @@ end
     @product.save
     @product.to_json
   end
-
+ 
 end
