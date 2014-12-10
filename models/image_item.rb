@@ -10,6 +10,7 @@ class ImageItem
   field :name, :type => String
   field :url, :type => String
   field :iscover, :type => Integer
+  field :price, :type => Float
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>
 
