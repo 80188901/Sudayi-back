@@ -8,6 +8,7 @@ class Store
 
   # field <name>, :type => <type>, :default => <value>
   field :name, :type => String
+  field :in_charge, :type => String
 
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>

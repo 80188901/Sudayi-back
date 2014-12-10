@@ -22,7 +22,7 @@ end
    @image_item.to_json
   end
   
-    post :create_cover,  :csrf_protection => false  do
+  post :create_cover,  :csrf_protection => false  do
    @image_item = ImageItem.new
    @image_item.product_id = params[:product_id]
    @product = Product.find(params[:product_id])
@@ -34,6 +34,15 @@ end
    @image_item.iscover = 1
    @image_item.save
    @image_item.to_json
+  end
+
+  get :get_stores_by_account do 
+    @stores = Store.where(:account_id=>params[:uid])
+    if @stores
+    @stores.to_json
+   else
+    0.to_json
+   end
   end
 
   post :create_details,  :csrf_protection => false  do
