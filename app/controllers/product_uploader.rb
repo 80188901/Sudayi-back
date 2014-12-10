@@ -78,6 +78,8 @@ end
     @product.category_id = params[:cate_id]
     @product.account_id = params[:uid]
     @product.storage  = 1
+    @state=State.all.first
+    @product.state_id = @state._id
     @product.save
     @product.to_json
   end
