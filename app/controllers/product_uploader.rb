@@ -77,7 +77,7 @@ end
     @product.description = params[:description]
     @product.category_id = params[:cate_id]
     @product.account_id = params[:uid]
-    @product.storage + = 1
+    @product.storage  = 1
     @product.save
     @product.to_json
   end
