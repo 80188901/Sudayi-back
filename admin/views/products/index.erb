@@ -48,6 +48,7 @@
                 <th class=header>价格</th>
                 <th class=header>库存</th>
                 <th class=header> 商品级别</th>
+                  <th class=header>用户ＩＤ</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -70,6 +71,7 @@
           <td class=list-column> <%= product.price %> </td>
           <td class=list-column> <%= product.storage %> </td>
           <td class=list-column> <%= product.level %> </td>
+          <td class=list-column> <%= product.account_id %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:products, :edit, :id => product.id), :rel => :tooltip, :title => "#{pat(:edit)} product", :class => 'list-row-action-wrapper-link' %>
