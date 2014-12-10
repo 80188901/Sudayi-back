@@ -77,6 +77,7 @@ end
     @product.category_id = params[:cate_id]
     @product.account_id = params[:uid]
     @product.save
+    @product.to_json
   end
 
 end
