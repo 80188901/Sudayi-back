@@ -44,15 +44,11 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
   end
 
   post :new_account_in_charge,:csrf_protection => false do
-    @account = Account.new(:password_confirmation => params[:apwd], :role=>'admin', :name => params[:name], :mobile => params[:tel], :password => params[:pwd], :email => params[:email])
+     @account = Account.new(:password_confirmation => params[:apwd], :role=>'admin', :name => params[:user], :mobile => params[:tel], :password => params[:pwd], :admin_type => params[:way], :email => params[:email])
     if @account.save
-     @employee = Employee.new
-     @employee.account_id = params[:uid]
-     @employee.emp = @account._id
-     @employee.save
-     @employee.to_json
+       @account.to_json
     else
-     @account.to_json
+      '保存未成功'.to_json
     end
   end
 end
