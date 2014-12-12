@@ -26,6 +26,17 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
     @store_address.area_id = params[:area_id]
     @store_address.details = params[:warehouse_address]
     @store_address.save
+    @store.to_json
   end
+
   
+
+  post :new_account_in_charge,:csrf_protection => false do
+    params[:uid]
+    params[:store_id]
+    params[:name]
+    params[:tel]
+    params[:pwd]
+    params[:apwd]
+  end
 end
