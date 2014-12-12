@@ -25,6 +25,7 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
     @store_address.store_id = @store._id
     @store_address.area_id = params[:area_id]
     @store_address.details = params[:warehouse_address]
+    @store_address.save
   end
   
 end
