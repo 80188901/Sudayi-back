@@ -43,7 +43,7 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
     end
   end
 
-  get :new_account_in_charge,:csrf_protection => false do
+  post :new_account_in_charge,:csrf_protection => false do
     @account = Account.new(:password_confirmation => params[:apwd], :role=>'admin', :name => params[:user], :mobile => params[:tel], :password => params[:pwd], :admin_type => params[:way], :email => params[:email])
     if @account.save
      @employee = Employee.new
