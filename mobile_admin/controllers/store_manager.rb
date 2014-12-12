@@ -56,4 +56,10 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
       '保存未成功'.to_json
     end
   end
+
+
+  get :get_employees_by_account do
+    @employees = Employee.where(:account_id => params[:uid])
+    @employees.to_json
+  end
 end
