@@ -40,9 +40,9 @@ end
     @stores = Store.where(:account_id=>params[:uid])
     if @stores
     @stores.to_json
-   else
+    else
     0.to_json
-   end
+    end
   end
 
   post :create_details,  :csrf_protection => false  do
