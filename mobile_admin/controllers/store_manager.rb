@@ -48,7 +48,7 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
     if @account.save
      @employee = Employee.new
      @employee.account_id = params[:uid]
-     @employee.work_id = @account._id
+     @employee.emp = @account._id
      @employee.save
      @employee.to_json
     else
