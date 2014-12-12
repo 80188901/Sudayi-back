@@ -30,13 +30,13 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
   end
 
   get :get_store_id do
-    @store=Store.where(:name => params[:warehouse_name]).fisrt
+    @store=Store.where(:name => params[:warehouse_name]).first
     @store._id.to_json
   end
 
   post :new_account_in_charge,:csrf_protection => false do
     @account = Account.new
-    
+    @account 
     params[:uid]
     params[:store_id]
     params[:name]
