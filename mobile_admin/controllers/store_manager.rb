@@ -50,6 +50,7 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
     @account.mobile = params[:tel]
     @account.password = params[:pwd]
     @account.password_confirmation = params[:apwd]
+    @account.role = 'admin'
     @account.save
     @employee = Employee.new
     @employee.account_id = params[:uid]
