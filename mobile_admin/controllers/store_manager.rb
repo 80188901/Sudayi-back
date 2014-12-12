@@ -36,12 +36,15 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
 
   post :new_account_in_charge,:csrf_protection => false do
     @account = Account.new
-    @account 
-    params[:uid]
-    params[:store_id]
-    params[:name]
-    params[:tel]
-    params[:pwd]
-    params[:apwd]
+    @account.email = params[:email]
+    @account.name = params[:name]
+    @account.mobile = params[:tel]
+    @account.password = params[:pwd]
+    @account.password_confirmation = params[:apwd]
+    @account.save
+    @employee = Employee.new
+    @employee.account_id = params[:uid]
+    @employee.work_id = @account._id
+    @employee.save
   end
 end
