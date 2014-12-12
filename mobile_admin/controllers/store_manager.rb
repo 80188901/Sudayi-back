@@ -34,6 +34,15 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
     @store._id.to_json
   end
 
+  get :judge_store_name do
+    @store=Store.where(:name => params[:warehouse_name])
+    if @store
+      0.to_json
+    else
+      1.to_json
+    end
+  end
+
   post :new_account_in_charge,:csrf_protection => false do
     @account = Account.new
     @account.email = params[:email]
