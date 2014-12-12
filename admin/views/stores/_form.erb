@@ -1,26 +1,57 @@
 <% error = @store.errors.include?(:website_id) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :所属站点, :class => 'control-label' %>
+  <%= f.label :website_id, :class => 'control-label' %>
   <div class='controls'>
-       <%= f.select(:website_id, :collection => Website.all, :fields => [:domain, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <%= f.text_field :website_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:website_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @store.errors.include?(:account_id) %>
-    <%= f.hidden_field :account_id, :value => current_account.id %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :account_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :account_id, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:account_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
 <% error = @store.errors.include?(:address_id) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :地址编号, :class => 'control-label' %>
+  <%= f.label :address_id, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :address_id, :class => 'form-control input-xlarge input-with-feedback' %>
-    
+    <span class='help-inline'><%= error ? f.error_message_on(:address_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @store.errors.include?(:name) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :仓库名称, :class => 'control-label' %>
+  <%= f.label :name, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
-   
+    <span class='help-inline'><%= error ? f.error_message_on(:name) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @store.errors.include?(:in_charge) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :in_charge, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :in_charge, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:in_charge) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @store.errors.include?(:open_time) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :open_time, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :open_time, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:open_time) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @store.errors.include?(:open_time_in_one_week) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :open_time_in_one_week, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :open_time_in_one_week, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:open_time_in_one_week) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 
