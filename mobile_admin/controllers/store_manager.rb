@@ -43,7 +43,7 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
     end
   end
 
-  post :new_account_in_charge,:csrf_protection => false do
+  get :new_account_in_charge,:csrf_protection => false do
     @account = Account.new
     @account.email = params[:email]
     @account.name = params[:name]
