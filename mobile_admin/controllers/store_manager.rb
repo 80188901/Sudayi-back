@@ -12,7 +12,7 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
     'hello'
   end
 
-  post :new_store,:csrf_protection => false do
+  get :new_store,:csrf_protection => false do
     @store = Store.new
     @store.credit_url = params[:url]
     @store.name = params[:warehouse_name]

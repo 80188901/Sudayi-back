@@ -1,7 +1,7 @@
 class StoreAddress
   include Mongoid::Document
   include Mongoid::Timestamps # adds created_at and updated_at fields
-  bleongs_to :store
+  belongs_to :store
   belongs_to :area
   field :details, :type => String
 
