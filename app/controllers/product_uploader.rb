@@ -92,7 +92,7 @@ end
     end
   end
 
-  get :create_other_product_details,  :csrf_protection => false do
+  post :create_other_product_details,  :csrf_protection => false do
     @product = Product.find(params[:product_id])
     @product.name = params[:good_name]
     @product.description = params[:description]
