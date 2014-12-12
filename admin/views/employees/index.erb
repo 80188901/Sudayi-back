@@ -53,7 +53,7 @@
           <td class=list-column> <%= time_ago_in_words employee.created_at %></td>
           <td class=list-column> <%= time_ago_in_words employee.updated_at %></td>
           <td class=list-column> <%= employee.account_id %> </td>
-          <td class=list-column> <%= employee.work_id %> </td>
+          <td class=list-column> <%= employee.emp %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:employees, :edit, :id => employee.id), :rel => :tooltip, :title => "#{pat(:edit)} employee", :class => 'list-row-action-wrapper-link' %>
