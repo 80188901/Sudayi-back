@@ -45,6 +45,7 @@
                 <th class=header> <%= mat(:store, :in_charge) %></th>
                 <th class=header> <%= mat(:store, :open_time) %></th>
                 <th class=header> <%= mat(:store, :open_time_in_one_week) %></th>
+                <th class=header> <%= mat(:store, :credit_url) %></th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -64,6 +65,7 @@
           <td class=list-column> <%= store.in_charge %> </td>
           <td class=list-column> <%= store.open_time %> </td>
           <td class=list-column> <%= store.open_time_in_one_week %> </td>
+          <td class=list-column> <%= store.credit_url %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:stores, :edit, :id => store.id), :rel => :tooltip, :title => "#{pat(:edit)} store", :class => 'list-row-action-wrapper-link' %>
