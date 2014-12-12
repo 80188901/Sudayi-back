@@ -43,7 +43,8 @@
                 <th class=header> <%= mat(:store, :address_id) %></th>
                 <th class=header> <%= mat(:store, :name) %></th>
                 <th class=header> <%= mat(:store, :in_charge) %></th>
-                <th class=header> <%= mat(:store, :open_time) %></th>
+                <th class=header> <%= mat(:store, :open_time_begin_day) %></th>
+                <th class=header> <%= mat(:store, :open_time_end_day) %></th>
                 <th class=header> <%= mat(:store, :open_time_in_one_week) %></th>
                 <th class=header> <%= mat(:store, :credit_url) %></th>
                 <th class="header list-row-action-header"></th>
@@ -63,7 +64,8 @@
           <td class=list-column> <%= store.address_id %> </td>
           <td class=list-column> <%= store.name %> </td>
           <td class=list-column> <%= store.in_charge %> </td>
-          <td class=list-column> <%= store.open_time %> </td>
+          <td class=list-column> <%= store.open_time_begin_day %> </td>
+          <td class=list-column> <%= store.open_time_end_day %> </td>
           <td class=list-column> <%= store.open_time_in_one_week %> </td>
           <td class=list-column> <%= store.credit_url %> </td>
           <td class="list-column list-row-action">

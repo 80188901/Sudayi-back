@@ -38,12 +38,20 @@
     <span class='help-inline'><%= error ? f.error_message_on(:in_charge) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
-<% error = @store.errors.include?(:open_time) %>
+<% error = @store.errors.include?(:open_time_begin_day) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :open_time, :class => 'control-label' %>
+  <%= f.label :open_time_begin_day, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_field :open_time, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:open_time) : "Ex: a simple text" %></span>
+    <%= f.text_field :open_time_begin_day, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:open_time_begin_day) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @store.errors.include?(:open_time_end_day) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :open_time_end_day, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :open_time_end_day, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:open_time_end_day) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @store.errors.include?(:open_time_in_one_week) %>

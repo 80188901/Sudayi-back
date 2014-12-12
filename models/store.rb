@@ -9,7 +9,8 @@ class Store
   # field <name>, :type => <type>, :default => <value>
   field :name, :type => String
   field :in_charge, :type => String
-  field :open_time, :type => String
+  field :open_time_begin_day, :type => String
+  field :open_time_end_day, :type => String
   field :open_time_in_one_week, :type=> String
   mount_uploader :credit_url, StoreUploader
   field :credit_url, :type => String
