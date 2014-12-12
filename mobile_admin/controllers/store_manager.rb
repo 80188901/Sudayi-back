@@ -62,4 +62,9 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
     @employees = Employee.where(:account_id => params[:uid])
     @employees.to_json
   end
+
+  get :get_account_by_id do
+    @account = Account.find(params[:employee_id])
+    @account.to_json
+  end
 end
