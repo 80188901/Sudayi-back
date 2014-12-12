@@ -46,7 +46,8 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
   post :new_account_in_charge,:csrf_protection => false do
      @account = Account.new(:password_confirmation => params[:apwd], :role=>'admin', :name => params[:user], :mobile => params[:tel], :password => params[:pwd], :admin_type => params[:way], :email => params[:email])
     if @account.save
-       @account.to_json
+       @employee = Employee.new(:emp => params[:uid]:account_id => @account._id)
+       @employee.to_json
     else
       '保存未成功'.to_json
     end
