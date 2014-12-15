@@ -5,6 +5,7 @@ class AreaDistance
   # field <name>, :type => <type>, :default => <value>
   field :fee, :type => Float
   field :toarea, :type => String
+  field :longlast, :type => Integer	
 
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>

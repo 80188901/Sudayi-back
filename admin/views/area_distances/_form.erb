@@ -1,23 +1,33 @@
 <% error = @area_distance.errors.include?(:area_id) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :出发区域, :class => 'control-label' %>
+  <%= f.label :area_id, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :area_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:area_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @area_distance.errors.include?(:fee) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :费用, :class => 'control-label' %>
+  <%= f.label :fee, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :fee, :class => 'form-control input-xlarge input-with-feedback' %>
-    
+    <span class='help-inline'><%= error ? f.error_message_on(:fee) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @area_distance.errors.include?(:toarea) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :到底区域, :class => 'control-label' %>
+  <%= f.label :toarea, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :toarea, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:toarea) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @area_distance.errors.include?(:longlast) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :longlast, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :longlast, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:longlast) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 
