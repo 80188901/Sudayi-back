@@ -42,6 +42,7 @@
                 <th class=header> <%= mat(:store_employee, :employee_id) %></th>
                 <th class=header> <%= mat(:store_employee, :role) %></th>
                 <th class=header> <%= mat(:store_employee, :info_access) %></th>
+                <th class=header> <%= mat(:store_employee, :is_charge) %></th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -58,6 +59,7 @@
           <td class=list-column> <%= store_employee.employee_id %> </td>
           <td class=list-column> <%= store_employee.role %> </td>
           <td class=list-column> <%= store_employee.info_access %> </td>
+          <td class=list-column> <%= store_employee.is_charge %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:store_employees, :edit, :id => store_employee.id), :rel => :tooltip, :title => "#{pat(:edit)} store_employee", :class => 'list-row-action-wrapper-link' %>
