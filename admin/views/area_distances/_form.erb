@@ -1,8 +1,8 @@
 <% error = @area_distance.errors.include?(:area_id) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :area_id, :class => 'control-label' %>
+  <%= f.label :区域, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_field :area_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <%= f.select(:area_id, :collection => Area.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
     <span class='help-inline'><%= error ? f.error_message_on(:area_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
@@ -16,7 +16,7 @@
 </fieldset>
 <% error = @area_distance.errors.include?(:toarea) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :toarea, :class => 'control-label' %>
+  <%= f.label :到达区域, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :toarea, :class => 'form-control input-xlarge input-with-feedback' %>
     <span class='help-inline'><%= error ? f.error_message_on(:toarea) : "Ex: a simple text" %></span>
@@ -26,7 +26,7 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :longlast, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_field :longlast, :class => 'form-control input-xlarge input-with-feedback' %>
+    <%= f.select(:area_id, :collection => Area.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
     <span class='help-inline'><%= error ? f.error_message_on(:longlast) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
