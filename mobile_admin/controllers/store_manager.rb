@@ -74,7 +74,7 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
     if @store_employee.save
       1.to_json
     else
-      0.to_jsons
+      0.to_json
     end
   end
 end
