@@ -7,7 +7,7 @@ class StoreEmployee
   # field <name>, :type => <type>, :default => <value>
   field :role, :type => String
   field :info_access, :type => Integer
-  fiels :is_charge, :type => Integer
+  field :is_charge, :type => Integer
 
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>
