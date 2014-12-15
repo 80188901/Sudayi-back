@@ -18,7 +18,7 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :到达区域, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.select(:area_id, :collection => Area.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
+    <%= f.select(:toarea, :collection => Area.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
     <span class='help-inline'><%= error ? f.error_message_on(:toarea) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
