@@ -26,4 +26,5 @@ Fancyshpv2::MobileAdmin.controllers :mobile_reg do
    get :approve_intro do
        render('approve_intro', :layout => 'mobile_admin')
    end
+
 end

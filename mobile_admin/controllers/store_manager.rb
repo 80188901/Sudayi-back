@@ -77,4 +77,10 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
       0.to_json
     end
   end
+
+ get :get_stores_by_uid do
+     @stores= Store.where(:account_id => params[:uid])
+     @stores.to_json
+ end
+ 
 end
