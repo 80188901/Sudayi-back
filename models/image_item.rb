@@ -5,6 +5,7 @@ class ImageItem
    belongs_to :product
    belongs_to :account
    belongs_to :website
+   belongs_to :store
    mount_uploader :url, AvatarUploader
   # field <name>, :type => <type>, :default => <value>
   field :name, :type => String
