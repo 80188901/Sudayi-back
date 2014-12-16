@@ -6,6 +6,7 @@ class SubArea
   # field <name>, :type => <type>, :default => <value>
   field :code, :type => Integer
   field :name, :type => String
+  field :url, :type => String
 
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>
