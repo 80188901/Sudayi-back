@@ -26,7 +26,7 @@ end
    @image_item = ImageItem.new
    @image_item.product_id = params[:product_id]
    @product = Product.find(params[:product_id])
-   @product.level = params[:level]
+   @product.level = params[:level].to_i
    @product.save
    @image_item.url = params[:cover_url]
     @image_item.account_id = params[:uid]
