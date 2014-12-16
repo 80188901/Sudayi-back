@@ -10,7 +10,7 @@ Fancyshpv2::Mobile.controllers :welcome do
  end 
   
   get :all_pics do
-    @image_items = ImageItem.all
+    @image_items = ImageItem.all.order_by(:created_at.desc)
     @image_items.to_json
   end
 
