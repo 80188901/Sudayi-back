@@ -16,7 +16,7 @@ Fancyshpv2::Mobile.controllers :welcome do
 
   get :get_pics_a do
     @products = Product.where(:level => 1).order_by(:created_at.desc)
-    @products .each_with_index do |product|
+    @products .each_with_index do |product, index|
        @image_item = ImageItem.where(:product_id => product._id).first
        @image_items[index] = @image_item
     end
