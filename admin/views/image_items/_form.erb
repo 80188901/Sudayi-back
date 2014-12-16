@@ -62,6 +62,14 @@
     <span class='help-inline'><%= error ? f.error_message_on(:price) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
+<% error = @image_item.errors.include?(:isdetail) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :isdetail, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :isdetail, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:isdetail) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
 
 
 <div class="form-actions">

@@ -68,6 +68,8 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
     @account.to_json
   end
 
+  
+
 
   post :assign_employee_job, :csrf_protection => false do
     @store_employee = StoreEmployee.new(:store_id => params[:store_id], :employee_id => params[:employee_id], :info_access => params[:ware_notice],:is_charge =>params[:ware_link])
