@@ -30,7 +30,7 @@ Fancyshpv2::Mobile.controllers :welcome do
   end
 
   get :get_images_by_pid do
-    @images = ImageItem.where(:account_id => params[:pid])
+    @images = ImageItem.where(:product_id => params[:pid])
     @images.to_json
   end
 
