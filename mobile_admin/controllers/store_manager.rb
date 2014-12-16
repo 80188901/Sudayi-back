@@ -68,7 +68,7 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
     @account.to_json
   end
 
-  
+
 
 
   post :assign_employee_job, :csrf_protection => false do
@@ -85,4 +85,8 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
      @stores.to_json
  end
  
+ get :get_details_by_product_id do
+  @image_items = ImageItem.where(:isdetail => 1, :product_id => params[:pid])
+  @image_items.to_json
+ end
 end
