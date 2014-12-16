@@ -24,4 +24,9 @@ Fancyshpv2::Mobile.controllers :welcome do
     @image_items.to_json
   end
 
+  get :get_product_by_id do
+    @product = Product.find(params[:pid])
+    @product.to_json
+  end
+
 end
