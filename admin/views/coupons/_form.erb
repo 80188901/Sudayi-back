@@ -1,0 +1,41 @@
+<% error = @coupon.errors.include?(:product_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :product_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :product_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:product_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @coupon.errors.include?(:discount) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :discount, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :discount, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:discount) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @coupon.errors.include?(:minus) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :minus, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :minus, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:minus) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @coupon.errors.include?(:fee) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :fee, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :fee, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:fee) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+
+
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:coupons, :index), :class => 'btn btn-default' %>
+</div>
