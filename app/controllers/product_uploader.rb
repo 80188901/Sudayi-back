@@ -51,7 +51,6 @@ end
    @image_item.url = params[:file]
     @image_item.account_id = params[:uid]
    @image_item.name = '细节'
-   @image_item.isdetail = 1
    @image_item.iscover = 0
    @image_item.save
    @image_item.to_json
@@ -65,6 +64,7 @@ end
    @image_item.name = params[:name]
    @image_item.price = params[:price]
    @image_item.iscover = 0
+   @image_item.isdetail = 1
    @image_item.save
    @image_item.to_json
   end
