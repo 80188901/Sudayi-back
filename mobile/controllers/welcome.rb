@@ -45,4 +45,14 @@ Fancyshpv2::Mobile.controllers :welcome do
     @cates.to_json
   end
 
+  get :get_sub_cates do
+    @cates = Category.where(:category_id =>params[:fid])
+    @cates.to_json
+  end
+
+  get :get_product_by_cate_id do
+    @products = Product.where(:category_id =>params[:cate_id])
+    @products.to_json
+  end
+
 end
