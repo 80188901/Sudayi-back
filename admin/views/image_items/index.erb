@@ -47,6 +47,7 @@
                 <th class=header> <%= mat(:image_item, :iscover) %></th>
                 <th class=header> <%= mat(:image_item, :price) %></th>
                 <th class=header> <%= mat(:image_item, :isdetail) %></th>
+                <th class=header> <%= mat(:image_item, :storage) %></th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -68,6 +69,7 @@
           <td class=list-column> <%= image_item.iscover %> </td>
           <td class=list-column> <%= image_item.price %> </td>
           <td class=list-column> <%= image_item.isdetail %> </td>
+          <td class=list-column> <%= image_item.storage %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:image_items, :edit, :id => image_item.id), :rel => :tooltip, :title => "#{pat(:edit)} image_item", :class => 'list-row-action-wrapper-link' %>
