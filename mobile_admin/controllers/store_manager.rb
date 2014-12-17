@@ -90,27 +90,32 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
   @image_items.to_json
  end
 
- post :add_product_to_store, :csrf_protection => false do
-  @image_item = ImageItem.where(:_id => params[:gid]).first
-  if @image_item
-  @image_item_new =  ImageItem.new
-  @image_item_new.url =@image_item.url
-  @image_item_new.website = @image_item.website
-  @image_item_new.account_id = @image_item.account_id
-  @image_item_new.name =@image_item.name
-  @iamge_item_new.iscover = @image_item.iscover
-  @image_item_new.price = params[:price]
-  @image_item_new.isdetail = 1
-  @iamge_item_new.product_id =params[:pid]
-  @image_item_new.store_id = params[:store_id]
-  @image_item_new.storage = params[:number].to_i
-  if @image_item_new.save
-     1.to_json
-  else
-    0.to_json
-  end
- else
-  0.to_json
- end
+ get :add_product_to_store, :csrf_protection => false do
+    @store_images = StoreImageItem.where(:store_id => params[:store_id])
+    if @store_images
+      @store_images.each do |store_image|
+        if store_image.price != params[:price].to_f
+            store_image.price = params[:price].to_f
+        end
+         if store_image.storage != params[:number].to_i
+            store_image.storage = params[:number].to_i
+        end
+        if store_image.image_item_id != params[:gid]
+           store_image.image_item_id = params[:gid]
+        end
+        if store_image.save
+          1.to_json
+        else
+          0.to_json
+        end
+      end
+    else
+       @store_image = StoreImageItem.new(:store => params[:store_id], :image_item_id => params[:gid], :price =>params[:price], :storage => params[:number])
+       if @store_image.save
+           1.to_json
+       else
+          0.to_json
+       end
+    end
  end
 end

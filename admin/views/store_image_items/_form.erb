@@ -1,0 +1,41 @@
+<% error = @store_image_item.errors.include?(:image_item_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :image_item_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :image_item_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:image_item_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @store_image_item.errors.include?(:store_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :store_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :store_id, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:store_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @store_image_item.errors.include?(:price) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :price, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :price, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:price) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @store_image_item.errors.include?(:storage) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :storage, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :storage, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:storage) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+
+
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:store_image_items, :index), :class => 'btn btn-default' %>
+</div>
