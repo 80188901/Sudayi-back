@@ -90,7 +90,7 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
   @image_items.to_json
  end
 
- post :add_product_to_store do
+ post :add_product_to_store, :csrf_protection => false do
   @image_item = ImageItem.where(:_id => params[:gid]).first
   if @image_item
   @image_item_new =  ImageItem.new
