@@ -64,7 +64,7 @@
           <td class=list-column> <%= image_item.account_id %> </td>
           <td class=list-column> <%= image_item.website_id %> </td>
           <td class=list-column> <%= image_item.store_id %> </td>
-          <td class=list-column> <%= image_item.url %> </td>
+          <td class=list-column> <%=image_tag image_item.url.thumb if image_item.url? %> </td>
           <td class=list-column> <%= image_item.name %> </td>
           <td class=list-column> <%= image_item.iscover %> </td>
           <td class=list-column> <%= image_item.price %> </td>
