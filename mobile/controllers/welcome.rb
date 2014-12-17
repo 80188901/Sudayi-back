@@ -69,7 +69,7 @@ Fancyshpv2::Mobile.controllers :welcome do
         end
        else
          i++
-         if i>= arr.size -1
+         if i > arr.size -1
            break
          end
          @cate_id = arr[i]
