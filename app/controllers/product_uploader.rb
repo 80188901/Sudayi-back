@@ -18,7 +18,7 @@ end
    @product.storage = 0
    @image_item.name = '广告'
    @image_item.iscover = 0
-   @image_item.save
+   @image_item.save!
    @image_item.to_json
   end
   
@@ -32,7 +32,7 @@ end
     @image_item.account_id = params[:uid]
    @image_item.name = '封面'
    @image_item.iscover = 1
-   @image_item.save
+   @image_item.save!
    @image_item.to_json
   end
 
@@ -52,7 +52,7 @@ end
     @image_item.account_id = params[:uid]
    @image_item.name = '细节'
    @image_item.iscover = 0
-   @image_item.save
+   @image_item.save!
    @image_item.to_json
   end
 
@@ -65,7 +65,7 @@ end
    @image_item.price = params[:price]
    @image_item.iscover = 0
    @image_item.isdetail = 1
-   @image_item.save
+   @image_item.save!
    @image_item.to_json
   end
 
@@ -102,7 +102,7 @@ end
     @product.storage  = 1
     @state=State.all.first
     @product.state_id = @state._id
-    @product.save
+    @product.save!
     @product.to_json
   end
  
