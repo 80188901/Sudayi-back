@@ -34,6 +34,8 @@ Fancyshpv2::Mobile.controllers :welcome do
     @images.to_json
   end
 
-  
+  get :get_products_by_cate_id do
+    
+  end
 
 end

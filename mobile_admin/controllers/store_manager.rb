@@ -91,11 +91,12 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
  end
 
  post :add_product_to_store, :csrf_protection => false do
-  @product = Product.find(params[:pid])
-  @product.price = params[:price]
-  @product.store_id = params[:store_id]
-  @product.storage = params[:number]
-  if @product.save
+  @image_item = ImageItem.find(params[:gid])
+  @image_item.price = params[:price]
+  @image_isdetail = 1
+  @image_item.store_id = params[:store_id]
+  @image_item.storage = params[:number].to_i
+  if @image_item.save
      1.to_json
   else
     0.to_json
