@@ -34,11 +34,6 @@ Fancyshpv2::Mobile.controllers :welcome do
     @images.to_json
   end
 
-  get :get_products_by_cate_id do
-    @products = Product.where(params[:cate_id])
-    @products.to_json
-  end
-
   get :get_cates do
     @fcate = Category.where(:name => '根').first
     @cates = Category.where(:category_id => @fcate._id)
@@ -50,13 +45,15 @@ Fancyshpv2::Mobile.controllers :welcome do
     @cates.to_json
   end
 
-  get :get_product_by_cate_id do
-    #@products = Product.where(:category_id => params[:cate_id])
-    #@products .to_json
-    #广度优先算法寻找叶子节点
+  get :get_products_by_cate_id do
+    #广度优先算法
     arr = []
+    products = {}
     outputs = Category.findLeaves(params[:cate_id],arr)
-    arr.to_json
+    arr.each_with_index do |i,j|
+      products[j] = Product.where(:category_id => i)
+    end
+    products.to_json
 
   end
 

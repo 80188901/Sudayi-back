@@ -11,25 +11,28 @@ class Category
   # You can create a composite key in mongoid to replace the default id using the key macro:
   # key :field <, :another_field, :one_more ....>
 
-  def self.judgeLeaf(cate_id)
-      category = where(:category_id => cate_id).first
+  def self.judgeLeaf(cate)
+      category = where(:category_id => cate).first
       category ? category :nil
   end
 
-  def self.findLeaves(cate_id,arr)
+  def self.findLeaves(cate,arr)
+  	#广度优先算法检索分类
   	output_arr = arr
-  	categories = where(:category_id => cate_id)
+  	categories = where(:category_id => cate)
   	if categories
-  	     categories.each_with_index do |cate, index|
+  	     output_arr.push(find(cate)._id)
+  	     categories.each do |cate|
+  	     	output_arr.push(cate._id)
   		category=judgeLeaf(cate._id)
   		if category
-  			output_arr.push(category)
-  			next
+  		          findLeaves(cate._id,output_arr)
+                                      next 
   		else
-                                  findLeaves(cate_id,output_arr)
+                                 next
   		end
   	    end
+  	else
   	end
-               output_arr
   end
 end
