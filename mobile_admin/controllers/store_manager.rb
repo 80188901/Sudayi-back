@@ -90,7 +90,7 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
   @image_items.to_json
  end
 
- get :add_product_to_store, :csrf_protection => false do
+ post :add_product_to_store, :csrf_protection => false do
     @store_images = StoreImageItem.where(:store_id => params[:store_id])
     if @store_images
       @store_images.each do |store_image|
