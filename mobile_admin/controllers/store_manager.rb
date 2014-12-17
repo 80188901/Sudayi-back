@@ -90,9 +90,9 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
   @image_items.to_json
  end
 
- post :add_product_to_store, :csrf_protection => false do
+ get :add_product_to_store, :csrf_protection => false do
     @store_images = StoreImageItem.where(:store_id => params[:store_id])
-    if @store_images
+    if @store_images.nil?
       @store_images.each do |store_image|
         if store_image.price != params[:price].to_f
             store_image.price = params[:price].to_f
@@ -111,11 +111,9 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
       end
     else
        @store_image = StoreImageItem.new(:store => params[:store_id], :image_item_id => params[:gid], :price =>params[:price], :storage => params[:number])
-       if @store_image.save
-           1.to_json
-       else
-          0.to_json
-       end
+       @store_image.save!
+      
     end
+   @store_images.to_json
  end
 end
