@@ -54,25 +54,28 @@ Fancyshpv2::Mobile.controllers :welcome do
     #广度优先算法
     @products = {}
     i = 0
+    t = 0
     arr = []
     @cate_id = params[:cate_id]
     loop do
         @cate_sub = Category.where(:category_id => @cate_id)
-       if @cate_sub
-         @cate_sub.each_with_index do |cate, j|
-         @products[i] = Product.where(:category_id => cate._id)
-          arr.push(cate._id)
-        end
-        if i <  arr.size-1
-          @cate_id=arr[i]
-          i++
-        end
-       else
-         i++
-         if i > arr.size -1
-           break
-         end
-         @cate_id = arr[i]
+        if @cate_sub
+              @cate_sub.each_with_index do |cate, j|
+                @products[t] = Product.where(:category_id => cate._id)
+                t = t +1
+                arr.push(cate._id)
+              end
+              if i <  arr.size-1
+                @cate_id=arr[i]
+                i = i+ 1
+              end
+         else
+             @products[t+1] = Product.where(:category_id => @cate_id)
+              i =i+1
+              if  i > arr.size -1
+                break
+              end
+            @cate_id = arr[i]
        end
     end
     @products.to_json
