@@ -35,6 +35,11 @@ Fancyshpv2::Mobile.controllers :welcome do
   end
 
   get :get_products_by_cate_id do
+    @products = Product.where(params[:cate_id])
+    @products.to_json
+  end
+
+  get :get_cates do
     
   end
 
