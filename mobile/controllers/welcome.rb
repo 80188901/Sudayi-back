@@ -40,7 +40,9 @@ Fancyshpv2::Mobile.controllers :welcome do
   end
 
   get :get_cates do
-    
+    @fcate = Category.where(:name => '根').first
+    @cates = Category.where(:category_id => @fcate._id)
+    @cates.to_json
   end
 
 end
