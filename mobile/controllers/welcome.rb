@@ -65,21 +65,20 @@ Fancyshpv2::Mobile.controllers :welcome do
                 t = t +1
                 arr.push(cate._id)
               end
-              if i <  arr.size-1
+              if i <  arr.size
                 @cate_id=arr[i]
                 i = i+ 1
               end
-         else
+      else
              @products[t+1] = Product.where(:category_id => @cate_id)
               i =i+1
-              if  i > arr.size -1
+              if  i > arr.size
                 break
               end
             @cate_id = arr[i]
        end
     end
     @products.to_json
-
   end
 
 end
