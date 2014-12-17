@@ -31,7 +31,7 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :商品分类, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_field :category_id, :class => 'form-control input-xlarge input-with-feedback' %>
+    <%= f.select(:category_id, :collection => Category.all, :fields => [:name, :id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true, :include_blank => true) %>
   </div>
 </fieldset>
 <% error = @product.errors.include?(:name) %>

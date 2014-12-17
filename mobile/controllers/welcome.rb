@@ -51,37 +51,13 @@ Fancyshpv2::Mobile.controllers :welcome do
   end
 
   get :get_product_by_cate_id do
-    @products = Product.where(:category_id => params[:cate_id])
-    @products .to_json
-    #广度优先算法
-=begin
-    @products = {}
-    i = 0
-    t = 0
+    #@products = Product.where(:category_id => params[:cate_id])
+    #@products .to_json
+    #广度优先算法寻找叶子节点
     arr = []
-    @cate_id = params[:cate_id]
-    loop do
-        @cate_sub = Category.where(:category_id => @cate_id)
-        if @cate_sub
-              @cate_sub.each do |cate|
-                @products[t] = Product.where(:category_id => cate._id)
-                t = t +1
-                arr.push(cate._id)
-              end
-              if i <  arr.size
-                @cate_id=arr[i]
-                i = i+ 1
-              end
-               if  i > arr.size
-                break
-              end
-      else
-             @products[t+1] = Product.where(:category_id => @cate_id)
-              break
-       end
-    end
-    @products.to_json
-=end
+    outputs = Category.findLeaves(params[:cate_id],arr)
+    arr.to_json
+
   end
 
 end
