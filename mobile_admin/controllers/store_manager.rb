@@ -92,7 +92,12 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
 
  post :add_product_to_store, :csrf_protection => false do
   @image_item = ImageItem.find(params[:gid])
-  @image_item_new = @image_item
+  @image_item_new =  ImageItem.new
+  @image_item_new.url =@image_item.url
+  @image_item_new.website = @image_item.website
+  @image_item_new.account_id = @image_item.account_id
+  @image_item_new.name =@image_item.name
+  @iamge_item_new.iscover = @image_item.iscover
   @image_item_new.price = params[:price]
   @image_item_new.isdetail = 1
   @iamge_item_new.product_id =params[:pid]
