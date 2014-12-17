@@ -34,4 +34,6 @@ Fancyshpv2::Mobile.controllers :welcome do
     @images.to_json
   end
 
+  
+
 end
