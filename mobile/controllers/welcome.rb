@@ -55,7 +55,7 @@ Fancyshpv2::Mobile.controllers :welcome do
     @cates = Category.where(:category_id => params[:cate_id])
     @cates.each do |cate|
       @product_add = Product.where(:category_id => cate._id)
-     @products  = @product +@product_add
+     @products  = @products + @product_add
     end
     @products.to_json
   end
