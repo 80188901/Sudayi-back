@@ -15,12 +15,9 @@ end
 
   get :get_account do
     if account = Account.authenticate_mobile(params[:mobile], params[:password])
-     account.to_json
-    elsif Padrino.env == :development && params[:bypass]
-      account = Account.first
-       account.to_json
+         account.to_json
     else
-       "密码或手机错误".to_json
+       "密码或手机 错误".to_json
     end
   end
 
