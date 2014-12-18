@@ -14,8 +14,8 @@ end
   end
 
   get :get_account do
-    if account = Account.authenticate_mobile(params[:mobile], params[:password])
-         account.to_json
+    if @account = Account.authenticate_mobile(params[:mobile], params[:password])
+         @account.to_json
     else
        "密码或手机 错误".to_json
     end
