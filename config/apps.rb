@@ -43,4 +43,6 @@ Padrino.mount('Fancyshpv2::Erweima', :app_file => Padrino.root('erweima/app.rb')
 Padrino.mount('Fancyshpv2::Mobile', :app_file => Padrino.root('mobile/app.rb')).to('/mobile')
 
 Padrino.mount('Fancyshpv2::Welcome', :app_file => Padrino.root('welcome/app.rb')).to('/welcome')
+
+Padrino.mount('Fancyshpv2::MetronicAdmin', :app_file => Padrino.root('metronic_admin/app.rb')).to('/metronic_admin')
 Padrino.mount('Fancyshpv2::App', :app_file => Padrino.root('app/app.rb')).to('/')
