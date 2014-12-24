@@ -586,100 +586,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 				</li>
 
-				<li class="">
-
-					<a href="javascript:;">
-
-					<i class="icon-cogs"></i> 
-
-					<span class="title">管理界面布局</span>
-
-					<span class="arrow "></span>
-
-					</a>
-
-					<ul class="sub-menu">
-
-						<li >
-							<<%= link_to '水平边栏菜单', 'metronic_admin/view_layout/layout_horizontal_sidebar_menu' %>
-
-						</li>
-
-						<li >
-
-							<a href="layout_horizontal_menu1.html">
-
-							Horzontal Menu 1</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_horizontal_menu2.html">
-
-							Horzontal Menu 2</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_promo.html">
-
-							Promo Page</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_email.html">
-
-							Email Templates</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_ajax.html">
-
-							Content Loading via Ajax</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_sidebar_closed.html">
-
-							Sidebar Closed Page</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_blank_page.html">
-
-							Blank Page</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_boxed_page.html">
-
-							Boxed Page</a>
-
-						</li>
-
-						<li >
-
-							<a href="layout_boxed_not_responsive.html">
-
-							Non-Responsive Boxed Layout</a>
-
-						</li>
-
-					</ul>
-
-				</li>
+				
 
 				<li class="">
 
@@ -687,7 +594,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<i class="icon-bookmark-empty"></i> 
 
-					<span class="title">UI Features</span>
+					<span class="title">订单管理</span>
 
 					<span class="arrow "></span>
 
@@ -785,7 +692,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<i class="icon-table"></i> 
 
-					<span class="title">Form Stuff</span>
+					<span class="title">商品管理</span>
 
 					<span class="arrow "></span>
 
@@ -859,7 +766,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<i class="icon-briefcase"></i> 
 
-					<span class="title">Pages</span>
+					<span class="title">社交平台</span>
 
 					<span class="arrow "></span>
 
@@ -967,7 +874,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<i class="icon-gift"></i> 
 
-					<span class="title">Extra</span>
+					<span class="title">活动管理</span>
 
 					<span class="arrow "></span>
 
@@ -1089,7 +996,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<i class="icon-sitemap"></i> 
 
-					<span class="title">3 Level Menu</span>
+					<span class="title">子站点管理</span>
 
 					<span class="arrow "></span>
 
@@ -1161,7 +1068,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<i class="icon-folder-open"></i> 
 
-					<span class="title">4 Level Menu</span>
+					<span class="title">素材管理</span>
 
 					<span class="arrow "></span>
 
@@ -1263,7 +1170,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<i class="icon-user"></i> 
 
-					<span class="title">Login Options</span>
+					<span class="title">人力资源</span>
 
 					<span class="arrow "></span>
 
@@ -1297,7 +1204,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<i class="icon-th"></i> 
 
-					<span class="title">Data Tables</span>
+					<span class="title">仓库管理</span>
 
 					<span class="arrow "></span>
 
@@ -1355,7 +1262,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<i class="icon-file-text"></i> 
 
-					<span class="title">Portlets</span>
+					<span class="title">认证及审核</span>
 
 					<span class="arrow "></span>
 
@@ -1389,7 +1296,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<i class="icon-map-marker"></i> 
 
-					<span class="title">Maps</span>
+					<span class="title">地址管理</span>
 
 					<span class="arrow "></span>
 
@@ -1417,15 +1324,41 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 				</li>
 
-				<li class="last ">
+				<li class="">
 
 					<a href="charts.html">
 
 					<i class="icon-bar-chart"></i> 
 
-					<span class="title">Visual Charts</span>
+					<span class="title">统计监控</span>
 
 					</a>
+
+				</li>
+				<li class="last ">
+
+					<a href="javascript:;">
+
+					<i class="icon-cogs"></i> 
+
+					<span class="title">系统设置</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+							<%= link_to '水平边栏兼备布局', '/metronic_admin/view_layout/layout_horizontal_sidebar_menu' %>
+
+						</li>
+						<li >
+							<%= link_to '恢复默认布局', '/metronic_admin' %>
+
+						</li>
+
+					</ul>
 
 				</li>
 
@@ -1584,7 +1517,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	<!-- END JAVASCRIPTS -->
 
 </body>
-
+<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script>
 <!-- END BODY -->
 
 </html>

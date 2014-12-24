@@ -720,7 +720,7 @@ var Index = function () {
                     // (string | mandatory) the text inside the notification
                     text: 'Fancyshop商城系统是一个可以高度定制的电子商务平台',
                     // (string | optional) the image to display on the left
-                    image: 'metronic_admin/media/image/avatar1.jpg',
+                    image: '/metronic_admin/media/image/avatar1.jpg',
                     // (bool | optional) if you want it to fade out on its own or just sit there
                     sticky: true,
                     // (int | optional) the time you want it to be alive for before fading out
@@ -745,7 +745,7 @@ var Index = function () {
                     // (string | mandatory) the text inside the notification
                     text: '祝您生活愉快',
                     // (string | optional) the image to display on the left
-                    image: 'metronic_admin/media/image/avatar1.jpg',
+                    image: '/metronic_admin/media/image/avatar1.jpg',
                     // (bool | optional) if you want it to fade out on its own or just sit there
                     sticky: true,
                     // (int | optional) the time you want it to be alive for before fading out
@@ -781,7 +781,7 @@ var Index = function () {
                     // (string | mandatory) the text inside the notification
                     text: '通过学习fancyshop系统的操作，让您走向自由电子商务之路!',
                     // (string | optional) the image to display on the left
-                    image1: 'metronic_admin/media/image/avatar1.png',
+                    image1: '/metronic_admin/media/image/avatar1.png',
                     // (bool | optional) if you want it to fade out on its own or just sit there
                     sticky: true,
                     // (int | optional) the time you want it to be alive for before fading out
@@ -816,7 +816,7 @@ var Index = function () {
                     // (string | mandatory) the text inside the notification
                     text: '您有三条新通知',
                     // (string | optional) the image to display on the left
-                    image1: 'metronic_admin/media/image/image1.jpg',
+                    image1: '/metronic_admin/media/image/image1.jpg',
                     // (bool | optional) if you want it to fade out on its own or just sit there
                     sticky: true,
                     // (int | optional) the time you want it to be alive for before fading out
@@ -859,7 +859,7 @@ var Index = function () {
                     // (string | mandatory) the text inside the notification
                     text: '您有三条新的站内信',
                     // (string | optional) the image to display on the left
-                    image1: 'metronic_admin/media/image/avatar1.jpg',
+                    image1: '/metronic_admin/media/image/avatar1.jpg',
                     // (bool | optional) if you want it to fade out on its own or just sit there
                     sticky: true,
                     // (int | optional) the time you want it to be alive for before fading out
