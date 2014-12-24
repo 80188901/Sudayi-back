@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+
+<!-- 
+
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 2.3.1
+
+Version: 1.3
+
+Author: KeenThemes
+
+Website: http://www.keenthemes.com/preview/?theme=metronic
+
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469
+
+-->
+
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+
+<!--[if !IE]><!--> <html lang="zh_cn" class="no-js"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+	<meta charset="utf-8" />
+
+	<title><%= @title%></title>
+
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+	<meta content="" name="description" />
+
+	<meta content="" name="author" />
+
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+	
+               <%= stylesheet_link_tag '../media/css/bootstrap.min.css' %>
+                <%= stylesheet_link_tag '../media/css/bootstrap-responsive.min.css' %>
+	<%= stylesheet_link_tag '../media/css/font-awesome.min.css' %>
+                <%= stylesheet_link_tag '../media/css/style-metro.css' %>
+                <%= stylesheet_link_tag '../media/css/style.css' %>
+                <%= stylesheet_link_tag '../media/css/style-responsive.css' %>
+                 <%= stylesheet_link_tag '../media/css/default.css' %>
+                  <%= stylesheet_link_tag '../media/css/uniform.default.css' %>
+	<!-- END GLOBAL MANDATORY STYLES -->
+
+	<!-- BEGIN PAGE LEVEL STYLES --> 
+                <%= stylesheet_link_tag '../media/css/jquery.gritter.css' %>
+                 <%= stylesheet_link_tag '../media/css/daterangepicker.css' %>
+                  <%= stylesheet_link_tag '../media/css/fullcalendar.css' %>
+                   <%= stylesheet_link_tag '../media/css/jqvmap.css' %>
+                   <%= stylesheet_link_tag '../media/css/jquery.easy-pie-chart.css' %>
+
+	<!-- END PAGE LEVEL STYLES -->
+                  <%= favicon_tag '../media/image/favicon.ico'%>
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+	<!-- BEGIN HEADER -->
+
+	<div class="header navbar navbar-inverse navbar-fixed-top">
+
+		<!-- BEGIN TOP NAVIGATION BAR -->
+
+		<div class="navbar-inner">
+
+			<div class="container-fluid">
+
+				<!-- BEGIN LOGO -->
+
+				<a class="brand" href="metronic_admin">
+                                                                  FANCYSHOP
+				<!--<img src="metronic_admin/media/image/logo.png" alt="logo"/>
+				-->	
+				</a>
+
+				<!-- END LOGO -->
+
+				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+
+				<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                                                                 <%= image_tag '../media/image/menu-toggler.png'%>
+				</a>          
+
+				<!-- END RESPONSIVE MENU TOGGLER -->            
+
+				<!-- BEGIN TOP NAVIGATION MENU -->              
+
+				<ul class="nav pull-right">
+
+					<!-- BEGIN NOTIFICATION DROPDOWN -->   
+
+					<li class="dropdown" id="header_notification_bar">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						<i class="icon-warning-sign"></i>
+
+						<span class="badge">14</span>
+
+						</a>
+
+						<ul class="dropdown-menu extended notification">
+
+							<li>
+
+								<p>你有14条新的通知</p>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-success"><i class="icon-plus"></i></span>
+
+								新的供应商申请
+
+								<span class="time">刚刚</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-important"><i class="icon-bolt"></i></span>
+
+								服务15次超载
+
+								<span class="time">15分钟前</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-warning"><i class="icon-bell"></i></span>
+
+								服务未响应 2次
+
+								<span class="time">22分钟前</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-info"><i class="icon-bullhorn"></i></span>
+
+								服务错误5次
+
+								<span class="time">40分钟前</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-important"><i class="icon-bolt"></i></span>
+
+								数据容量可用剩下32%
+
+								<span class="time">两个小时前</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-important"><i class="icon-bolt"></i></span>
+
+								2个IP无响应
+
+								<span class="time">5小时前</span>
+
+								</a>
+
+							</li>
+
+							<li class="external">
+
+								<a href="#">查看所有通知 <i class="m-icon-swapright"></i></a>
+
+							</li>
+
+						</ul>
+
+					</li>
+
+					<!-- END NOTIFICATION DROPDOWN -->
+
+					<!-- BEGIN INBOX DROPDOWN -->
+
+					<li class="dropdown" id="header_inbox_bar">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						<i class="icon-envelope"></i>
+
+						<span class="badge">12</span>
+
+						</a>
+
+						<ul class="dropdown-menu extended inbox">
+
+							<li>
+
+								<p>你有12封站内信</p>
+
+							</li>
+
+							<li>
+
+								<a href="inbox.html?a=view">
+
+								<span class="photo"><%= image_tag '../media/image/avatar2.jpg' %></span>
+
+								<span class="subject">
+
+								<span class="from">于莎莎</span>
+
+								<span class="time">刚刚</span>
+
+								</span>
+
+								<span class="message">
+
+								 你这货在干吗内？
+
+								</span>  
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="inbox.html?a=view">
+
+								<span class="photo"><%= image_tag '../media/image/avatar3.jpg' %></span>
+
+								<span class="subject">
+
+								<span class="from">陈近南</span>
+
+								<span class="time">16分钟前</span>
+
+								</span>
+
+								<span class="message">
+								  邀请你参加天地会北美黑社会经验交流会，务必前往，阁下！
+
+								</span>  
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="inbox.html?a=view">
+
+								<span class="photo"><%= image_tag '../media/image/avatar1.jpg' %></span>
+
+								<span class="subject">
+
+								<span class="from">马云</span>
+
+								<span class="time">2个小时前</span>
+
+								</span>
+
+								<span class="message">
+
+								给你钱，要不要？
+
+								</span>  
+
+								</a>
+
+							</li>
+
+							<li class="external">
+
+								<a href="inbox.html">查看所有站内信 <i class="m-icon-swapright"></i></a>
+
+							</li>
+
+						</ul>
+
+					</li>
+
+					<!-- END INBOX DROPDOWN -->
+
+					<!-- BEGIN TODO DROPDOWN -->
+
+					<li class="dropdown" id="header_task_bar">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						<i class="icon-tasks"></i>
+
+						<span class="badge">12</span>
+
+						</a>
+
+						<ul class="dropdown-menu extended tasks">
+
+							<li>
+
+								<p>你有12条悬而未决的任务</p>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">Fancyshop 新版本升级到v1.2</span>
+
+								<span class="percent">进度0%</span>
+
+								</span>
+
+								<span class="progress progress-success ">
+
+								<span style="width: 30%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">应用部署</span>
+
+								<span class="percent">65%</span>
+
+								</span>
+
+								<span class="progress progress-danger progress-striped active">
+
+								<span style="width: 65%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">移动应用版本发布</span>
+
+								<span class="percent">98%</span>
+
+								</span>
+
+								<span class="progress progress-success">
+
+								<span style="width: 98%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">数据迁移</span>
+
+								<span class="percent">10%</span>
+
+								</span>
+
+								<span class="progress progress-warning progress-striped">
+
+								<span style="width: 10%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">web服务器升级</span>
+
+								<span class="percent">58%</span>
+
+								</span>
+
+								<span class="progress progress-info">
+
+								<span style="width: 58%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">移动端开发</span>
+
+								<span class="percent">85%</span>
+
+								</span>
+
+								<span class="progress progress-success">
+
+								<span style="width: 85%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li class="external">
+
+								<a href="#">查看所有任务 <i class="m-icon-swapright"></i></a>
+
+							</li>
+
+						</ul>
+
+					</li>
+
+					<!-- END TODO DROPDOWN -->
+
+					<!-- BEGIN USER LOGIN DROPDOWN -->
+
+					<li class="dropdown user">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					 	<%= image_tag '../media/image/avatar1_small.jpg' %>
+
+						<span class="username">绝无命</span>
+
+						<i class="icon-angle-down"></i>
+
+						</a>
+
+						<ul class="dropdown-menu">
+
+							<li><a href="extra_profile.html"><i class="icon-user"></i> 个人资料</a></li>
+
+							<li><a href="page_calendar.html"><i class="icon-calendar"></i> 我的日程表</a></li>
+
+							<li><a href="inbox.html"><i class="icon-envelope"></i> 我的站内消息</a></li>
+
+							<li><a href="#"><i class="icon-tasks"></i> 我的任务</a></li>
+
+							<li class="divider"></li>
+
+							<li><a href="extra_lock.html"><i class="icon-lock"></i> 锁定</a></li>
+
+							<li><a href="login.html"><i class="icon-key"></i> 退出</a></li>
+
+						</ul>
+
+					</li>
+
+					<!-- END USER LOGIN DROPDOWN -->
+
+				</ul>
+
+				<!-- END TOP NAVIGATION MENU --> 
+
+			</div>
+
+		</div>
+
+		<!-- END TOP NAVIGATION BAR -->
+
+	</div>
+
+	<!-- END HEADER -->
+
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+
+		<!-- BEGIN SIDEBAR -->
+
+		<div class="page-sidebar nav-collapse collapse">
+
+			<!-- BEGIN SIDEBAR MENU -->        
+
+			<ul class="page-sidebar-menu">
+
+				<li>
+
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+					<div class="sidebar-toggler hidden-phone"></div>
+
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+				</li>
+
+				<li>
+
+					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+
+					<form class="sidebar-search">
+
+						<div class="input-box">
+
+							<a href="javascript:;" class="remove"></a>
+
+							<input type="text" placeholder="搜索..." />
+
+							<input type="button" class="submit" value=" " />
+
+						</div>
+
+					</form>
+
+					<!-- END RESPONSIVE QUICK SEARCH FORM -->
+
+				</li>
+
+				<li class="start active ">
+
+					<a href="metronic_admin">
+
+					<i class="icon-home"></i> 
+
+					<span class="title">仪表盘</span>
+
+					<span class="selected"></span>
+
+					</a>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-cogs"></i> 
+
+					<span class="title">管理界面布局</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+							<<%= link_to '水平边栏菜单', 'metronic_admin/view_layout/layout_horizontal_sidebar_menu' %>
+
+						</li>
+
+						<li >
+
+							<a href="layout_horizontal_menu1.html">
+
+							Horzontal Menu 1</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_horizontal_menu2.html">
+
+							Horzontal Menu 2</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_promo.html">
+
+							Promo Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_email.html">
+
+							Email Templates</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_ajax.html">
+
+							Content Loading via Ajax</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_sidebar_closed.html">
+
+							Sidebar Closed Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_blank_page.html">
+
+							Blank Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_boxed_page.html">
+
+							Boxed Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_boxed_not_responsive.html">
+
+							Non-Responsive Boxed Layout</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-bookmark-empty"></i> 
+
+					<span class="title">UI Features</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="ui_general.html">
+
+							General</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_buttons.html">
+
+							Buttons</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_modals.html">
+
+							Enhanced Modals</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_tabs_accordions.html">
+
+							Tabs & Accordions</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_jqueryui.html">
+
+							jQuery UI Components</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_sliders.html">
+
+							Sliders</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_tiles.html">
+
+							Tiles</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_typography.html">
+
+							Typography</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_tree.html">
+
+							Tree View</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_nestable.html">
+
+							Nestable List</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-table"></i> 
+
+					<span class="title">Form Stuff</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="form_layout.html">
+
+							Form Layouts</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_samples.html">
+
+							Advance Form Samples</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_component.html">
+
+							Form Components</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_wizard.html">
+
+							Form Wizard</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_validation.html">
+
+							Form Validation</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_fileupload.html">
+
+							Multiple File Upload</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_dropzone.html">
+
+							Dropzone File Upload</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-briefcase"></i> 
+
+					<span class="title">Pages</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="page_timeline.html">
+
+							<i class="icon-time"></i>
+
+							Timeline</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_coming_soon.html">
+
+							<i class="icon-cogs"></i>
+
+							Coming Soon</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_blog.html">
+
+							<i class="icon-comments"></i>
+
+							Blog</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_blog_item.html">
+
+							<i class="icon-font"></i>
+
+							Blog Post</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_news.html">
+
+							<i class="icon-coffee"></i>
+
+							News</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_news_item.html">
+
+							<i class="icon-bell"></i>
+
+							News View</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_about.html">
+
+							<i class="icon-group"></i>
+
+							About Us</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_contact.html">
+
+							<i class="icon-envelope-alt"></i>
+
+							Contact Us</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_calendar.html">
+
+							<i class="icon-calendar"></i>
+
+							Calendar</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-gift"></i> 
+
+					<span class="title">Extra</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="extra_profile.html">
+
+							User Profile</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_lock.html">
+
+							Lock Screen</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_faq.html">
+
+							FAQ</a>
+
+						</li>
+
+						<li >
+
+							<a href="inbox.html">
+
+							Inbox</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_search.html">
+
+							Search Results</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_invoice.html">
+
+							Invoice</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_pricing_table.html">
+
+							Pricing Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_image_manager.html">
+
+							Image Manager</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_404_option1.html">
+
+							404 Page Option 1</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_404_option2.html">
+
+							404 Page Option 2</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_404_option3.html">
+
+							404 Page Option 3</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_500_option1.html">
+
+							500 Page Option 1</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_500_option2.html">
+
+							500 Page Option 2</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li>
+
+					<a class="active" href="javascript:;">
+
+					<i class="icon-sitemap"></i> 
+
+					<span class="title">3 Level Menu</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="javascript:;">
+
+							Item 1
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="#">Sample Link 1</a></li>
+
+								<li><a href="#">Sample Link 2</a></li>
+
+								<li><a href="#">Sample Link 3</a></li>
+
+							</ul>
+
+						</li>
+
+						<li>
+
+							<a href="javascript:;">
+
+							Item 1
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="#">Sample Link 1</a></li>
+
+								<li><a href="#">Sample Link 1</a></li>
+
+								<li><a href="#">Sample Link 1</a></li>
+
+							</ul>
+
+						</li>
+
+						<li>
+
+							<a href="#">
+
+							Item 3
+
+							</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li>
+
+					<a href="javascript:;">
+
+					<i class="icon-folder-open"></i> 
+
+					<span class="title">4 Level Menu</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="javascript:;">
+
+							<i class="icon-cogs"></i> 
+
+							Item 1
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li>
+
+									<a href="javascript:;">
+
+									<i class="icon-user"></i>
+
+									Sample Link 1
+
+									<span class="arrow"></span>
+
+									</a>
+
+									<ul class="sub-menu">
+
+										<li><a href="#"><i class="icon-remove"></i> Sample Link 1</a></li>
+
+										<li><a href="#"><i class="icon-pencil"></i> Sample Link 1</a></li>
+
+										<li><a href="#"><i class="icon-edit"></i> Sample Link 1</a></li>
+
+									</ul>
+
+								</li>
+
+								<li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
+
+								<li><a href="#"><i class="icon-external-link"></i>  Sample Link 2</a></li>
+
+								<li><a href="#"><i class="icon-bell"></i>  Sample Link 3</a></li>
+
+							</ul>
+
+						</li>
+
+						<li>
+
+							<a href="javascript:;">
+
+							<i class="icon-globe"></i> 
+
+							Item 2
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
+
+								<li><a href="#"><i class="icon-external-link"></i>  Sample Link 1</a></li>
+
+								<li><a href="#"><i class="icon-bell"></i>  Sample Link 1</a></li>
+
+							</ul>
+
+						</li>
+
+						<li>
+
+							<a href="#">
+
+							<i class="icon-folder-open"></i>
+
+							Item 3
+
+							</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-user"></i> 
+
+					<span class="title">Login Options</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="login.html">
+
+							Login Form 1</a>
+
+						</li>
+
+						<li >
+
+							<a href="login_soft.html">
+
+							Login Form 2</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-th"></i> 
+
+					<span class="title">Data Tables</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="table_basic.html">
+
+							Basic Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="table_responsive.html">
+
+							Responsive Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="table_managed.html">
+
+							Managed Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="table_editable.html">
+
+							Editable Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="table_advanced.html">
+
+							Advanced Tables</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-file-text"></i> 
+
+					<span class="title">Portlets</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="portlet_general.html">
+
+							General Portlets</a>
+
+						</li>
+
+						<li >
+
+							<a href="portlet_draggable.html">
+
+							Draggable Portlets</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-map-marker"></i> 
+
+					<span class="title">Maps</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="maps_google.html">
+
+							Google Maps</a>
+
+						</li>
+
+						<li >
+
+							<a href="maps_vector.html">
+
+							Vector Maps</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="last ">
+
+					<a href="charts.html">
+
+					<i class="icon-bar-chart"></i> 
+
+					<span class="title">Visual Charts</span>
+
+					</a>
+
+				</li>
+
+			</ul>
+
+			<!-- END SIDEBAR MENU -->
+
+		</div>
+
+		<!-- END SIDEBAR -->
+
+		<!-- BEGIN PAGE -->
+
+		<div class="page-content">
+
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			<div id="portlet-config" class="modal hide">
+
+				<div class="modal-header">
+
+					<button data-dismiss="modal" class="close" type="button"></button>
+
+					<h3>Widget Settings</h3>
+
+				</div>
+
+				<div class="modal-body">
+
+					Widget settings form goes here
+
+				</div>
+
+			</div>
+
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			<!-- BEGIN PAGE CONTAINER-->
+
+			<%= yield %>
+
+			</div>
+
+			<!-- END PAGE CONTAINER-->    
+
+		</div>
+
+		<!-- END PAGE -->
+
+	</div>
+
+	<!-- END CONTAINER -->
+                     <!-- BEGIN FOOTER -->
+
+	<div class="footer">
+
+		<div class="footer-inner">
+
+			2013 &copy; Metronic by keenthemes.
+
+		</div>
+
+		<div class="footer-tools">
+
+			<span class="go-top">
+
+			<i class="icon-angle-up"></i>
+
+			</span>
+
+		</div>
+
+	</div>
+
+	<!-- END FOOTER -->
+	
+
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+	<!-- BEGIN CORE PLUGINS -->
+                <%= javascript_include_tag '../media/js/jquery-1.10.1.min.js' %>
+                <%= javascript_include_tag '../media/js/jquery-migrate-1.2.1.min.js' %>
+                <%= javascript_include_tag '../media/js/jquery-ui-1.10.1.custom.min.js' %>
+                <%= javascript_include_tag '../media/js/bootstrap.min.js' %>
+
+	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+	<!--[if lt IE 9]>
+
+	<script src="media/js/excanvas.min.js"></script>
+
+	<script src="media/js/respond.min.js"></script>  
+
+	<![endif]-->   
+                  <%= javascript_include_tag '../media/js/jquery.slimscroll.min.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.blockui.min.js' %>
+                   <%= javascript_include_tag '../media/js/jquery.cookie.min.js' %>
+                   <%= javascript_include_tag '../media/js/jquery.slimscroll.min.js' %>
+                   <%= javascript_include_tag '../media/js/jquery.uniform.min.js' %>
+
+	<!-- END CORE PLUGINS -->
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+                  <%= javascript_include_tag '../media/js/jquery.vmap.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.vmap.russia.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.vmap.world.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.vmap.europe.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.vmap.germany.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.vmap.usa.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.vmap.sampledata.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.flot.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.flot.resize.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.pulsate.min.js' %>
+                 <%= javascript_include_tag '../media/js/date.js' %>
+                  <%= javascript_include_tag '../media/js/daterangepicker.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.gritter.js' %>
+                  <%= javascript_include_tag '../media/js/fullcalendar.min.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.easy-pie-chart.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.sparkline.min.js' %>
+
+	<!-- END PAGE LEVEL PLUGINS -->
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<%= javascript_include_tag '../media/js/app.js' %>
+                <%= javascript_include_tag '../media/js/index.js' %>
+
+
+	<!-- END PAGE LEVEL SCRIPTS -->  
+
+	<script>
+
+		jQuery(document).ready(function() {    
+
+		   App.init(); // initlayout and core plugins
+
+		   Index.init();
+
+		   Index.initJQVMAP(); // init index page's custom scripts
+
+		   Index.initCalendar(); // init index page's custom scripts
+
+		   Index.initCharts(); // init index page's custom scripts
+
+		   Index.initChat();
+
+		   Index.initMiniCharts();
+
+		   Index.initDashboardDaterange();
+
+		   Index.initIntro();
+
+		});
+
+	</script>
+
+	<!-- END JAVASCRIPTS -->
+
+</body>
+
+<!-- END BODY -->
+
+</html>

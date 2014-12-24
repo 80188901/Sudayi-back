@@ -2,7 +2,8 @@ Fancyshpv2::MetronicAdmin.controllers :view_layout do
   
 
   get :layout_horizontal_sidebar_menu do 
-    render 'layout_horizontal_sidebar_menu.erb'
+     @title ="fancyshop管理系统----垂直边栏以及水平边栏布局"
+    render 'view_layout/layout_horizontal_sidebar_menu.erb'
   end
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'

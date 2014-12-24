@@ -716,11 +716,11 @@ var Index = function () {
             setTimeout(function () {
                 var unique_id = $.gritter.add({
                     // (string | mandatory) the heading of the notification
-                    title: 'Meet Metronic!',
+                    title: '认识fancyshop商城系统',
                     // (string | mandatory) the text inside the notification
-                    text: 'Metronic is a brand new Responsive Admin Dashboard Template you have always been looking for!',
+                    text: 'Fancyshop商城系统是一个可以高度定制的电子商务平台',
                     // (string | optional) the image to display on the left
-                    image: './assets/img/avatar1.jpg',
+                    image: 'metronic_admin/media/image/avatar1.jpg',
                     // (bool | optional) if you want it to fade out on its own or just sit there
                     sticky: true,
                     // (int | optional) the time you want it to be alive for before fading out
@@ -741,11 +741,11 @@ var Index = function () {
             setTimeout(function () {
                 var unique_id = $.gritter.add({
                     // (string | mandatory) the heading of the notification
-                    title: 'Buy Metronic!',
+                    title: '欢迎来到fancyshop管理系统!',
                     // (string | mandatory) the text inside the notification
-                    text: 'Metronic comes with a huge collection of reusable and easy customizable UI components and plugins. Buy Metronic today!',
+                    text: '祝您生活愉快',
                     // (string | optional) the image to display on the left
-                    image: './assets/img/avatar1.jpg',
+                    image: 'metronic_admin/media/image/avatar1.jpg',
                     // (bool | optional) if you want it to fade out on its own or just sit there
                     sticky: true,
                     // (int | optional) the time you want it to be alive for before fading out
@@ -777,11 +777,11 @@ var Index = function () {
                 var unique_id = $.gritter.add({
                     position: 'top-left',
                     // (string | mandatory) the heading of the notification
-                    title: 'Customize Metronic!',
+                    title: '可以在fancyshop官网上找到帮助',
                     // (string | mandatory) the text inside the notification
-                    text: 'Metronic allows you to easily customize the theme colors and layout settings.',
+                    text: '通过学习fancyshop系统的操作，让您走向自由电子商务之路!',
                     // (string | optional) the image to display on the left
-                    image1: './assets/img/avatar1.png',
+                    image1: 'metronic_admin/media/image/avatar1.png',
                     // (bool | optional) if you want it to fade out on its own or just sit there
                     sticky: true,
                     // (int | optional) the time you want it to be alive for before fading out
@@ -812,11 +812,11 @@ var Index = function () {
 
                 var unique_id = $.gritter.add({
                     // (string | mandatory) the heading of the notification
-                    title: 'Notification',
+                    title: '提醒',
                     // (string | mandatory) the text inside the notification
-                    text: 'You have 3 new notifications.',
+                    text: '您有三条新通知',
                     // (string | optional) the image to display on the left
-                    image1: './assets/img/image1.jpg',
+                    image1: 'metronic_admin/media/image/image1.jpg',
                     // (bool | optional) if you want it to fade out on its own or just sit there
                     sticky: true,
                     // (int | optional) the time you want it to be alive for before fading out
@@ -855,11 +855,11 @@ var Index = function () {
 
                 var unique_id = $.gritter.add({
                     // (string | mandatory) the heading of the notification
-                    title: 'Inbox',
+                    title: '提醒',
                     // (string | mandatory) the text inside the notification
-                    text: 'You have 2 new messages in your inbox.',
+                    text: '您有三条新的站内信',
                     // (string | optional) the image to display on the left
-                    image1: './assets/img/avatar1.jpg',
+                    image1: 'metronic_admin/media/image/avatar1.jpg',
                     // (bool | optional) if you want it to fade out on its own or just sit there
                     sticky: true,
                     // (int | optional) the time you want it to be alive for before fading out

@@ -6,7 +6,8 @@ module Fancyshpv2
     enable :sessions
     
     get '/'  do
-        render 'index.erb'
+        @title ="fancyshop管理系统"
+        render( 'index.erb', :layout => :normal)
     end
 
     ##
