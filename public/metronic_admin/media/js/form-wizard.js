@@ -219,6 +219,9 @@ var FormWizard = function () {
                         $('#form_wizard_1').find('.button-next').show();
                         $('#form_wizard_1').find('.button-submit').hide();
                     }
+                    //做一个判断把radio的值取出来，根据此值决定下一个tab的样子
+                    
+                    //判断结束
                     App.scrollTo($('.page-title'));
                 },
                 onPrevious: function (tab, navigation, index) {
