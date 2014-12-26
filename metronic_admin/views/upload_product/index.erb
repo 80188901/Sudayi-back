@@ -148,7 +148,7 @@
 
 								<div class="caption">
 
-									<i class="icon-reorder"></i> Form Wizard - <span class="step-title">Step 1 of 4</span>
+									<i class="icon-reorder"></i> 上传商品<span class="step-title">步骤 1 / 4</span>
 
 								</div>
 
@@ -184,7 +184,7 @@
 
 														<span class="number">1</span>
 
-														<span class="desc"><i class="icon-ok"></i> Account Setup</span>   
+														<span class="desc"><i class="icon-ok"></i> 填写商品概要</span>   
 
 														</a>
 
@@ -196,7 +196,7 @@
 
 														<span class="number">2</span>
 
-														<span class="desc"><i class="icon-ok"></i> Profile Setup</span>   
+														<span class="desc"><i class="icon-ok"></i> 上传图片</span>   
 
 														</a>
 
@@ -208,7 +208,7 @@
 
 														<span class="number">3</span>
 
-														<span class="desc"><i class="icon-ok"></i> Billing Setup</span>   
+														<span class="desc"><i class="icon-ok"></i> 完整更多信息</span>   
 
 														</a>
 
@@ -220,7 +220,7 @@
 
 														<span class="number">4</span>
 
-														<span class="desc"><i class="icon-ok"></i> Confirm</span>   
+														<span class="desc"><i class="icon-ok"></i> 确认完成</span>   
 
 														</a> 
 
@@ -244,7 +244,7 @@
 
 												<button class="close" data-dismiss="alert"></button>
 
-												You have some form errors. Please check below.
+												某些填项没有通过验证，请检查	
 
 											</div>
 
@@ -252,69 +252,41 @@
 
 												<button class="close" data-dismiss="alert"></button>
 
-												Your form validation is successful!
+												您的表单验证通过！
 
 											</div>
 
 											<div class="tab-pane active" id="tab1">
 
-												<h3 class="block">Provide your account details</h3>
+												<h3 class="block">提供您的商品概要</h3>
 
 												<div class="control-group">
 
-													<label class="control-label">Username<span class="required">*</span></label>
+													<label class="control-label">商品名<span class="required">*</span></label>
 
 													<div class="controls">
 
 														<input type="text" class="span6 m-wrap" name="username"/>
 
-														<span class="help-inline">Provide your username</span>
+														<span class="help-inline"></span>
 
 													</div>
 
 												</div>
-
 												<div class="control-group">
-
-													<label class="control-label">Password<span class="required">*</span></label>
+												<label class="control-label">商品简介<span class="required">*</span></label>
 
 													<div class="controls">
 
-														<input type="password" class="span6 m-wrap" name="password" id="submit_form_password"/>
-
-														<span class="help-inline">Provide your username</span>
+														<textarea class="span6 m-wrap" rows="3" name="remarks"></textarea>
 
 													</div>
 
 												</div>
 
-												<div class="control-group">
 
-													<label class="control-label">Confirm Password<span class="required">*</span></label>
 
-													<div class="controls">
-
-														<input type="password" class="span6 m-wrap" name="rpassword"/>
-
-														<span class="help-inline">Confirm your password</span>
-
-													</div>
-
-												</div>
-
-												<div class="control-group">
-
-													<label class="control-label">Email<span class="required">*</span></label>
-
-													<div class="controls">
-
-														<input type="text" class="span6 m-wrap" name="email"/>
-
-														<span class="help-inline">Provide your email address</span>
-
-													</div>
-
-												</div>
+								
 
 											</div>
 
@@ -894,17 +866,7 @@
 
 												</div>
 
-												<div class="control-group">
 
-													<label class="control-label">Remarks</label>
-
-													<div class="controls">
-
-														<textarea class="span6 m-wrap" rows="3" name="remarks"></textarea>
-
-													</div>
-
-												</div>
 
 											</div>
 
@@ -1004,7 +966,7 @@
 
 												<div class="control-group">
 
-													<label class="control-label">Username:</label>
+													<label class="control-label">商品名</label>
 
 													<div class="controls">
 
@@ -1182,13 +1144,13 @@
 
 											<a href="javascript:;" class="btn button-previous">
 
-											<i class="m-icon-swapleft"></i> Back 
+											<i class="m-icon-swapleft"></i>上一步
 
 											</a>
 
 											<a href="javascript:;" class="btn blue button-next">
 
-											Continue <i class="m-icon-swapright m-icon-white"></i>
+											下一步 <i class="m-icon-swapright m-icon-white"></i>
 
 											</a>
 
@@ -1213,3 +1175,39 @@
 				</div>
 
 				<!-- END PAGE CONTENT-->         
+
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+	<%= javascript_include_tag '../media/js/jquery.validate.min.js' %>
+	
+	<%= javascript_include_tag '../media/js/additional-methods.min.js' %>
+
+	<%= javascript_include_tag '../media/js/jquery.bootstrap.wizard.min.js' %>
+
+             <%= javascript_include_tag '../media/js/chosen.jquery.min.js' %>
+
+             <%= javascript_include_tag '../media/js/select2.min.js' %>
+
+	<!-- END PAGE LEVEL PLUGINS -->
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+	<%= javascript_include_tag '../media/js/app.js' %>
+	<%= javascript_include_tag '../media/js/form-wizard.js' %>   
+
+	<!-- END PAGE LEVEL SCRIPTS -->
+
+	<script>
+
+		jQuery(document).ready(function() {       
+
+		   // initiate layout and plugins
+
+		   App.init();
+
+		   FormWizard.init();
+
+		});
+
+	</script>
+
+	<!-- END JAVASCRIPTS -->   

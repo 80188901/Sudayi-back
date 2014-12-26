@@ -1,3 +1,12 @@
+<!-- BEGIN PAGE LEVEL STYLES --> 
+                <%= stylesheet_link_tag '../media/css/jquery.gritter.css' %>
+                 <%= stylesheet_link_tag '../media/css/daterangepicker.css' %>
+                  <%= stylesheet_link_tag '../media/css/fullcalendar.css' %>
+                   <%= stylesheet_link_tag '../media/css/jqvmap.css' %>
+                   <%= stylesheet_link_tag '../media/css/jquery.easy-pie-chart.css' %>
+
+	<!-- END PAGE LEVEL STYLES -->
+                  <%= favicon_tag '../media/image/favicon.ico'%>
 <div class="container-fluid">
 
 				<!-- BEGIN PAGE HEADER-->
@@ -2503,3 +2512,61 @@
 					</div>
 
 				</div>
+
+				<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+	
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+                  <%= javascript_include_tag '../media/js/jquery.vmap.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.vmap.russia.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.vmap.world.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.vmap.europe.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.vmap.germany.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.vmap.usa.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.vmap.sampledata.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.flot.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.flot.resize.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.pulsate.min.js' %>
+                 <%= javascript_include_tag '../media/js/date.js' %>
+                  <%= javascript_include_tag '../media/js/daterangepicker.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.gritter.js' %>
+                  <%= javascript_include_tag '../media/js/fullcalendar.min.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.easy-pie-chart.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.sparkline.min.js' %>
+
+	<!-- END PAGE LEVEL PLUGINS -->
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<%= javascript_include_tag '../media/js/app.js' %>
+                <%= javascript_include_tag '../media/js/index.js' %>
+
+
+	<!-- END PAGE LEVEL SCRIPTS -->  
+
+	<script>
+
+		jQuery(document).ready(function() {    
+
+		   App.init(); // initlayout and core plugins
+
+		   Index.init();
+
+		   Index.initJQVMAP(); // init index page's custom scripts
+
+		   Index.initCalendar(); // init index page's custom scripts
+
+		   Index.initCharts(); // init index page's custom scripts
+
+		   Index.initChat();
+
+		   Index.initMiniCharts();
+
+		   Index.initDashboardDaterange();
+
+		   Index.initIntro();
+
+		});
+
+	</script>
+
+	<!-- END JAVASCRIPTS -->

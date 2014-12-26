@@ -38,6 +38,10 @@ var FormWizard = function () {
                         minlength: 5,
                         required: true
                     },
+                    remarks: {
+                        minlength: 15,
+                        required: true
+                    },
                     password: {
                         minlength: 5,
                         required: true
@@ -101,8 +105,8 @@ var FormWizard = function () {
 
                 messages: { // custom messages for radio buttons and checkboxes
                     'payment[]': {
-                        required: "Please select at least one option",
-                        minlength: jQuery.format("Please select at least one option")
+                        required: "请至少选择一个选项",
+                        minlength: jQuery.format("请至少选择一个选项")
                     }
                 },
 
@@ -194,7 +198,7 @@ var FormWizard = function () {
                     var total = navigation.find('li').length;
                     var current = index + 1;
                     // set wizard title
-                    $('.step-title', $('#form_wizard_1')).text('Step ' + (index + 1) + ' of ' + total);
+                    $('.step-title', $('#form_wizard_1')).text('步骤 ' + (index + 1) + ' /' + total);
                     // set done steps
                     jQuery('li', $('#form_wizard_1')).removeClass("done");
                     var li_list = navigation.find('li');
@@ -225,7 +229,7 @@ var FormWizard = function () {
                     var total = navigation.find('li').length;
                     var current = index + 1;
                     // set wizard title
-                    $('.step-title', $('#form_wizard_1')).text('Step ' + (index + 1) + ' of ' + total);
+                    $('.step-title', $('#form_wizard_1')).text('步骤 ' + (index + 1) + ' / ' + total);
                     // set done steps
                     jQuery('li', $('#form_wizard_1')).removeClass("done");
                     var li_list = navigation.find('li');

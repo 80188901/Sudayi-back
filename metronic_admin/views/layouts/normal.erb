@@ -47,15 +47,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                   <%= stylesheet_link_tag '../media/css/uniform.default.css' %>
 	<!-- END GLOBAL MANDATORY STYLES -->
 
-	<!-- BEGIN PAGE LEVEL STYLES --> 
-                <%= stylesheet_link_tag '../media/css/jquery.gritter.css' %>
-                 <%= stylesheet_link_tag '../media/css/daterangepicker.css' %>
-                  <%= stylesheet_link_tag '../media/css/fullcalendar.css' %>
-                   <%= stylesheet_link_tag '../media/css/jqvmap.css' %>
-                   <%= stylesheet_link_tag '../media/css/jquery.easy-pie-chart.css' %>
-
-	<!-- END PAGE LEVEL STYLES -->
-                  <%= favicon_tag '../media/image/favicon.ico'%>
+	
 
 </head>
 
@@ -1393,6 +1385,28 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 			</div>
 
 			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<!-- BEGIN CORE PLUGINS -->
+                <%= javascript_include_tag '../media/js/jquery-1.10.1.min.js' %>
+                <%= javascript_include_tag '../media/js/jquery-migrate-1.2.1.min.js' %>
+                <%= javascript_include_tag '../media/js/jquery-ui-1.10.1.custom.min.js' %>
+                <%= javascript_include_tag '../media/js/bootstrap.min.js' %>
+
+	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+	<!--[if lt IE 9]>
+
+	<script src="media/js/excanvas.min.js"></script>
+
+	<script src="media/js/respond.min.js"></script>  
+
+	<![endif]-->   
+                  <%= javascript_include_tag '../media/js/jquery.slimscroll.min.js' %>
+                  <%= javascript_include_tag '../media/js/jquery.blockui.min.js' %>
+                   <%= javascript_include_tag '../media/js/jquery.cookie.min.js' %>
+                   <%= javascript_include_tag '../media/js/jquery.slimscroll.min.js' %>
+                   <%= javascript_include_tag '../media/js/jquery.uniform.min.js' %>
+
+	<!-- END CORE PLUGINS -->
 
 			<!-- BEGIN PAGE CONTAINER-->
 
@@ -1434,85 +1448,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	<!-- END FOOTER -->
 	
 
-	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-
-	<!-- BEGIN CORE PLUGINS -->
-                <%= javascript_include_tag '../media/js/jquery-1.10.1.min.js' %>
-                <%= javascript_include_tag '../media/js/jquery-migrate-1.2.1.min.js' %>
-                <%= javascript_include_tag '../media/js/jquery-ui-1.10.1.custom.min.js' %>
-                <%= javascript_include_tag '../media/js/bootstrap.min.js' %>
-
-	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-
-	<!--[if lt IE 9]>
-
-	<script src="media/js/excanvas.min.js"></script>
-
-	<script src="media/js/respond.min.js"></script>  
-
-	<![endif]-->   
-                  <%= javascript_include_tag '../media/js/jquery.slimscroll.min.js' %>
-                  <%= javascript_include_tag '../media/js/jquery.blockui.min.js' %>
-                   <%= javascript_include_tag '../media/js/jquery.cookie.min.js' %>
-                   <%= javascript_include_tag '../media/js/jquery.slimscroll.min.js' %>
-                   <%= javascript_include_tag '../media/js/jquery.uniform.min.js' %>
-
-	<!-- END CORE PLUGINS -->
-
-	<!-- BEGIN PAGE LEVEL PLUGINS -->
-                  <%= javascript_include_tag '../media/js/jquery.vmap.js' %>
-                  <%= javascript_include_tag '../media/js/jquery.vmap.russia.js' %>
-                  <%= javascript_include_tag '../media/js/jquery.vmap.world.js' %>
-                  <%= javascript_include_tag '../media/js/jquery.vmap.europe.js' %>
-                  <%= javascript_include_tag '../media/js/jquery.vmap.germany.js' %>
-                  <%= javascript_include_tag '../media/js/jquery.vmap.usa.js' %>
-                  <%= javascript_include_tag '../media/js/jquery.vmap.sampledata.js' %>
-                  <%= javascript_include_tag '../media/js/jquery.flot.js' %>
-                  <%= javascript_include_tag '../media/js/jquery.flot.resize.js' %>
-                  <%= javascript_include_tag '../media/js/jquery.pulsate.min.js' %>
-                 <%= javascript_include_tag '../media/js/date.js' %>
-                  <%= javascript_include_tag '../media/js/daterangepicker.js' %>
-                  <%= javascript_include_tag '../media/js/jquery.gritter.js' %>
-                  <%= javascript_include_tag '../media/js/fullcalendar.min.js' %>
-                  <%= javascript_include_tag '../media/js/jquery.easy-pie-chart.js' %>
-                  <%= javascript_include_tag '../media/js/jquery.sparkline.min.js' %>
-
-	<!-- END PAGE LEVEL PLUGINS -->
-
-	<!-- BEGIN PAGE LEVEL SCRIPTS -->
-	<%= javascript_include_tag '../media/js/app.js' %>
-                <%= javascript_include_tag '../media/js/index.js' %>
-
-
-	<!-- END PAGE LEVEL SCRIPTS -->  
-
-	<script>
-
-		jQuery(document).ready(function() {    
-
-		   App.init(); // initlayout and core plugins
-
-		   Index.init();
-
-		   Index.initJQVMAP(); // init index page's custom scripts
-
-		   Index.initCalendar(); // init index page's custom scripts
-
-		   Index.initCharts(); // init index page's custom scripts
-
-		   Index.initChat();
-
-		   Index.initMiniCharts();
-
-		   Index.initDashboardDaterange();
-
-		   Index.initIntro();
-
-		});
-
-	</script>
-
-	<!-- END JAVASCRIPTS -->
+	
 
 </body>
 <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script>
