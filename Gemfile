@@ -25,13 +25,16 @@ gem 'padrino-contrib'
 gem 'bcrypt'
 gem 'erubis', '~> 2.7.0'
 gem 'mongoid', '~>3.0.0'
-
+gem 'mime-types','~>1.16'
+gem 'padrino-mailer','0.12.4'
+gem 'mail','~>2.5.3'
 
 # Or Padrino Edge
-gem 'padrino'
-gem 'padrino-support'
+gem 'padrino','0.12.4'
+gem 'padrino-support','0.12.4'
+gem 'padrino-admin','0.12.4'
 
 # Or Individual Gems
 # %w(core support gen helpers cache mailer admin).each do |g|
-#   gem 'padrino-' + g, '0.12.4'
+#  gem 'padrino-' + g, '0.12.4'
 # end

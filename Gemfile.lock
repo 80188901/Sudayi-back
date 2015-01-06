@@ -82,12 +82,12 @@ GEM
     padrino-support (0.12.4)
       activesupport (>= 3.1)
     polyglot (0.3.5)
-    rack (1.5.2)
-    rack-cors (0.2.9)
+    rack (1.6.0)
+    rack-cors (0.3.1)
     rack-protection (1.5.3)
       rack
-    rake (10.3.2)
-    rmagick (2.13.3)
+    rake (10.4.2)
+    rmagick (2.13.4)
     rqrcode (0.4.2)
     rqrcode_png (0.1.5)
       chunky_png
@@ -114,11 +114,15 @@ DEPENDENCIES
   erubis (~> 2.7.0)
   i18n (~> 0.6.11)
   json
+  mail (~> 2.5.3)
+  mime-types (~> 1.16)
   mongoid (~> 3.0.0)
   mongoid-grid_fs!
-  padrino
+  padrino (= 0.12.4)
+  padrino-admin (= 0.12.4)
   padrino-contrib
-  padrino-support
+  padrino-mailer (= 0.12.4)
+  padrino-support (= 0.12.4)
   rack-cors
   rake
   rmagick
