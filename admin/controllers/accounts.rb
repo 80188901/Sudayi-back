@@ -3,6 +3,7 @@ Fancyshpv2::Admin.controllers :accounts do
      I18n.default_locale = :zh_cn
     @title = "Accounts"
     @accounts = Account.all
+
     render 'accounts/index'
   end
 
@@ -28,6 +29,8 @@ Fancyshpv2::Admin.controllers :accounts do
   get :edit, :with => :id do
     @title = pat(:edit_title, :model => "account #{params[:id]}")
     @account = Account.find(params[:id])
+   
+
     if @account
       render 'accounts/edit'
     else

@@ -36,7 +36,7 @@
             </ul>
           </div>
         </th>
-                <th class=header>创建于</th>
+              <th class=header>创建于</th>
                 <th class=header> 更新于</th>
                 <th class=header>星球</th>
                 <th class=header>国家</th>
@@ -45,6 +45,7 @@
                 <th class=header>区域</th>
                 <th class=header>街道</th>
                 <th class=header> 详细</th>
+                 <th class=header> 账户</th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -57,17 +58,48 @@
            </td>
           <td class=list-column> <%= time_ago_in_words address.created_at %>前</td>
           <td class=list-column> <%= time_ago_in_words address.updated_at %>前</td>
+     
+                <% if address.planet %>
           <td class=list-column> <%= address.planet.name %> </td>
+          <% else %>
+          <td class=list-column>无</td>
+          <% end %>
+            <% if address.country %>
           <td class=list-column> <%= address.country.name %> </td>
-          <td class=list-column> <%= address.province.name %> </td>
+          <% else %>
+          <td class=list-column>无</td>
+          <% end %>
+            <% if address.country %>
+          <td class=list-column> <%= address.country.name %> </td>
+          <% else %>
+          <td class=list-column>无</td>
+          <% end %>
           <% if address.city %>
           <td class=list-column> <%= address.city.name %> </td>
           <% else %>
           <td class=list-column>无</td>
           <% end %>
+            <% if address.area %>
           <td class=list-column> <%= address.area.name %> </td>
+          <% else %>
+          <td class=list-column>无</td>
+          <% end %>
+           <% if address.street %>
           <td class=list-column> <%= address.street.name %> </td>
+          <% else %>
+          <td class=list-column>无</td>
+          <% end %>
+           <% if address.detail %>
           <td class=list-column> <%= address.detail.name %> </td>
+          <% else %>
+          <td class=list-column>无</td>
+          <% end %>
+               <% if address.account %>
+          <td class=list-column> <%= address.account.mobile %> </td>
+          <% else %>
+          <td class=list-column>无</td>
+          <% end %>
+
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:addresses, :edit, :id => address.id), :rel => :tooltip, :title => "#{pat(:edit)} address", :class => 'list-row-action-wrapper-link' %>

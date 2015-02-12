@@ -8,6 +8,7 @@ class Address
    belongs_to :area
    belongs_to :street
    belongs_to :detail
+   belongs_to :account
   # field <name>, :type => <type>, :default => <value>
   
 

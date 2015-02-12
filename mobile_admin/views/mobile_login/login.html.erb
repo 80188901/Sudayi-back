@@ -1,9 +1,18 @@
+<script type="text/javascript">
+$(function(){
 
+  $("#code").click(function(){
+      this.src = "/mobile_admin/mobile_login/code_image?s=" + Math.random();
+    })
+})
+    
+</script>
 </head>
 <body>
 <div data-role="page" id="login">
   <div data-role="header" data-theme="b">
   <h1>速达易</h1>
+  <img src="/mobile_admin/mobile_login/code_image" id="code"/>
   </div>
   <div data-role="content" style="text-align:center;margin-top:100px;" >
     <form method="post" action="a.php" id="form" >

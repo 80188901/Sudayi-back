@@ -16,17 +16,19 @@ class Category
       category ? category :nil
   end
 
-  def self.findLeaves(cate,arr)
+  def self.findLeaves(cate,arr,isfirst)
   	#广度优先算法检索分类
   	output_arr = arr
   	categories = where(:category_id => cate)
   	if categories
+            if isfirst
   	     output_arr.push(find(cate)._id)
+       end
   	     categories.each do |cate|
   	     	output_arr.push(cate._id)
   		category=judgeLeaf(cate._id)
   		if category
-  		          findLeaves(cate._id,output_arr)
+  		          findLeaves(cate._id,output_arr,false)
                                       next 
   		else
                                  next

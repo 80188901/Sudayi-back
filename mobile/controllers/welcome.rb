@@ -31,7 +31,9 @@ Fancyshpv2::Mobile.controllers :welcome do
 
   get :get_images_by_pid do
     @images = ImageItem.where(:product_id => params[:pid])
+    puts @images.to_json
     @images.to_json
+
   end
 
   get :get_cates do
@@ -49,7 +51,7 @@ Fancyshpv2::Mobile.controllers :welcome do
     #广度优先算法
     arr = []
     products = {}
-    outputs = Category.findLeaves(params[:cate_id],arr)
+    outputs = Category.findLeaves(params[:cate_id],arr,true)
     arr.each_with_index do |i,j|
       products[j] = Product.where(:category_id => i)
     end

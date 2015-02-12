@@ -2,6 +2,7 @@ Fancyshpv2::Admin.controllers :addresses do
   get :index do
     @title = "Addresses"
     @addresses = Address.all
+
     render 'addresses/index'
   end
 
@@ -20,7 +21,7 @@ Fancyshpv2::Admin.controllers :addresses do
     else
       @title = pat(:create_title, :model => 'address')
       flash.now[:error] = pat(:create_error, :model => 'address')
-      render 'addresses/new'
+       render 'addresses/new'
     end
   end
 
@@ -39,7 +40,7 @@ Fancyshpv2::Admin.controllers :addresses do
     @title = pat(:update_title, :model => "address #{params[:id]}")
     @address = Address.find(params[:id])
     if @address
-      if @address.update_attributes(params[:address])
+    if @address.update_attributes(params[:address])
         flash[:success] = pat(:update_success, :model => 'Address', :id =>  "#{params[:id]}")
         params[:save_and_continue] ?
           redirect(url(:addresses, :index)) :
@@ -59,7 +60,7 @@ Fancyshpv2::Admin.controllers :addresses do
     address = Address.find(params[:id])
     if address
       if address.destroy
-        flash[:success] = pat(:delete_success, :model => 'Address', :id => "#{params[:id]}")
+         flash[:success] = pat(:delete_success, :model => 'Address', :id => "#{params[:id]}")
       else
         flash[:error] = pat(:delete_error, :model => 'address')
       end
@@ -77,12 +78,13 @@ Fancyshpv2::Admin.controllers :addresses do
       redirect(url(:addresses, :index))
     end
     ids = params[:address_ids].split(',').map(&:strip)
-    addresses = Address.find(ids)
-    
+     addresses = Address.find(ids)
+
     if addresses.each(&:destroy)
-    
+
       flash[:success] = pat(:destroy_many_success, :model => 'Addresses', :ids => "#{ids.to_sentence}")
     end
     redirect url(:addresses, :index)
   end
 end
+

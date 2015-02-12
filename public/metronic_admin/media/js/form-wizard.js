@@ -62,7 +62,7 @@ var FormWizard = function () {
                     phone: {
                         required: true
                     },
-                    gender: {
+                    level: {
                         required: true
                     },
                     address: {
@@ -111,8 +111,8 @@ var FormWizard = function () {
                 },
 
                 errorPlacement: function (error, element) { // render error placement for each input type
-                    if (element.attr("name") == "gender") { // for uniform radio buttons, insert the after the given container
-                        error.addClass("no-left-padding").insertAfter("#form_gender_error");
+                    if (element.attr("name") == "level") { // for uniform radio buttons, insert the after the given container
+                        error.addClass("no-left-padding").insertAfter("#form_level_error");
                     } else if (element.attr("name") == "payment[]") { // for uniform radio buttons, insert the after the given container
                         error.addClass("no-left-padding").insertAfter("#form_payment_error");
                     } else {
@@ -139,7 +139,7 @@ var FormWizard = function () {
                 },
 
                 success: function (label) {
-                    if (label.attr("for") == "gender" || label.attr("for") == "payment[]") { // for checkboxes and radip buttons, no need to show OK icon
+                    if (label.attr("for") == "level" || label.attr("for") == "payment[]") { // for checkboxes and radip buttons, no need to show OK icon
                         label
                             .closest('.control-group').removeClass('error').addClass('success');
                         label.remove(); // remove error label here

@@ -15,6 +15,7 @@ class Product
   field :level,  :type => Integer
 
   def self.qcode(id)
+    #二维码
     product = find(id)
     url = 'http://'+request.host+'get_product?pid='+id
     qr=RQRCode::QRCode.new(url)

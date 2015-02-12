@@ -13,6 +13,14 @@ end
     render('login', :layout => 'mobile_admin') 
   end
 
+get :code_image do
+
+  session[:noisy_image]=NoisyImage.new(4)  
+  session[:code]=session[:noisy_image].code 
+  image=session[:noisy_image].image  
+  image
+end
+
   get :get_account do
      @account = Account.authenticate_mobile(params[:mobile], params[:password])
      if @account
@@ -36,7 +44,7 @@ end
     if @account
        0.to_json
    else
-      1.to_json
+      params[:mobile].to_json
    end
   end
 
@@ -49,13 +57,23 @@ end
    end
  end
 
-  get :create_account do 
-    @account = Account.new(:password_confirmation => params[:apwd], :role=>'admin', :name => params[:user], :mobile => params[:tel], :password => params[:pwd], :admin_type => params[:way], :email => params[:email])
+  # get :create_account do 
+  #   @account = Account.new(:password_confirmation => params[:apwd], :role=>'admin', :name => params[:user], :mobile => params[:tel], :password => params[:pwd], :admin_type => params[:way], :email => params[:email])
+  #   if @account.save
+  #      @account.to_json
+  #   else
+  #     '保存未成功'.to_json
+  #   end
+  # end
+  get :create_account do
+    @account=Account.new(:password_confirmation => params[:apwd], :role=>'admin',  :mobile => params[:tel], :password => params[:pwd])
+    area=Area.find(params[:area_id])
+    @account.create_address(area_id:area._id,city_id:area.city_id,province_id:area.province_id,country_id:area.country_id,planet_id:area.planet_id)
     if @account.save
-       @account.to_json
+      @account.to_json
     else
-      '保存未成功'.to_json
-    end
+              @account.errors.fullmessage.to_json
+    end  
   end
 
   get :find_account do
