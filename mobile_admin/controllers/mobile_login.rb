@@ -14,7 +14,7 @@ end
   end
 
 get :code_image do
-
+  
   session[:noisy_image]=NoisyImage.new(4)  
   session[:code]=session[:noisy_image].code 
   image=session[:noisy_image].image  
