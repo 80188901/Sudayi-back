@@ -4,6 +4,7 @@ class City
   belongs_to :planet
   belongs_to :country
   belongs_to :province
+  has_many :nodes
   # field <name>, :type => <type>, :default => <value>
   field :name, :type => String
 

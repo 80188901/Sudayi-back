@@ -15,13 +15,9 @@ Fancyshpv2::Mobile.controllers :welcome do
   end
 
   get :get_pics_a do
-    @products = Product.where(:level => 1).order_by(:created_at.desc)
-    @image_items = {}
-    @products .each_with_index do |product, index|
-       @image_item = ImageItem.where(:product_id => product._id).first
-       @image_items[index] = @image_item
-    end
-    @image_items.to_json
+   @products = Product.all.order_by(:created_at.desc)
+    @products.to_json(:include=>:image_items)
+
   end
 
   get :get_product_by_id do

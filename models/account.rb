@@ -6,7 +6,7 @@ class Account
   belongs_to  :state
   belongs_to :credit_info
   has_one :address,dependent: :delete
-
+  belongs_to :node
   # Fields
   field :name,             :type => String
   field :surname,          :type => String

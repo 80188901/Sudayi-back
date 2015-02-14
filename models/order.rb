@@ -4,8 +4,13 @@ class Order
   belongs_to :cart
   belongs_to :account
   belongs_to :address
+   belongs_to :node
+   belongs_to :store
+   belongs_to :employee
   field :price, :type => Float
-
+  field :iscomplete,:type=>Boolean,:default=>false
+  field :isnow,:type=>Boolean,:default=>false
+  field :usetime,:type=>Integer,:default=>''
   # field <name>, :type => <type>, :default => <value>
   
 

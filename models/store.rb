@@ -4,7 +4,8 @@ class Store
   belongs_to :website
   belongs_to :account
   belongs_to :address
-  
+  has_many :orders
+ belongs_to :node
 
   # field <name>, :type => <type>, :default => <value>
   field :name, :type => String

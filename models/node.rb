@@ -1,8 +1,11 @@
 class Node
   include Mongoid::Document
   include Mongoid::Timestamps # adds created_at and updated_at fields
-  belongs_to :node_group
-   field :num, :type => Integer, :default => 1
+  belongs_to :city
+
+  has_many :node_ways
+  has_many :orders
+ field :name,:type=>String
   
 
   # field <name>, :type => <type>, :default => <value>

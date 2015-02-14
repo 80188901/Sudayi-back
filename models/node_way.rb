@@ -1,15 +1,12 @@
-class Employee
+class NodeGroup
   include Mongoid::Document
   include Mongoid::Timestamps # adds created_at and updated_at fields
-  belongs_to :account
-  has_many :orders
-  field :emp,:type => String
-    field :name,:type=>String
-  field :phone,:type=>String
- field :isfree,:type=>Boolean,:default=>true
- field :whenfree,:type=>DateTime,:default=>''
+belongs_to :node
   # field <name>, :type => <type>, :default => <value>
-  
+  field :tonode,:type=>String
+  field :time,:type=>Integer
+  field :fee,:type=>Float
+  field :miles,:type=>Float
 
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>

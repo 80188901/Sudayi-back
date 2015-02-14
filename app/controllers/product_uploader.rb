@@ -23,17 +23,23 @@ end
   end
   
   post :create_cover,  :csrf_protection => false  do
-   @image_item = ImageItem.new
+   #@image_item = ImageItem.new
    # @image_item.product_id = params[:product_id]
    # @product = Product.find(params[:product_id])
    # @product.level = params[:level].to_i
    # @product.save
-   @image_item.url = params[:cover_url]
+   #@image_item.url = params[:cover_url]
     # @image_item.account_id = params[:uid]
    # @image_item.name = '封面'
    # @image_item.iscover = 1
-   @image_item.save!
-   
+   #@image_item.save!
+           if params[:uploadkey1]
+         @image_item = ImageItem.new
+       @image_item.url = params[:uploadkey2]
+    @image_item.name = params[:name]
+    @image_item.save!
+end
+
   end
 
   
