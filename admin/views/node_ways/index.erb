@@ -55,8 +55,17 @@
            </td>
           <td class=list-column> <%= time_ago_in_words node_way.created_at %></td>
           <td class=list-column> <%= time_ago_in_words node_way.updated_at %></td>
+		<%if node_way.node%>
           <td class=list-column> <%= node_way.node.name %> </td>
+		<%else%>
+		  <td class=list-column> <%= node_way.node_id %> </td>
+		<%end%>
+<%if node_way.tonode!=''%>
           <td class=list-column> <%= Node.find(node_way.tonode).name %> </td>
+        <%else%>
+        <td class=list-column> <%= node_way.tonode %> </td>
+        <%end%>
+
           <td class=list-column> <%= node_way.time %> </td>
           <td class=list-column> <%= node_way.fee %> </td>
           <td class=list-column> <%= node_way.miles %> </td>

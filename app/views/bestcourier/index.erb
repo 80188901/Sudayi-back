@@ -60,7 +60,7 @@
 		<%else%>
 		<div class="col-md-8"><%=order.employee.name%>等待派送,地点:<%=order.node.name%></div>
 		<%end%>
-		<div class="col-md-4"><%=(order.employee.whenfree.to_i-Time.now.to_i)/60%>minute</div>
+		<div class="col-md-4"><%=((order.created_at+order.usetime.to_i.minute).to_i-Time.now.to_i)/60%>minute</div>
 		<div class="col-md-1 delete_order" wayID="<%= order._id %>" >&times</div>
 	</div>
 	<br />
@@ -81,7 +81,8 @@
         <% form_for @order, url(:bestcourier, :create_order) do |f|%>
 			
         	<%= hidden_field_tag :account_id, value: @account._id %>
-        	<%= label_tag :取货地点 %><%= select_tag(:store_id,:collection=>Store.all,:fields=>[:name,:id])  %>
+        	<%= label_tag :取货地点 %><%= select_tag(:store_id,:collection=>Store.all,:fields=>[:name,:id],:id=>'canku')  %>
+		<span id='diqu'><%=Store.first.node.name%></span><br />	
         	<%= label_tag :客户地点 %><%=  select_tag(:customer_node,:collection=>Node.all,:fields=>[:name,:id]) %>
 
       </div>
@@ -148,6 +149,14 @@
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$('#canku').change(function(){
+			var id=$(this).children('option:selected').val();
+			$.get('/bestcourier/get_node',{store_id:id},function(obj){
+	 $('#diqu').html(obj);
+	
+	})
+			
+		})
 		$('.delete_node_way').each(function(){
 			$(this).mouseover(function(event) {
 				$(this).css('cursor', 'pointer');

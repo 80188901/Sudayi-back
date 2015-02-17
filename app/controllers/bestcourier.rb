@@ -8,13 +8,37 @@ Fancyshpv2::App.controllers :bestcourier do
   end
 end 
   
+get :get_node do
+	store=Store.find(params[:store_id])
+	render :html,store.node.name
+end
 get :index do
    @account=Account.where(mobile: '15817378124').first
-   puts @account.node.name
   @couriers=Employee.where(account_id:@account._id)
+	@couriers.each do |courier|
+		if courier.whenfree.to_i<Time.now.to_i
+			courier.isfree=true
+			courier.whenfree=''
+			courier.save
+		end
+	end
   @node_ways=NodeWay.where(node_id:@account.node._id)
   @order=Order.new
-  @orders=Order.where(account_id:@account._id,iscomplete:false)
+  orders=Order.where(account_id:@account._id,iscomplete:false)
+	orders.each do |order|
+		if (order.created_at+order.usetime.minute).to_i<Time.now.to_i
+		order.iscomplete=true
+		order.isnow=false
+		order.save
+		neworder=courier.order.where(iscomplete:false).first
+                        if neworder
+			       neworder.isnow=true
+                	       neworder.save
+	        	end
+		end
+	end
+	@orders=Order.where(account_id:@account._id,iscomplete:false)
+
    render 'bestcourier/index'
 end
 
@@ -131,7 +155,8 @@ end
   @order=Order.new
     #=============================
 
-      render 'bestcourier/index'
+redirect(url(:bestcourier,:index))
+
 
   end
 
@@ -149,6 +174,7 @@ end
   @node_ways=NodeWay.where(node_id:@account.node._id)
     @orders=Order.where(account_id:@account._id,iscomplete:false)
   @order=Order.new
-   render 'bestcourier/index'
+redirect(url(:bestcourier,:index))
+
   end
 end

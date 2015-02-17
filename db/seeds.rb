@@ -44,7 +44,7 @@ doc.elements.each("xml/node") { |e|
   doc2=REXML::Document.new(xml2)
   doc2.elements.each("xml/nodeway"){|e|
   	node=Node.where(number:e.elements['node'].text).first
-  	tonode=Node.where(number:e.elements['tonode'].text).first
+        tonode=Node.where(number:e.elements['tonode'].text).first
   	nodeway=NodeWay.new
   	nodeway.node=node
   	nodeway.tonode=tonode._id

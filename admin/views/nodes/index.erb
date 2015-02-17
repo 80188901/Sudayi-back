@@ -55,8 +55,8 @@
            </td>
           <td class=list-column> <%= time_ago_in_words node.created_at %></td>
           <td class=list-column> <%= time_ago_in_words node.updated_at %></td>
-          <td class=list-column> <%= node.city_id %> </td>
-          <td class=list-column> <%= node.area_id %> </td>
+          <td class=list-column> <%= node.city.name %> </td>
+          <td class=list-column> <%= node.area.name %> </td>
           <td class=list-column> <%= node.name %> </td>
           <td class=list-column> <%= node.number %> </td>
           <td class=list-column> <%= node.streets %> </td>

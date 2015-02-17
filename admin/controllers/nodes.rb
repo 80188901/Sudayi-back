@@ -3,7 +3,6 @@ Fancyshpv2::Admin.controllers :nodes do
     @title = "Nodes"
     @nodes = Node.all
     render 'nodes/index'
-   
   end
 
   get :new do
