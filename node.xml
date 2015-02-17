@@ -1,0 +1,184 @@
+<xml>
+ <node>
+ 	<city>深圳市</city>
+ 	<area>罗湖区</area>
+ 	<number>01</number>
+ 	<name>国贸区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>罗湖区</area>
+ 	<number>02</number>
+ 	<name>东门区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>罗湖区</area>
+ 	<number>03</number>
+ 	<name>笋岗区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>罗湖区</area>
+ 	<number>04</number>
+ 	<name>翠竹区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>罗湖区</area>
+ 	<number>05</number>
+ 	<name>怡景区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>罗湖区</area>
+ 	<number>06</number>
+ 	<name>清水河区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>福田区</area>
+ 	<number>07</number>
+ 	<name>华强区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>福田区</area>
+ 	<number>08</number>
+ 	<name>百花区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>福田区</area>
+ 	<number>09</number>
+ 	<name>皇岗/新洲区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>福田区</area>
+ 	<number>10</number>
+ 	<name>车公庙/市民中心区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>福田区</area>
+ 	<number>11</number>
+ 	<name>梅林区区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>福田区</area>
+ 	<number>12</number>
+ 	<name>香蜜/竹子林区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>南山区</area>
+ 	<number>13</number>
+ 	<name>南油/蛇口区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>南山区</area>
+ 	<number>14</number>
+ 	<name>科技园/南头区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>南山区</area>
+ 	<number>15</number>
+ 	<name>白石洲区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>南山区</area>
+ 	<number>16</number>
+ 	<name>西丽区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>宝安区</area>
+ 	<number>17</number>
+ 	<name>新安区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>宝安区</area>
+ 	<number>18</number>
+ 	<name>西乡区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>宝安区</area>
+ 	<number>19</number>
+ 	<name>和平区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>宝安区</area>
+ 	<number>20</number>
+ 	<name>松岗区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>宝安区</area>
+ 	<number>21</number>
+ 	<name>塘尾区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>宝安区</area>
+ 	<number>22</number>
+ 	<name>东环区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>龙岗区</area>
+ 	<number>23</number>
+ 	<name>坂田区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>龙岗区</area>
+ 	<number>24</number>
+ 	<name>康桥/布吉区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>龙岗区</area>
+ 	<number>25</number>
+ 	<name>平湖区</name>
+
+ </node>
+  <node>
+ 	<city>深圳市</city>
+ 	<area>龙岗区</area>
+ 	<number>26</number>
+ 	<name>盐龙大道</name>
+
+ </node>
+</xml>

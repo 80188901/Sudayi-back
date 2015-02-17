@@ -8,30 +8,15 @@ Fancyshpv2::App.controllers :bestcourier do
   end
 end 
   
-   post :create_couriers ,:csrf_protection => false do
-    @account = Account.where(_id:params[:account_id]).first
-    @deliver_num = nil
-    $i = 0
-
-    if params[:employee_num]
-      @deliver_num = params[:employee_num].to_i
-      while @deliver_num>0 do
-        $i+=1
-        employee = employee.new
-        employee.name =params[:name]
-        employee.account_id=@account._id
-        employee.save
-        
-        @deliver_num-=1
-      end
-    else
-    end
-
-    @employees=Employee.where(account_id:@account._id)
-    @node = @account.node
-    @node_ways = NodeWay.where(:node_id => @node._id)
-    
-  end#create_delivers
+get :index do
+   @account=Account.where(mobile: '15817378124').first
+   puts @account.node.name
+  @couriers=Employee.where(account_id:@account._id)
+  @node_ways=NodeWay.where(node_id:@account.node._id)
+  @order=Order.new
+  @orders=Order.where(account_id:@account._id,iscomplete:false)
+   render 'bestcourier/index'
+end
 
   post :create_order ,:csrf_protection => false do
     @account = Account.where(_id:params[:account_id]).first
@@ -124,7 +109,46 @@ end
                     @courier.save
              end      
       end
+  redirect(url(:bestcourier,:index)) 
+  end
+     post :delete_node_way do
+      logger.info params[:node_way_id]
+      node_way = NodeWay.where(_id: params[:node_way_id]).first
+      if node_way
+        logger.info node_way.to_json
+        @new_settle = '［'+Node.find(node_way.node_id).name+'
+      ］到［'+Node.find(node_way.tonode).name+'］的距离删除成功!'
+        node_way.destroy
+      end
+      logger.info node_way.to_json
+      #============================
+    #页面数据维持
+
+      @account=Account.where(mobile: '15817378124').first
+  @couriers=Employee.where(account_id:@account._id)
+  @node_ways=NodeWay.where(node_id:@account.node._id)
+    @orders=Order.where(account_id:@account._id,iscomplete:false)
+  @order=Order.new
+    #=============================
+
+      render 'bestcourier/index'
 
   end
 
+  post :delete_order do
+     order=Order.find(params[:order_id])
+     if order
+      employee=order.employee
+      employee.isfree=true
+      employee.whenfree=''
+      employee.save
+        order.destroy
+     end
+      @account=Account.where(mobile: '15817378124').first
+  @couriers=Employee.where(account_id:@account._id)
+  @node_ways=NodeWay.where(node_id:@account.node._id)
+    @orders=Order.where(account_id:@account._id,iscomplete:false)
+  @order=Order.new
+   render 'bestcourier/index'
+  end
 end

@@ -2,16 +2,48 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :account_id, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_field :account_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <%= f.select( :account_id,:collection=>Account.all,:fields=>[:mobile,:id], :class => 'form-control input-xlarge input-with-feedback', :autofocus => true) %>
     <span class='help-inline'><%= error ? f.error_message_on(:account_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
-<% error = @employee.errors.include?(:work_id) %>
+<% error = @employee.errors.include?(:emp) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :work_id, :class => 'control-label' %>
+  <%= f.label :emp, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_field :work_id, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:work_id) : "Ex: a simple text" %></span>
+    <%= f.select( :emp,:collection=>Account.all,:fields=>[:mobile,:id], :class => 'form-control input-xlarge input-with-feedback')  %>
+    <span class='help-inline'><%= error ? f.error_message_on(:emp) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @employee.errors.include?(:name) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :name, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :name, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:name) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @employee.errors.include?(:phone) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :phone, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :phone, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:phone) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @employee.errors.include?(:isfree) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :isfree, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.check_box :isfree, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:isfree) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @employee.errors.include?(:whenfree) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :whenfree, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :whenfree, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:whenfree) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 

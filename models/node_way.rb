@@ -1,5 +1,5 @@
-class NodeGroup
-  include Mongoid::Document
+class NodeWay
+   include Mongoid::Document
   include Mongoid::Timestamps # adds created_at and updated_at fields
 belongs_to :node
   # field <name>, :type => <type>, :default => <value>

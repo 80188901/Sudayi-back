@@ -30,17 +30,11 @@
               <% else %>
                 <li class=navbar-module>
               <% end %>
-              <% model_name = LangDict.where(:name => project_module.name).first
-                  if model_name
-               %>
-                <%= link_to model_name.translation, url(project_module.path) %>
-                <% else %>
-                    <%= link_to project_module.name, url(project_module.path) %>
-                <% end %>
+                <%= link_to project_module.human_name, url(project_module.path) %>
                 </li>
             <% end %>
-             <li> <%= link_to "上传商品",  url(:add_product, :index), :remote => true %></li>
           </ul>
+      
         </div>
       </div>
     </div>

@@ -69,6 +69,13 @@
 
   </div>
 </fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :所属区, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.select(:node_id,:collection=>Node.all,:fields=>[:name,:id], :class => 'form-control input-xlarge input-with-feedback' ,:autofocus => true) %>
+
+  </div>
+</fieldset>
 
 
 <div class="form-actions">

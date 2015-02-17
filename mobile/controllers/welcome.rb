@@ -55,4 +55,9 @@ Fancyshpv2::Mobile.controllers :welcome do
 
   end
 
+get :distance do
+    product=Product.find(params[:product_id])
+    
+end
+
 end

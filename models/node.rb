@@ -2,10 +2,13 @@ class Node
   include Mongoid::Document
   include Mongoid::Timestamps # adds created_at and updated_at fields
   belongs_to :city
-
+  belongs_to :area
   has_many :node_ways
   has_many :orders
+
  field :name,:type=>String
+ field :number,:type=>String
+ field :streets,:type=>Array
   
 
   # field <name>, :type => <type>, :default => <value>

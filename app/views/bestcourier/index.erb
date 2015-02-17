@@ -1,0 +1,194 @@
+
+<div id="deliver_content" class='container'>
+<h3>信息汇总</h3>
+<hr>
+<div class="row">
+<div class="col-md-4">
+<div id="info_back">
+	
+	<% @couriers.each do |courier| %>
+		<p><%=courier.name %>
+		<% if courier.isfree%>
+		<b>已经在公司待命</b>
+		<%else %>
+		<b>正在送快递</b>
+		<%end%>
+		</p>
+	<% end %>
+
+<% if @new_settle %>
+	<p><b><%= @new_settle %></b></p>
+<% end %>
+</div>
+</div>
+<div class="col-md-4">
+	<div class="row">
+		
+		<span class="btn btn-primary" data-toggle="modal" data-target="#new_order">新定单</span>
+	</div>
+	<div><hr></div>
+	<div class="row">
+		<div class="col-md-4">区域1----到</div>
+		<div class="col-md-4">----区域2</div>
+		<div class="col-md-4">需要用时</div>
+	</div>
+	
+	<div><hr></div>	
+		<% @node_ways.each_with_index do |item, index| %>
+			<div class="row">
+				<div class="col-md-4"><%= Node.where(_id:item.node_id).first.name %>(公司所在)</div>
+				<div class="col-md-4"><%= Node.where(_id:item.tonode).first.name %></div>
+				<div class="col-md-3"><%= item.time %>分钟</div>
+				<div class="col-md-1 delete_node_way" wayID="<%= item._id %>" >&times
+					
+				</div>
+			</div>
+			<div><hr></div>	
+		<% end %>
+	
+</div>
+<div class="col-md-4">
+	<div class="row">
+		<div class="col-md-8">订单信息</div>
+		<div class="col-md-4">剩余时间</div>
+	</div>
+	<br />
+	<%@orders.each do |order|%>
+	<div class="row">
+		<% if order.isnow%>
+		<div class="col-md-8"><%=order.employee.name%>正在派送,地点:<%=order.node.name%></div>
+		<%else%>
+		<div class="col-md-8"><%=order.employee.name%>等待派送,地点:<%=order.node.name%></div>
+		<%end%>
+		<div class="col-md-4"><%=(order.employee.whenfree.to_i-Time.now.to_i)/60%>minute</div>
+		<div class="col-md-1 delete_order" wayID="<%= order._id %>" >&times</div>
+	</div>
+	<br />
+	<%end%>
+</div>
+</div>
+
+
+
+<!--弹出框_添加订单 -->
+<div id="new_order" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="new_orderLabel" aria-hidden="true">
+	<div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="new_orderLabel">添加新订单</h4>
+      </div>
+      <div class="modal-body">
+        <% form_for @order, url(:bestcourier, :create_order) do |f|%>
+			
+        	<%= hidden_field_tag :account_id, value: @account._id %>
+        	<%= label_tag :取货地点 %><%= select_tag(:store_id,:collection=>Store.all,:fields=>[:name,:id])  %>
+        	<%= label_tag :客户地点 %><%=  select_tag(:customer_node,:collection=>Node.all,:fields=>[:name,:id]) %>
+
+      </div>
+	<div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="submit" class="btn btn-primary">确认添加</button>
+      	<% end %>
+	</div>
+	</div>
+</div>
+
+
+
+
+<!--弹出框_添加距离 -->
+
+</div><!--end of container-->
+<div class="modal fade bs-confirm-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">确认删除</h4>
+      </div>
+      <div class="modal-body">
+			<h4>是否确认删除这两个区域及其距离关系？</h4>
+			<% form_tag url(:bestcourier, :delete_node_way) do %>
+			<%= hidden_field_tag :node_way_id, id: "order_id" %>
+			
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="submit" class="btn btn-primary">确认</button>
+        	<% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+</div><!--end of container-->
+<div class="modal fade bs-confirm-modal-sm1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm1">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">确认删除</h4>
+      </div>
+      <div class="modal-body">
+			<h4>是否确认删除订单？</h4>
+			<% form_tag url(:bestcourier, :delete_order) do %>
+			<%= hidden_field_tag :order_id, id: "order_id" %>
+			<%= hidden_field_tag :company_node_id, value: @account.node._id %>
+        	<%= hidden_field_tag :company_id, value: @account._id %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="submit" class="btn btn-primary">确认</button>
+        	<% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.delete_node_way').each(function(){
+			$(this).mouseover(function(event) {
+				$(this).css('cursor', 'pointer');
+			});
+			$(this).click(function(event) {
+				var node_way_id = $(this).attr("wayID");
+				$('#node_way_id').val(node_way_id);
+				//alert($('#node_way_id').val());
+				$('.bs-confirm-modal-sm').modal('show');
+				$('.bs-confirm-modal-sm #node_way_id').val(node_way_id);
+			});
+		});
+		$('.delete_order').each(function(){
+			$(this).mouseover(function(event) {
+				$(this).css('cursor', 'pointer');
+			});
+			$(this).click(function(event) {
+				var order_id = $(this).attr("wayID");
+				$('#order_id').val(order_id);
+				//alert($('#node_way_id').val());
+				$('.bs-confirm-modal-sm1').modal('show');
+				$('.bs-confirm-modal-sm1 #order_id').val(order_id);
+			});
+		});
+		$("#sumbit_node_way_form").submit(function(event) {
+			if($("#node_name").val()=='')
+			{
+				alert('区域名不能为空');
+				return false;
+			}
+		});
+
+	});
+
+</script>
+<% if @error or @success
+	#返回区域建立的成功与否的成功或者失败的消息 
+%>
+	<script type="text/javascript">
+	$(document).ready(function($) {
+		$('.bs-warning-modal-sm').modal('show');
+	});
+	</script>>
+<% end %>
