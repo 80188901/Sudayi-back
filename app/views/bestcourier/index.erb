@@ -53,10 +53,10 @@
 		<div class="col-md-4">剩余时间</div>
 	</div>
 	<br />
-	<%@orders.each do |order|%>
+	<%@orders.each_with_index do |order,index|%>
 	<div class="row">
 		<% if order.isnow%>
-		<div class="col-md-8"><%=order.employee.name%>正在派送,地点:<%=order.node.name%></div>
+		<div class="col-md-8"><%=order.employee.name%>正在派送第1张订单,出发点：<%=Node.find(order.firstnode).name%>,供应商仓库：<%=order.store.node.name%>,终点:<%=order.node.name%></div>
 		<%else%>
 		<div class="col-md-8"><%=order.employee.name%>等待派送,地点:<%=order.node.name%></div>
 		<%end%>

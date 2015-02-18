@@ -60,7 +60,7 @@
 		<%else%>
 		  <td class=list-column> <%= node_way.node_id %> </td>
 		<%end%>
-<%if node_way.tonode!=''%>
+<%if node_way.tonode%>
           <td class=list-column> <%= Node.find(node_way.tonode).name %> </td>
         <%else%>
         <td class=list-column> <%= node_way.tonode %> </td>

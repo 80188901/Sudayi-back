@@ -7,6 +7,7 @@ class Order
    belongs_to :node
    belongs_to :store
    belongs_to :employee
+  field :firstnode,:type=>String
   field :price, :type => Float
   field :iscomplete,:type=>Boolean,:default=>false
   field :isnow,:type=>Boolean,:default=>false

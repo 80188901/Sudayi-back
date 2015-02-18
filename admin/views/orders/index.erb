@@ -44,6 +44,7 @@
                 <th class=header> <%= mat(:order, :node_id) %></th>
                 <th class=header> <%= mat(:order, :store_id) %></th>
                 <th class=header> <%= mat(:order, :employee_id) %></th>
+                <th class=header> <%= mat(:order, :firstnode) %></th>
                 <th class=header> <%= mat(:order, :price) %></th>
                 <th class=header> <%= mat(:order, :iscomplete) %></th>
                 <th class=header> <%= mat(:order, :isnow) %></th>
@@ -63,15 +64,21 @@
           <td class=list-column> <%= order.cart_id %> </td>
           <td class=list-column> <%= order.account_id %> </td>
           <td class=list-column> <%= order.address_id %> </td>
-          <%if order.node%>
+		<%if order.node%>
           <td class=list-column> <%= order.node.name %> </td>
-          <%end%>
-          <%if order.store%>
+		<%end%>
+		<%if order.store%>
           <td class=list-column> <%= order.store.name %> </td>
-          <%end%>
-          <%if order.employee%>
+		<%end%>
+		<%if order.employee%>
           <td class=list-column> <%= order.employee.name %> </td>
-          <%end%>
+		<%end%>
+		<%if order.firstnode%>
+          <td class=list-column> <%= Node.find(order.firstnode).name %> </td>
+		<%else%>
+	  <td class=list-column> <%= order.firstnode %> </td>
+
+		<%end%>
           <td class=list-column> <%= order.price %> </td>
           <td class=list-column> <%= order.iscomplete %> </td>
           <td class=list-column> <%= order.isnow %> </td>
