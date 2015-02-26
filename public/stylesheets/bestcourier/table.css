@@ -1,0 +1,20 @@
+
+.table h2{
+	margin-top: 80px;
+	color: #999999;
+}
+.table h2:nth-child(1){
+	float: left;
+}
+.table h2:nth-child(2){
+	float: right;
+}
+
+table{
+	margin-top: 30px;
+	border-color: #F3F3F3;
+}
+th{
+	background: #CCCCCC;
+	border: none;
+}

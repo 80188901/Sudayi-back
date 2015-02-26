@@ -1,0 +1,14 @@
+table{
+	margin-top: 30px;
+}
+th{
+	color: #6A6A6A;
+	font-size: 20px;
+	border-bottom: 1px solid #999999;
+}
+td{
+	color: #999999;
+}
+tr:last-child td{
+	border-bottom: 1px solid #999999;
+}

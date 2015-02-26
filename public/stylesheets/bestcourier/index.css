@@ -1,0 +1,35 @@
+#header{
+	width: 96%;
+	height: 100px;
+	margin:0 auto;
+	border-bottom: 1px solid #999999;
+}
+#content{
+	width: 96%;
+	height: 600px;
+	margin:0 auto;
+}
+#header h1{
+	margin: 30px 20px;
+	float: left;
+}
+
+#header span{
+	float: right;
+	font-size: 20px;
+	margin:35px 20px;
+	color: #989FA9;
+}
+.chose_button li{
+	background: #00D914;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+	border-radius: 5px;
+	float: right;
+	margin: 30px 10px;
+	text-align: center;
+}
+
+

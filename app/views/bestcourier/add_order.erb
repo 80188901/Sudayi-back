@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<%=stylesheet_link_tag "bestcourier/add_order"%>
+		  <%=stylesheet_link_tag "bestcourier/base"%>
+		<title></title>
+	</head>
+	<body>
+		<div class="table">
+			<table border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<th><h3>添加演示订单</h3></th>
+					<th>正常订单应由客户下单产生</th>
+					<th>日期：20150303 当前时间14:00</th>
+				</tr>
+				<tr>
+					<td><h2>客户所在区域</h2></td>
+					<td>
+						<select name="">
+							<option value="">01国贸区</option>
+							<option value="">02东门区</option>
+						</select>
+					</td>
+					<td>
+						正常情况下此区域通过客户<font>默认配送地址</font>自动认定无须输入
+					</td>
+				</tr>
+				<tr>
+					<td><h2>供应商所在区域</h2></td>
+					<td>
+						<select name="">
+							<option value="">01国贸区</option>
+							<option value="">02东门区</option>
+						</select>
+					</td>
+					<td>
+						正常情况下此区域通过<font>供应商认证地址自动认</font>定无须输入
+					</td>
+				</tr>
+			</table>
+			<button class="button">确认添加</button>
+		</div>
+	</body>
+</html>

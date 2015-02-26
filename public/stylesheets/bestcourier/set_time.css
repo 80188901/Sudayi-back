@@ -1,0 +1,22 @@
+table td{
+	text-align: left;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #CCCCCC;
+}
+td{
+	font-size: 13px;
+}
+td:nth-child(1){
+	font-size: 16px;
+	font-weight: 700;
+	color: #666666;
+}
+td input[type=text]{
+    width: 50px;
+    height: 21px;
+    border: none;
+    background: #CCCCCC;
+    color: #FFFFFF;
+    text-align: center;
+}

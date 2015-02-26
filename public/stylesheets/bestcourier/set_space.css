@@ -1,0 +1,50 @@
+dl{
+	height: 120px;
+	border-bottom: 1px solid #999999;
+}
+dl:nth-child(1){
+	margin-top: 40px;
+}
+dl dd{
+	height: 120px;
+	float: left;
+}
+dd:nth-child(1){
+	width: 10%;
+	position: relative;
+}
+dd:nth-child(2){
+	width: 90%;
+}
+button{
+	width: 50px;
+	height: 30px;
+	text-align: center;
+	border: none;
+	border-radius: 5px;
+}
+th{
+	border-bottom: 1px solid #CCCCCC;
+	height: 40px;
+}
+table td{
+	height: 40px;
+}
+.set_num{
+	position: absolute;
+	bottom: 10px;
+	width: 100px;
+	height: 60px;
+	background: #FFFFFF;
+	border: 1px solid #CCCCCC;
+}
+tr:nth-child(1) th button{
+	background: #FFFFFF;
+	border: 1px solid #CCCCCC;
+}
+tr:nth-child(2) td button{
+	background: #B3FF00;
+}
+tr:nth-child(3) td button{
+	background: #00FFFF;
+}

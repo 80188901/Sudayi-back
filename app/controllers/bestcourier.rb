@@ -7,7 +7,31 @@ Fancyshpv2::App.controllers :bestcourier do
     resource '*', :headers => :any, :methods => [:get, :post, :options]
   end
 end 
-  
+get :main do
+  render :main,:layout=>false
+end  
+get :table do
+  @nodes=Node.all
+  render :table,:layout=>false
+end
+get :settime do
+  render :settime,:layout=>false
+  end
+  get :setnode do
+    render :setnode,:layout=>false
+  end
+  get :setcourier do
+    render :setcourier,:layout=>false
+  end
+  get :order do
+    render :order,:layout=>false
+  end
+  get :add_order do
+    render :add_order,:layout=>false
+  end
+  get :order_flow do
+    render :order_flow,:layout=>false
+  end
 get :get_node do
 	store=Store.find(params[:store_id])
 	render :html,store.node.name

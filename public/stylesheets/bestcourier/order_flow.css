@@ -1,0 +1,41 @@
+.blue{
+	color: blue;
+}
+.red{
+	color: red;
+}
+.green{
+	color: green;
+}
+table{
+	padding: 10px 10px;
+}
+table th{
+	font-size: 16px;
+	font-weight: 700;
+	border-top: 1px solid #999999;
+	border-bottom: 1px solid #999999;;
+}
+table td{
+	font-size: 12px;
+}
+table{
+	color: #666666;
+}
+ul{
+	height: 30px;
+	line-height: 30px;
+}
+ul li{
+	height: 30px;
+	line-height: 40px;
+	color: #666666;
+}
+ul li:nth-child(1){
+	float: left;
+	margin-left:20px
+}
+ul li:nth-child(2){
+	float: right;
+	margin-right: 50px;
+}

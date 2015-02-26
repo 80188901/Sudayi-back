@@ -25,6 +25,15 @@
 #   account.errors.full_messages.each { |m| shell.say "   - #{m}" }
 # end
 require "rexml/document" 
+xml3=File.open('street.xml')
+doc3=REXML::Document.new(xml3)
+doc3.elements.each("xml/street"){|e|
+      area=Area.where(name:e.elements['area'].text).first
+      street=Street.new
+      street.area=area
+      street.name=e.elements["name"].text
+      street.save
+}
 
 xml=File.open("node.xml")
 
@@ -37,6 +46,8 @@ doc.elements.each("xml/node") { |e|
  	node.area=area
  	node.number=e.elements['number'].text
  	node.name=e.elements['name'].text
+        streets=e.elements['streets'].text.split(',')
+        node.streets=streets
  	node.save
   }  
 
@@ -51,6 +62,7 @@ doc.elements.each("xml/node") { |e|
   	nodeway.time=e.elements['time'].text
   	nodeway.save
   }
+
 
 # shenzhen=City.where(name:'深圳市').first
 # area=Area.where(name:'罗湖区').first

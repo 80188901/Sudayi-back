@@ -1,0 +1,57 @@
+dl{
+	border-top: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	height: 160px;
+}
+dl:nth-child(1){
+	margin-top: 40px;
+}
+dl dd{
+	margin: 10px 0;
+	height: 140px;
+	float: left;
+}
+dl dd:nth-child(1){
+	width: 30%;
+	border-right: 1px solid #999999;
+}
+dl dd:nth-child(2){
+	width: 69%;
+}
+th{
+	font-size: 14px;
+	text-indent: 12px;
+	text-align: left;
+	font-weight: 700;
+	color: #999999;
+}
+table td{
+	color: #999;
+	font-size: 14px;
+	text-indent: 12px;
+	text-align: left;
+	height: 35px;
+}
+table th{
+	border-bottom: 1px solid #CCCCCC;
+}
+ul{
+	margin-top: 40px;
+}
+ul li{
+	color: #666666;
+	float: left;
+}
+li:nth-child(1){
+	width: 30%;
+}
+li:nth-child(2){
+	width: 70%;
+}
+li h3{
+	margin-top: 20px;
+	float: left;
+}
+li button{
+	float: right;
+}

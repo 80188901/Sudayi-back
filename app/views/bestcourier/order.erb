@@ -1,6 +1,87 @@
- <h1><%=@order.usetime%>minute</h1>
-<h1><%=@order.account.mobile%></h1>
-<h1><%=@order.employee.name%></h1>
-<h1><%=@order.node.name%></h1>
-<h1><%=@order.store.name%></h1>
-
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		 <%=stylesheet_link_tag "bestcourier/order"%>
+		  <%=stylesheet_link_tag "bestcourier/base"%>
+		<title></title>
+	</head>
+	<body>
+		<div class="table">
+			<ul>
+				<li><h3>按配送员查看</h3></li>
+				<li>
+					<h3>按订单查看</h3>
+					<a href="add_order"><button class="button">添加新订单</button></a>
+				</li>
+				<br class="clear" />
+			</ul>
+			<dl>
+				<dd>
+					<table border="0" cellspacing="0" cellpadding="0" width="100%">
+						<tr>
+							<th>工号</th>
+							<th>姓名</th>
+							<th>状态</th>
+						</tr>
+						<tr>
+							<td>001</td>
+							<td>杨子强</td>
+							<td>无订单待命中（01国贸）</td>
+						</tr>
+						<tr>
+							<td>002</td>
+							<td>杨强</td>
+							<td><a href="order_flow">已接到3张订单预计14:00结束</a></td>
+						</tr>
+						<tr>
+							<td>002</td>
+							<td>李子强</td>
+							<td><a href="order_flow">已接到2张订单预计13:00束</a></td>
+						</tr>
+					</table>
+				</dd>
+				<dd>
+					<table border="0" cellspacing="0" cellpadding="0" width="100%">
+						<tr>
+							<th>序号</th>
+							<th>订单</th>
+							<th>配送</th>
+							<th>始发区</th>
+							<th>供应商区</th>
+							<th>客户区</th>
+							<th>最后状态（位置）</th>
+						</tr>
+						<tr>
+							<td>001</td>
+							<td>00000001</td>
+							<td>杨子强（1）</td>
+							<td>01</td>
+							<td>01</td>
+							<td>03</td>
+							<td>供应商确认</td>
+						</tr>
+						<tr>
+							<td>002</td>
+							<td>00000002</td>
+							<td>杨强（02）</td>
+							<td>02</td>
+							<td>02</td>
+							<td>03</td>
+							<td>供应商确认</td>
+						</tr>
+						<tr>
+							<td>003</td>
+							<td>00000003</td>
+							<td>李子强（05）</td>
+							<td>14</td>
+							<td>06</td>
+							<td>01</td>
+							<td>供应商出发</td>
+						</tr>
+					</table>
+				</dd>
+			</dl>
+		</div>
+	</body>
+</html>

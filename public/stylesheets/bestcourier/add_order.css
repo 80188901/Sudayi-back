@@ -1,0 +1,27 @@
+table{
+	margin-top: 40px;
+}
+table th, table td{
+	font-size: 12px;
+	text-align: left;
+	height: 40px;
+	color: #999999;
+}
+
+h3{
+	color: black;
+	font-size: 20px;
+}
+h2{
+	font-size: 20px;
+	color: #999999;
+}
+table tr:last-child td{
+	border-bottom: 1px solid #666;
+}
+table th{
+	border-bottom: 1px solid #666;
+}
+font{
+	color: black;
+}
