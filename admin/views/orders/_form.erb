@@ -86,6 +86,14 @@
     <span class='help-inline'><%= error ? f.error_message_on(:usetime) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
+<% error = @order.errors.include?(:level) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :level, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :level, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:level) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
 
 
 <div class="form-actions">

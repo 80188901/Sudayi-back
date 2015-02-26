@@ -29,12 +29,19 @@ get :index do
 		if (order.created_at+order.usetime.minute).to_i<Time.now.to_i
 		order.iscomplete=true
 		order.isnow=false
+                order.level=0
 		order.save
-		neworder=order.employee.orders.where(iscomplete:false).first
-                        if neworder
+		neworders=order.employee.orders.where(iscomplete:false)
+                          neworders.each_with_index do |neworder,index|
+                            if index==0
 			       neworder.isnow=true
+                                neworder.level=1
                 	       neworder.save
-	        	end
+                            else
+                                  neworder.level=neworder.level-1
+                                  neworder.save
+	        	    end
+                        end
 		end
 	end
 	@orders=Order.where(account_id:@account._id,iscomplete:false)
@@ -96,6 +103,7 @@ end
                 @order.node_id=node_customer._id
                 @order.store_id=warehouse._id
 		@order.firstnode=@account.node._id
+                  @order.level=1
                 if @order.save!
                     @courier.isfree=false
                     @courier.whenfree=(Time.now+@order.usetime.minute)+10.minute
@@ -118,6 +126,9 @@ end
               @courier=couriers[index]
               @order=Order.new(usetime:(@courier.whenfree.to_i-Time.now.to_i)/60+queding_usetime,account_id:@account._id,employee_id:@courier._id,node_id:node_customer._id,store_id:warehouse._id)
 		   @order.firstnode=@courier.orders.where(isnow:true).first.node._id
+
+                  level=@courier.orders.where(iscomplete:false).max(:level)+1
+                  @order.level=level
               if @order.save!
 
                    @courier.whenfree=(@courier.whenfree+@order.usetime.minute)+10.minute
@@ -130,6 +141,9 @@ end
              
               @order=Order.new(usetime:(@courier.whenfree-Time.now)/60+queding_usetime,account_id:@account._id,employee_id:@courier._id,node_id:node_customer._id,store_id:warehouse._id)
 		   @order.firstnode=@courier.orders.where(isnow:true).first.node._id
+     
+             level=@courier.orders.where(iscomplete:false).max(:level)+1
+                  @order.level=level
              if @order.save!
                     @courier.whenfree=(@courier.whenfree+@order.usetime.minute)+10.minute
                     @courier.save
@@ -150,11 +164,7 @@ end
       #============================
     #页面数据维持
 
-      @account=Account.where(mobile: '15817378124').first
-  @couriers=Employee.where(account_id:@account._id)
-  @node_ways=NodeWay.where(node_id:@account.node._id)
-    @orders=Order.where(account_id:@account._id,iscomplete:false)
-  @order=Order.new
+
     #=============================
 
 redirect(url(:bestcourier,:index))
@@ -173,17 +183,25 @@ redirect(url(:bestcourier,:index))
        	        order.destroy
 	else
 		if order.isnow==true
-			
+			orders=order.employee.orders.where(iscomplete:false)
+                          orders.each_with_index do |a,index|
+                                if  index==0
+                                   a.destroy
+                                elsif index==1
+                                    a.isnow=true
+                                    a.level=1
+                                    a.save
+                                 else
+                                  a.level=a.level-1
+                                  a.save
+                                end
+                          end
 		else
 		     #这个快递员有大于一张订单还没完成 且删除的订单不是正在派送的
 		end	
 	end
      end
-      @account=Account.where(mobile: '15817378124').first
-  @couriers=Employee.where(account_id:@account._id)
-  @node_ways=NodeWay.where(node_id:@account.node._id)
-    @orders=Order.where(account_id:@account._id,iscomplete:false)
-  @order=Order.new
+
 redirect(url(:bestcourier,:index))
 
   end

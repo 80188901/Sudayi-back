@@ -58,7 +58,7 @@
 		<% if order.isnow%>
 		<div class="col-md-8"><%=order.employee.name%>正在派送第1张订单,出发点：<%=Node.find(order.firstnode).name%>,供应商仓库：<%=order.store.node.name%>,终点:<%=order.node.name%></div>
 		<%else%>
-		<div class="col-md-8"><%=order.employee.name%>等待派送,地点:<%=order.node.name%></div>
+		<div class="col-md-8"><%=order.employee.name%>等待派送第<%=order.level%>张订单,出发点：<%=Node.find(order.firstnode).name%>,供应商仓库：<%=order.store.node.name%>,终点:<%=order.node.name%></div>
 		<%end%>
 		<div class="col-md-4"><%=((order.created_at+order.usetime.to_i.minute).to_i-Time.now.to_i)/60%>minute</div>
 		<div class="col-md-1 delete_order" wayID="<%= order._id %>" >&times</div>

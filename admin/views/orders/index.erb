@@ -49,6 +49,7 @@
                 <th class=header> <%= mat(:order, :iscomplete) %></th>
                 <th class=header> <%= mat(:order, :isnow) %></th>
                 <th class=header> <%= mat(:order, :usetime) %></th>
+                <th class=header> <%= mat(:order, :level) %></th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -64,25 +65,26 @@
           <td class=list-column> <%= order.cart_id %> </td>
           <td class=list-column> <%= order.account_id %> </td>
           <td class=list-column> <%= order.address_id %> </td>
-		<%if order.node%>
+          <%if order.node%>
           <td class=list-column> <%= order.node.name %> </td>
-		<%end%>
-		<%if order.store%>
+    <%end%>
+    <%if order.store%>
           <td class=list-column> <%= order.store.name %> </td>
-		<%end%>
-		<%if order.employee%>
+    <%end%>
+    <%if order.employee%>
           <td class=list-column> <%= order.employee.name %> </td>
-		<%end%>
-		<%if order.firstnode%>
+    <%end%>
+    <%if order.firstnode%>
           <td class=list-column> <%= Node.find(order.firstnode).name %> </td>
-		<%else%>
-	  <td class=list-column> <%= order.firstnode %> </td>
+    <%else%>
+    <td class=list-column> <%= order.firstnode %> </td>
 
-		<%end%>
+    <%end%>
           <td class=list-column> <%= order.price %> </td>
           <td class=list-column> <%= order.iscomplete %> </td>
           <td class=list-column> <%= order.isnow %> </td>
           <td class=list-column> <%= order.usetime %> </td>
+          <td class=list-column> <%= order.level %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:orders, :edit, :id => order.id), :rel => :tooltip, :title => "#{pat(:edit)} order", :class => 'list-row-action-wrapper-link' %>

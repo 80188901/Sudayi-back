@@ -12,6 +12,7 @@ class Order
   field :iscomplete,:type=>Boolean,:default=>false
   field :isnow,:type=>Boolean,:default=>false
   field :usetime,:type=>Integer,:default=>''
+  field :level,:type=>Integer
   # field <name>, :type => <type>, :default => <value>
   
 
