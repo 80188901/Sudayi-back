@@ -9,150 +9,35 @@
 	</head>
 	<body>
 		<div class="table">
+		<%@nodes.each do |node|%>
 			<dl>
 				<dd>
-					<button class="set_num">01（国贸）</button>
+					<button class="set_num">(<%=node.number%>)<%=node.name%></button>
 				</dd>
 				<dd>
 					<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					  
 						<tr>
-							<th><button>01</button></th>
-							<th><button>02</button></th>
-							<th><button>03</button></th>
-							<th><button>04</button></th>
-							<th><button>05</button></th>
-							<th><button>06</button></th>
-							<th><button>07</button></th>
-							<th><button>08</button></th>
-							<th><button>09</button></th>
-							<th><button>10</button></th>
-							<th><button>11</button></th>
-							<th><button>12</button></th>
-							<th><button>13</button></th>
-							<th><button>14</button></th>
-							<th><button>15</button></th>
-							<th><button>16</button></th>
-							<th><button>17</button></th>
-							<th><button>18</button></th>
-							<th><button>19</button></th>
+						<%Node.get_node_way(node._id).each do |node_way|%>
+							<th><button><%=Node.find(node_way.tonode).number%></button></th>
+						<%end%>	
 						</tr>
 						<tr>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
+						<%Node.get_node_way(node._id).each do |node_way|%>
+							<td><button><%=node_way.time%>分</button></td>
+							<%end%>
 						</tr>
 						<tr>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
+						<%Node.get_node_way(node._id).each do |node_way|%>
+							<td><button><%=node_way.fee%></button></td>
+							<%end%>
+							
 						</tr>
 					</table>
 				</dd>
 			</dl>
-			<dl>
-				<dd>
-					<button class="set_num">02（东门）</button>
-				</dd>
-				<dd>
-					<table border="0" cellspacing="0" cellpadding="0" width="100%">
-						<tr>
-							<th><button>01</button></th>
-							<th><button>02</button></th>
-							<th><button>03</button></th>
-							<th><button>04</button></th>
-							<th><button>05</button></th>
-							<th><button>06</button></th>
-							<th><button>07</button></th>
-							<th><button>08</button></th>
-							<th><button>09</button></th>
-							<th><button>10</button></th>
-							<th><button>11</button></th>
-							<th><button>12</button></th>
-							<th><button>13</button></th>
-							<th><button>14</button></th>
-							<th><button>15</button></th>
-							<th><button>16</button></th>
-							<th><button>17</button></th>
-							<th><button>18</button></th>
-							<th><button>19</button></th>
-						</tr>
-						<tr>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-							<td><button>+30分</button></td>
-						</tr>
-						<tr>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-							<td><button>+20分</button></td>
-						</tr>
-					</table>
-				</dd>
-			</dl>
+			<%end%>
+			
 		</div>
 	</body>
 </html>

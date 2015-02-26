@@ -46,6 +46,30 @@
     <span class='help-inline'><%= error ? f.error_message_on(:whenfree) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
+<% error = @employee.errors.include?(:number) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :number, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :number, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:number) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @employee.errors.include?(:money) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :money, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :money, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:money) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @employee.errors.include?(:goods) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :goods, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :goods, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:goods) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
 
 
 <div class="form-actions">

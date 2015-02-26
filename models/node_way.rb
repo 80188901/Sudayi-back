@@ -5,7 +5,7 @@ belongs_to :node
   # field <name>, :type => <type>, :default => <value>
   field :tonode,:type=>String
   field :time,:type=>Integer
-  field :fee,:type=>Float
+  field :fee,:type=>Float,:default=>10
   field :miles,:type=>Float
 
   # You can define indexes on documents using the index macro:

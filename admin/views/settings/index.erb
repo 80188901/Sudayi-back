@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs">
-  <li class=active> <%= link_to tag_icon(:list, pat(:list)), url(:employees, :index) %></li>
-  <li> <%= link_to tag_icon(:plus, pat(:new)), url(:employees, :new) %></li>
+  <li class=active> <%= link_to tag_icon(:list, pat(:list)), url(:settings, :index) %></li>
+  <li> <%= link_to tag_icon(:plus, pat(:new)), url(:settings, :new) %></li>
 </ul>
 <div class=tabs-content>
   <table id=list class="table table-striped table-hover table-condensed">
@@ -25,8 +25,8 @@
                   <div class=arrow></div>
                   <h3 class=popover-title><%= pat(:delete_selected_title) %></h3>
                   <div class=popover-content>
-                    <% form_tag url(:employees, :destroy_many), :method => :delete do %>
-                      <%=hidden_field_tag :employee_ids, :'data-delete-many-ids' => true %>
+                    <% form_tag url(:settings, :destroy_many), :method => :delete do %>
+                      <%=hidden_field_tag :setting_ids, :'data-delete-many-ids' => true %>
                       <%=submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small' %>
                       <div class='btn btn-default btn-small cancel'><%= pat(:cancel) %></div>
                     <% end %>
@@ -36,47 +36,41 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:employee, :created_at) %></th>
-                <th class=header> <%= mat(:employee, :updated_at) %></th>
-                <th class=header> <%= mat(:employee, :account_id) %></th>
-                <th class=header> <%= mat(:employee, :emp) %></th>
-                <th class=header> <%= mat(:employee, :name) %></th>
-                <th class=header> <%= mat(:employee, :phone) %></th>
-                <th class=header> <%= mat(:employee, :isfree) %></th>
-                <th class=header> <%= mat(:employee, :whenfree) %></th>
-                <th class=header> <%= mat(:employee, :number) %></th>
-                <th class=header> <%= mat(:employee, :money) %></th>
-                <th class=header> <%= mat(:employee, :goods) %></th>
+                <th class=header> <%= mat(:setting, :created_at) %></th>
+                <th class=header> <%= mat(:setting, :updated_at) %></th>
+                <th class=header> <%= mat(:setting, :account_id) %></th>
+                <th class=header> <%= mat(:setting, :store_time) %></th>
+                <th class=header> <%= mat(:setting, :courier_time) %></th>
+                <th class=header> <%= mat(:setting, :store_vali_time) %></th>
+                <th class=header> <%= mat(:setting, :customer_vali_time) %></th>
+                <th class=header> <%= mat(:setting, :complete_after) %></th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
 
     <tbody>
-      <% @employees.each do |employee| %>
+      <% @settings.each do |setting| %>
         <tr class=list-row>
           <td class="list-column list-selectable">
-            <%= check_box_tag 'employee_ids[]', :value => employee.id, :class => 'list-selectable-checkbox' %>
+            <%= check_box_tag 'setting_ids[]', :value => setting.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words employee.created_at %></td>
-          <td class=list-column> <%= time_ago_in_words employee.updated_at %></td>
-          <td class=list-column> <%= employee.account_id %> </td>
-          <td class=list-column> <%= employee.emp %> </td>
-          <td class=list-column> <%= employee.name %> </td>
-          <td class=list-column> <%= employee.phone %> </td>
-          <td class=list-column> <%= employee.isfree %> </td>
-          <td class=list-column> <%= employee.whenfree %> </td>
-          <td class=list-column> <%= employee.number %> </td>
-          <td class=list-column> <%= employee.money %> </td>
-          <td class=list-column> <%= employee.goods %> </td>
+          <td class=list-column> <%= time_ago_in_words setting.created_at %></td>
+          <td class=list-column> <%= time_ago_in_words setting.updated_at %></td>
+          <td class=list-column> <%= setting.account_id %> </td>
+          <td class=list-column> <%= setting.store_time %> </td>
+          <td class=list-column> <%= setting.courier_time %> </td>
+          <td class=list-column> <%= setting.store_vali_time %> </td>
+          <td class=list-column> <%= setting.customer_vali_time %> </td>
+          <td class=list-column> <%= setting.complete_after %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
-               <%= link_to tag_icon(:edit), :href => url(:employees, :edit, :id => employee.id), :rel => :tooltip, :title => "#{pat(:edit)} employee", :class => 'list-row-action-wrapper-link' %>
-               <%= link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} employee", :class => 'list-row-action-delete-one list-row-action-wrapper-link' %>
+               <%= link_to tag_icon(:edit), :href => url(:settings, :edit, :id => setting.id), :rel => :tooltip, :title => "#{pat(:edit)} setting", :class => 'list-row-action-wrapper-link' %>
+               <%= link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} setting", :class => 'list-row-action-delete-one list-row-action-wrapper-link' %>
                <div class="popover list-row-action-popover-delete-one left">
                  <div class=arrow> </div>
-                 <h3 class=popover-title><%= pat(:delete, :model => "employee") %></h3>
+                 <h3 class=popover-title><%= pat(:delete, :model => "setting") %></h3>
                  <div class=popover-content>
-                   <%- form_tag url(:employees, :destroy, :id => employee.id), :method => :delete do %>
+                   <%- form_tag url(:settings, :destroy, :id => setting.id), :method => :delete do %>
                      <%= submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small' %>
                      <div class="btn btn-default btn-small cancel"><%= pat(:cancel) %></div>
                    <% end %>

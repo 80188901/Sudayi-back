@@ -13,7 +13,11 @@ class Node
 
   # field <name>, :type => <type>, :default => <value>
   
-
+ def self.get_node_way(node_id)
+    node=Node.find(node_id)
+    node_ways=NodeWay.where(node_id:node._id).limit(19)
+    return node_ways
+ end
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>
 

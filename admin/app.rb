@@ -33,6 +33,8 @@ module Fancyshpv2
     end
 
     access_control.roles_for :admin do |role|
+      role.project_module :settings, '/settings'
+      
       role.project_module :node_ways, '/node_ways'
       role.project_module :nodes, '/nodes'
       role.project_module :store_image_items, '/store_image_items'

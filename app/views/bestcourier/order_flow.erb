@@ -10,7 +10,7 @@
 		<div class="table" style="margin-top: 40px;border: 1px solid #999999;border-radius: 5px;">
 			<ul>
 				<li>杨强的配送流程</li>
-				<li>20150303</li>
+				<li><%=Time.now%></li>
 			</ul>
 			<table border="0" cellspacing="0" cellpadding="0" width="100%">
 				<tr>
@@ -22,24 +22,18 @@
 					<th>预计结束</th>
 					<th>实际结束</th>
 				</tr>
+				<%@orders.each do |order|%>
 				<tr>
-					<td>0000002</td>
-					<td>20150303<font class="blue">1400</font></font></td>
-					<td>01区取件<font class="red">+30分</font></td>
-					<td>02区派件<font class="red">+30分</font></td>
-					<td>02区派件<font class="red">+20分</font></td>
-					<td>20150303<font class="blue">1520</font></td>
+					<td><%=order.number%></td>
+					<td><%=Order.get_start_time(order._id)%></td>
+					<td><%=order.store.node.name%>取件<font class="red">+<%=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first.time%>分</font></td>
+					<td><%=order.node.name%>派件<font class="red">+<%=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first.time%>分</font></td>
+					<td><font class="red">+<%=Setting.alltime%>分</font></td>
+					<td><%=order.created_at+order.usetime.minute+10.minute%></td>
 					<td>20150303<font class="green">1510（-10）</font></td>
 				</tr>
-				<tr>
-					<td>0000003</td>
-					<td>20150303<font class="blue">1520</font></td>
-					<td>01区取件<font class="red">+30分</font></td>
-					<td>02区派件<font class="red">+30分</font></td>
-					<td>02区派件<font class="red">+20分</font></td>
-					<td>20150303<font class="blue">1640</font></td>
-					<td>正在排队</td>
-				</tr>
+				<%end%>
+				
 			</table>
 		</div>
 	</body>

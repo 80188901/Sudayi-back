@@ -11,27 +11,27 @@
 			<table cellpadding="0" cellspacing="0" width="100%">
 				<tr>
 					<td>等待供应商确认时间</td>
-					<td><input type="text" name="" id="" value="5分钟"/></td>
+					<td><input type="text" name="" id="" value="<%=@setting.store_time%>分钟"/></td>
 					<td><input type="checkbox" name="" id="" />已经缴付押金的供应商不适用
 </td>
 					<td><input type="checkbox" name="" id="" />对所有供应商都不使用</td>
 				</tr>
 				<tr>
 					<td>等待配送员确认时间</td>
-					<td><input type="text" name="" id="" value="5分钟"/></td>
+					<td><input type="text" name="" id="" value="<%=@setting.courier_time%>分钟"/></td>
 					<td><input type="checkbox" name="" id="" />不使用</td>
 </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>到达供应商验货时间</td>
-					<td><input type="text" name="" id="" value="5分钟"/></td>
+					<td><input type="text" name="" id="" value="<%=@setting.store_vali_time%>分钟"/></td>
 					<td><input type="checkbox" name="" id="" />不使用</td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>客户（消费者）验货时间</td>
-					<td><input type="text" name="" id="" value="5分钟"/></td>
+					<td><input type="text" name="" id="" value="<%=@setting.customer_vali_time%>分钟"/></td>
 					<td><input type="checkbox" name="" id="" />不使用</td>
 					<td></td>
 				</tr>
