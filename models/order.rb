@@ -40,9 +40,36 @@ def self.get_start_time(order_id)
  order=Order.find(order_id)
  node_way1=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first
  node_way2=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first
-time=(order.created_at+order.usetime.minute)-(node_way1.time+node_way2.time+setting.store_time+setting.store_vali_time).minute
+time=(order.created_at+order.usetime.minute)-(node_way1.time+node_way2.time+setting.store_time+setting.store_vali_time+setting.customer_vali_time).minute
 
 return time
+  end
+
+  def self.get_now_process(number,order_id)
+      order=Order.find(order_id)
+  time=order.created_at+order.usetime.minute
+    surplus=(time.to_i-Time.now.to_i)/60
+    setting=Setting.last
+   node_way2=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first.time
+   node_way1=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first.time
+   compare=0
+   if surplus<0
+    compare=5
+     elsif surplus<=setting.customer_vali_time
+     compare=4
+     elsif surplus<=node_way2+setting.customer_vali_time
+      compare=3
+    elsif  surplus<=node_way2+setting.customer_vali_time+setting.store_vali_time
+      compare=2
+    elsif surplus<=node_way2+setting.customer_vali_time+setting.store_vali_time+node_way1
+      compare=1
+    end
+    if number<=compare
+      return true
+    else
+      return false
+    end
+
   end
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>

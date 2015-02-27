@@ -28,11 +28,11 @@
 					<td><%=@order.employee.name%></td>
 					<td><%=Node.find(@order.firstnode).name%>（始发点）<font class="blue"><%=Order.get_start_time(@order._id).strftime('%H%M')%></font></font></td>
 					<td><%=@order.created_at.strftime('%Y%m%d')%><font class="blue"><%=@order.created_at.strftime('%H%M')%></font></td>
-					<td><font class="red">+<%=@setting.store_time%>分</font><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px'%></td>
-					<td><font class="red">+<%=NodeWay.where(node_id:@order.firstnode,tonode:@order.store.node._id).first.time%>分</font><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px'%></td>
-					<td><font class="red">+<%=@setting.store_vali_time%>分</font></td>
-					<td><font class="red">+<%=NodeWay.where(node_id:@order.store.node._id,tonode:@order.node._id).first.time%>分</font></td>
-					<td><font class="red">+<%=@setting.customer_vali_time%>分</font></td>
+					<td><font class="red">+<%=@setting.store_time%>分</font><%if Order.get_now_process(1,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px'%><%end%></td>
+					<td><font class="red">+<%=NodeWay.where(node_id:@order.firstnode,tonode:@order.store.node._id).first.time%>分</font><%if Order.get_now_process(2,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px'%><%end%></td>
+					<td><font class="red">+<%=@setting.store_vali_time%>分</font><%if Order.get_now_process(3,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px'%><%end%></td>
+					<td><font class="red">+<%=NodeWay.where(node_id:@order.store.node._id,tonode:@order.node._id).first.time%>分</font><%if Order.get_now_process(4,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px'%><%end%></td>
+					<td><font class="red">+<%=@setting.customer_vali_time%>分</font><%if Order.get_now_process(5,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px'%><%end%></td>
 					<td><%=(@order.created_at+@order.usetime.minute+@setting.customer_vali_time.minute).strftime("%Y%m%d")%><font class="blue"><%=(@order.created_at+@order.usetime.minute+@setting.customer_vali_time.minute).strftime("%H%M")%></font></td>
 				</tr>
 			</table>

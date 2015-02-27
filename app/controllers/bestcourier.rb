@@ -158,7 +158,7 @@ end
     node_customer=Node.find(params[:customer_node])
     to_good_way=NodeWay.where(node_id:@node._id,tonode:node_good._id).first
     to_customer_way=NodeWay.where(node_id:node_good._id,tonode:node_customer._id).first
-    company_usetime=to_good_way.time+to_customer_way.time+setting.store_time+setting.store_vali_time+setting.courier_time
+    company_usetime=to_good_way.time+to_customer_way.time+setting.store_time+setting.store_vali_time+setting.courier_time+setting.customer_vali_time
       other_usetime=[]
   
 
@@ -178,7 +178,7 @@ end
    #  other_usetime=[]
      #   other_usetime<<usetime
    #   else
-        usetime=(courier.whenfree.to_i-Time.now.to_i)/60+my_to_good_way.time+to_customer_way.time+setting.store_time+setting.store_vali_time+setting.courier_time
+        usetime=(courier.whenfree.to_i-Time.now.to_i)/60+my_to_good_way.time+to_customer_way.time+setting.store_time+setting.store_vali_time+setting.courier_time+setting.customer_vali_time
         other_usetime<<usetime
   #   end
    end
@@ -214,7 +214,7 @@ end
                   @order.number=number
                 if @order.save!
                     @courier.isfree=false
-                    @courier.whenfree=(Time.now+@order.usetime.minute)+setting.customer_vali_time.minute
+                    @courier.whenfree=Time.now+@order.usetime.minute
                     @courier.save
                 end
                 
@@ -240,7 +240,7 @@ end
                   level=@courier.orders.where(iscomplete:false).max(:level)+1
                   @order.level=level
               if @order.save!
-                   @courier.whenfree=@order.created_at+@order.usetime.minute+setting.customer_vali_time.minute
+                   @courier.whenfree=@order.created_at+@order.usetime.minute
  
                     @courier.save
               end
@@ -256,7 +256,7 @@ end
                   @order.level=level
                   @order.number=number
              if @order.save!
-                    @courier.whenfree=@order.created_at+@order.usetime.minute+setting.customer_vali_time.minute
+                    @courier.whenfree=@order.created_at+@order.usetime.minute
                     @courier.save
              end      
       end
