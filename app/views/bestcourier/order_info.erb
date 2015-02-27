@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<%=stylesheet_link_tag "bestcourier/order_flow"%>
+		  <%=stylesheet_link_tag "bestcourier/base"%>
+		<title></title>
+	</head>
+	<body>
+		<div class="table" style="margin-top: 40px;border: 1px solid #999999;border-radius: 5px;">
+			<ul>
+				<li><%=@order.number%>的配送流程</li>
+				<li><%=Time.now.strftime('%Y-%m-%d %H:%M:%S')%></li>
+			</ul>
+			<table border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<th>配送员</th>
+					<th>始发</th>
+					<th>接单时间</th>
+					<th>供应商确认</th>
+					<th>01到02区取件</th>
+					<th>验货付款</th>
+					<th>02区到03区派件</th>
+					<th>验货收款</th>
+					<th>预计结束</th>
+				</tr>
+				<tr>
+					<td><%=@order.employee.name%></td>
+					<td><%=Node.find(@order.firstnode).name%>（始发点）<font class="blue"><%=Order.get_start_time(@order._id).strftime('%H%M')%></font></font></td>
+					<td><%=@order.created_at.strftime('%Y%m%d')%><font class="blue"><%=@order.created_at.strftime('%H%M')%></font></td>
+					<td><font class="red">+<%=@setting.store_time%>分</font><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px'%></td>
+					<td><font class="red">+<%=NodeWay.where(node_id:@order.firstnode,tonode:@order.store.node._id).first.time%>分</font><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px'%></td>
+					<td><font class="red">+<%=@setting.store_vali_time%>分</font></td>
+					<td><font class="red">+<%=NodeWay.where(node_id:@order.store.node._id,tonode:@order.node._id).first.time%>分</font></td>
+					<td><font class="red">+<%=@setting.customer_vali_time%>分</font></td>
+					<td><%=(@order.created_at+@order.usetime.minute+@setting.customer_vali_time.minute).strftime("%Y%m%d")%><font class="blue"><%=(@order.created_at+@order.usetime.minute+@setting.customer_vali_time.minute).strftime("%H%M")%></font></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
+
+

@@ -24,13 +24,17 @@
 				</tr>
 				<%@orders.each do |order|%>
 				<tr>
-					<td><%=order.number%></td>
-					<td><%=Order.get_start_time(order._id)%></td>
+					<td><a href="order_info?order_id=<%=order._id%>"><%=order.number%></a></td>
+					<td><%=Order.get_start_time(order._id).strftime('%Y%m%d')%><font class="blue"><%=Order.get_start_time(order._id).strftime('%H%M')%></font></td>
 					<td><%=order.store.node.name%>取件<font class="red">+<%=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first.time%>分</font></td>
 					<td><%=order.node.name%>派件<font class="red">+<%=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first.time%>分</font></td>
 					<td><font class="red">+<%=Setting.alltime%>分</font></td>
-					<td><%=order.created_at+order.usetime.minute+10.minute%></td>
-					<td><%=order.created_at+order.usetime.minute+20.minute%><font class="green">（+10）</font></td>
+					<td><%=(order.created_at+order.usetime.minute+10.minute).strftime('%Y%m%d')%><font class="blue"><%=(order.created_at+order.usetime.minute+10.minute).strftime('%H%M')%></font></td>
+				<%if order.iscomplete%>
+				<td><%=(order.created_at+order.usetime.minute+20.minute).strftime('%Y%m%d')%><font class="blue"><%=(order.created_at+order.usetime.minute+20.minute).strftime('%H%M')%></font><font class="green">（+10）</font></td>
+				<%else%>
+				<td>未完成</td>
+				<%end%>
 				</tr>
 				<%end%>
 				

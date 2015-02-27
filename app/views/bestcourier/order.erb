@@ -13,12 +13,13 @@
 				<li>
 					<h3>按订单查看</h3>
 					<a href="add_order"><button class="button">添加新订单</button></a>
+<a href="del_all_order"><button class="button">清空订单（测试用）</button></a>
 				</li>
 				<br class="clear" />
 			</ul>
 			<dl>
 				<dd>
-					<table border="0" cellspacing="0" cellpadding="0" width="100%">
+					<table border="0" cellspacing="0" cellpadding="0" width="100%" id="limit">
 						<tr>
 							<th>工号</th>
 							<th>姓名</th>
@@ -26,12 +27,12 @@
 						</tr>
 						<%@couriers.each do |courier|%>
 						<tr>
-							<td><%=courier.number%></td>
-							<td><%=courier.name%></td>
+							<td><div><%=courier.number%></div></td>
+							<td><div><%=courier.name%></div></td>
 							<%if courier.isfree%>
-							<td>无订单待命中（<%=courier.account.node.name%>）</td>
+							<td><div>待命中（<%=courier.account.node.name%>）</div></td>
 							<%else%>
-							<td><a href="order_flow?courier_id=<%=courier._id%>">已接到<%=courier.orders.max(:level).to_i%>张订单预计<%=courier.whenfree.strftime('%Y-%m-%d %H:%M:%S')%>结束</a></td>
+							<td><div><a href="order_flow?courier_id=<%=courier._id%>">已接到<%=courier.orders.max(:level).to_i%>张订单预计<%=courier.whenfree.strftime('%Y%m%d%H%M')%>结束</a></div></td>
 							<%end%>
 						</tr>
 						<%end%>

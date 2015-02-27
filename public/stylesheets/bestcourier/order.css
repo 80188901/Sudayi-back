@@ -1,14 +1,12 @@
 dl{
 	border-top: 1px solid #999999;
 	border-bottom: 1px solid #999999;
-	height: 160px;
 }
 dl:nth-child(1){
 	margin-top: 40px;
 }
 dl dd{
 	margin: 10px 0;
-	height: 140px;
 	float: left;
 }
 dl dd:nth-child(1){
@@ -43,15 +41,47 @@ ul li{
 	float: left;
 }
 li:nth-child(1){
-	width: 30%;
+        width: 30%;
 }
 li:nth-child(2){
-	width: 70%;
+        width: 70%;
 }
+
+
 li h3{
 	margin-top: 20px;
 	float: left;
 }
 li button{
 	float: right;
+}
+
+#limit th:nth-child(1){
+	width: 50px;
+	overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+#limit th:nth-child(2){
+	width: 80px;
+	overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+#limit th:nth-child(3){
+	width: 80px;
+	overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+#limit td:nth-child(3) div{
+	width: 120px;
+	height: 35px;
+	overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    white-space:nowrap;
 }

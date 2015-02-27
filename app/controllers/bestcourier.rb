@@ -13,6 +13,11 @@ get :main do
   render :main,:layout=>false
 end  
 
+get :order_info do
+	@order=Order.find(params[:order_id])
+	@setting=Setting.last
+	render :order_info,:layout=>false
+end
 
 get :table do
   @nodes=Node.all
@@ -81,6 +86,16 @@ get :settime do
   @orders=Order.where(account_id:@account._id,iscomplete:false)
     render :order,:layout=>false
   end
+
+
+get :del_all_order do
+ Order.all.destroy
+	Employee.all.each do |employee|
+	employee.update_attributes(isfree:true,whenfree:'')
+	end
+redirect(url(:bestcourier,:order))
+end
+
 
 
   get :add_order do
