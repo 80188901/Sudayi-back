@@ -35,8 +35,8 @@
 					<td><%=Order.get_now_node(courier.orders.where(isnow:true).first._id)[0]%></td>
 					<td><%=Order.get_now_node(courier.orders.where(isnow:true).first._id)[1]%></td>
 					<%end%>
-					<td>2件</td>
-					<td>￥220</td>
+					<td><%=courier.goods%>件</td>
+					<td>￥<%=courier.money%></td>
 					<td><img src="<%=image_path 'bestcourier/u450.png'%>" width="40" height="20"/></td>
 				</tr>
 				<%end%>

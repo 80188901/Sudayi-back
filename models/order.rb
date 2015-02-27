@@ -24,7 +24,7 @@ def  self.get_now_node (order_id)
    node_way=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first.time
  node=[]
   if surplus<(node_way+setting.customer_vali_time)
- 
+    
     node<<order.store.node.name
     node<<order.node.name
   else

@@ -7,27 +7,45 @@ Fancyshpv2::App.controllers :bestcourier do
     resource '*', :headers => :any, :methods => [:get, :post, :options]
   end
 end 
+
+
 get :main do
   render :main,:layout=>false
 end  
+
+
 get :table do
   @nodes=Node.all
   render :table,:layout=>false
 end
+
+
 get :settime do
   @setting=Setting.last
   render :settime,:layout=>false
   end
+
+
   get :setnode do
     @nodes=Node.all
     render :setnode,:layout=>false
   end
+
+
   get :setcourier do
       @account=Account.where(mobile: '15817378124').first
   @couriers=Employee.where(account_id:@account._id)
-  
+  @couriers.each do |courier|
+    if courier.whenfree.to_i<Time.now.to_i
+      courier.isfree=true
+      courier.whenfree=''
+      courier.save
+    end
+  end
     render :setcourier,:layout=>false
   end
+
+
   get :order do
     @account=Account.where(mobile: '15817378124').first
   @couriers=Employee.where(account_id:@account._id)
@@ -63,54 +81,57 @@ get :settime do
   @orders=Order.where(account_id:@account._id,iscomplete:false)
     render :order,:layout=>false
   end
+
+
   get :add_order do
 
     render :add_order,:layout=>false
   end
   get :order_flow do
-    courier=Employee.find(params[:courier_id])
-    @orders=courier.orders
+    @courier=Employee.find(params[:courier_id])
+    @orders=@courier.orders
     render :order_flow,:layout=>false
   end
 get :get_node do
 	store=Store.find(params[:store_id])
 	render :html,store.node.name
 end
-get :index do
-   @account=Account.where(mobile: '15817378124').first
-  @couriers=Employee.where(account_id:@account._id)
-	@couriers.each do |courier|
-		if courier.whenfree.to_i<Time.now.to_i
-			courier.isfree=true
-			courier.whenfree=''
-			courier.save
-		end
-	end
-  @node_ways=NodeWay.where(node_id:@account.node._id)
-  @order=Order.new
-  orders=Order.where(account_id:@account._id,iscomplete:false)
-	orders.each do |order|
-		if (order.created_at+order.usetime.minute).to_i<Time.now.to_i
-		order.iscomplete=true
-		order.isnow=false
-                order.level=0
-		order.save
-		neworders=order.employee.orders.where(iscomplete:false)
-                          neworders.each_with_index do |neworder,index|
-                            if index==0
-			       neworder.isnow=true
-                                neworder.level=1
-                	       neworder.save
-                            else
-                                  neworder.level=neworder.level-1
-                                  neworder.save
-	        	    end
-                        end
-		end
-	end
-	@orders=Order.where(account_id:@account._id,iscomplete:false)
 
-   render 'bestcourier/index'
+
+post :update_time ,:csrf_protection => false do
+  puts params[:store_time]
+  puts params[:courier_time]
+  puts params[:store_vali_time]
+  puts params[:customer_vali_time]
+  puts params[:complete_after]
+  setting=Setting.last
+  if  puts params[:store_time]=='on'
+    setting.store_time=0
+  else
+    index=params[:store_time].index('分钟')
+    setting.store_time=params[:store_time][0,index]
+  end
+   if  puts params[:courier_time]=='on'
+    setting.courier_time=0
+     else
+    index=params[:courier_time].index('分钟')
+    setting.courier_time=params[:courier_time][0,index]
+  end
+   if  puts params[:store_vali_time]=='on'
+    setting.store_vali_time=0
+     else
+    index=params[:store_vali_time].index('分钟')
+    setting.store_vali_time=params[:store_vali_time][0,index]
+  end
+   if  puts params[:customer_vali_time]=='on'
+    setting.customer_vali_time=0
+     else
+    index=params[:customer_vali_time].index('分钟')
+    setting.customer_vali_time=params[:customer_vali_time][0,index]
+  end
+setting.complete_after=params[:complete_after]
+setting.save
+  redirect(url(:bestcourier,:settime)) 
 end
 
   post :create_order ,:csrf_protection => false do
@@ -160,6 +181,8 @@ end
      end
   puts other_usetime
   puts '||||||'
+   number=rand(999999)
+
       if index=other_usetime.size-1
 
               @courier=Employee.where(isfree:true).first     
@@ -173,6 +196,7 @@ end
                 @order.store_id=warehouse._id
 		@order.firstnode=@account.node._id
                   @order.level=1
+                  @order.number=number
                 if @order.save!
                     @courier.isfree=false
                     @courier.whenfree=(Time.now+@order.usetime.minute)+setting.customer_vali_time.minute
@@ -197,7 +221,7 @@ end
 
               @order=Order.new(usetime:queding_usetime,account_id:@account._id,employee_id:@courier._id,node_id:node_customer._id,store_id:warehouse._id)
 		   @order.firstnode=@courier.orders.where(isnow:true).first.node._id
-
+                    @order.number=number
                   level=@courier.orders.where(iscomplete:false).max(:level)+1
                   @order.level=level
               if @order.save!
@@ -215,6 +239,7 @@ end
      
              level=@courier.orders.where(iscomplete:false).max(:level)+1
                   @order.level=level
+                  @order.number=number
              if @order.save!
                     @courier.whenfree=@order.created_at+@order.usetime.minute+setting.customer_vali_time.minute
                     @courier.save

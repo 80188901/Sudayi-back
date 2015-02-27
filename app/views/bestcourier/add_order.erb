@@ -5,6 +5,19 @@
 		<%=stylesheet_link_tag "bestcourier/add_order"%>
 		  <%=stylesheet_link_tag "bestcourier/base"%>
 		<title></title>
+		<%= javascript_include_tag 'jquery-1.8.2.min' %>
+		<script type="text/javascript">
+			$(function(){
+				$('#canku').change(function(){
+				
+			var id=$(this).children('option:selected').val();
+			$.get('/bestcourier/get_node',{store_id:id},function(obj){
+			 $('#diqu').html(obj);
+	
+					})
+				})
+			})
+		</script>
 	</head>
 	<body>
 		<div class="table">
@@ -27,7 +40,7 @@
 				<tr>
 					<td><h2>供应商</h2></td>
 					<td>
-						<%=select_tag 'store_id',:collection=>Store.all,:fields=>[:name,:id],:width=>'50px'%>
+						<%=select_tag 'store_id',:collection=>Store.all,:fields=>[:name,:id],:width=>'50px',id:'canku'%><span id='diqu'><%=Store.last.node.name%></span>
 					</td>
 					<td>
 						正常情况下此区域通过<font>供应商认证地址自动认</font>定无须输入

@@ -5,43 +5,54 @@
 		  <%=stylesheet_link_tag "bestcourier/set_time"%>
 		    <%=stylesheet_link_tag "bestcourier/base"%>
 		<title></title>
+		<%= javascript_include_tag 'jquery-1.8.2.min' %>
+		<script type="text/javascript">
+		function cancel(){
+			location.reload([true])   
+		}
+		</script>
 	</head>
 	<body>
 		<div class="table">
+		<%form_tag :update_time do%>
 			<table cellpadding="0" cellspacing="0" width="100%">
 				<tr>
 					<td>等待供应商确认时间</td>
-					<td><input type="text" name="" id="" value="<%=@setting.store_time%>分钟"/></td>
-					<td><input type="checkbox" name="" id="" />已经缴付押金的供应商不适用
+					<td><input type="text" name="store_time" id="" value="<%=@setting.store_time%>分钟"/></td>
+					<td><input type="radio" name="store_time" id="" />已经缴付押金的供应商不适用
 </td>
-					<td><input type="checkbox" name="" id="" />对所有供应商都不使用</td>
+					<td><input type="radio" name="store_time" id="" />对所有供应商都不使用</td>
 				</tr>
 				<tr>
 					<td>等待配送员确认时间</td>
-					<td><input type="text" name="" id="" value="<%=@setting.courier_time%>分钟"/></td>
-					<td><input type="checkbox" name="" id="" />不使用</td>
+					<td><input type="text" name="courier_time" id="" value="<%=@setting.courier_time%>分钟"/></td>
+					<td><input type="checkbox" name="courier_time" id="" />不使用</td>
 </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>到达供应商验货时间</td>
-					<td><input type="text" name="" id="" value="<%=@setting.store_vali_time%>分钟"/></td>
-					<td><input type="checkbox" name="" id="" />不使用</td>
+					<td><input type="text" name="store_vali_time" id="" value="<%=@setting.store_vali_time%>分钟"/></td>
+					<td><input type="checkbox" name="store_vali_time" id="" />不使用</td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>客户（消费者）验货时间</td>
-					<td><input type="text" name="" id="" value="<%=@setting.customer_vali_time%>分钟"/></td>
-					<td><input type="checkbox" name="" id="" />不使用</td>
+					<td><input type="text" name="customer_vali_time" id="" value="<%=@setting.customer_vali_time%>分钟"/></td>
+					<td><input type="checkbox" name="customer_vali_time" id="" />不使用</td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>所有订单完成之后</td>
-					<td><input type="checkbox" name="" id="" />自动派发指令回始发点</td>
-					<td><input type="checkbox" name="" id="" />自动派发指令留原地待命</td>
-					<td><input type="checkbox" name="" id="" />无指令</td>
+					<td><input type="radio" name="complete_after" id=""  value="back" />自动派发指令回始发点</td>
+					<td><input type="radio" name="complete_after" id="" value="stand" />自动派发指令留原地待命</td>
+					<td><input type="radio" name="complete_after" id=""  value='no' checked/>无指令</td>
 				</tr>
 			</table>
+			<%=submit_tag '保存',url_for(:bestcourier,:update_time),:class=>"button"%>
+
+			<%end%>
+			<button class="button" onclick="cancel()">取消</button>
 		</div>
 	</body>
 </html>
