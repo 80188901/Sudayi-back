@@ -108,26 +108,26 @@ post :update_time ,:csrf_protection => false do
   if  puts params[:store_time]=='on'
     setting.store_time=0
   else
-    index=params[:store_time].index('分钟')
-    setting.store_time=params[:store_time][0,index]
+
+    setting.store_time=params[:store_time].to_i
   end
    if  puts params[:courier_time]=='on'
     setting.courier_time=0
      else
-    index=params[:courier_time].index('分钟')
-    setting.courier_time=params[:courier_time][0,index]
+
+    setting.courier_time=params[:courier_time].to_i
   end
    if  puts params[:store_vali_time]=='on'
     setting.store_vali_time=0
      else
-    index=params[:store_vali_time].index('分钟')
-    setting.store_vali_time=params[:store_vali_time][0,index]
+
+    setting.store_vali_time=params[:store_vali_time].to_i
   end
    if  puts params[:customer_vali_time]=='on'
     setting.customer_vali_time=0
      else
-    index=params[:customer_vali_time].index('分钟')
-    setting.customer_vali_time=params[:customer_vali_time][0,index]
+
+    setting.customer_vali_time=params[:customer_vali_time].to_i
   end
 setting.complete_after=params[:complete_after]
 setting.save

@@ -10,35 +10,55 @@
 		function cancel(){
 			location.reload([true])   
 		}
+		$(function(){
+			$('#abc input[type=text]').keypress(function(event) {  
+			var keyCode = event.which;  
+			if (keyCode == 46 || (keyCode >= 48 && keyCode <=57)||keyCode==8)  
+			return true;  
+			else  
+			return false;  
+			}).focus(function() {  
+			this.style.imeMode='disabled';  
+
+			});  
+			$('#abc input[type=text]').blur(function(){
+
+				if ($(this).val()==""){
+				alert('时间不能为空');
+				$(this).val('5');
+				
+				}
+			})
+		})
 		</script>
 	</head>
 	<body>
 		<div class="table">
 		<%form_tag :update_time do%>
-			<table cellpadding="0" cellspacing="0" width="100%">
+			<table cellpadding="0" cellspacing="0" width="100%" id='abc'>
 				<tr>
 					<td>等待供应商确认时间</td>
-					<td><input type="text" name="store_time" id="" value="<%=@setting.store_time%>分钟"/></td>
+					<td><input type="text" name="store_time" id="" value="<%=@setting.store_time%>"/>分钟</td>
 					<td><input type="radio" name="store_time" id="" />已经缴付押金的供应商不适用
 </td>
 					<td><input type="radio" name="store_time" id="" />对所有供应商都不使用</td>
 				</tr>
 				<tr>
 					<td>等待配送员确认时间</td>
-					<td><input type="text" name="courier_time" id="" value="<%=@setting.courier_time%>分钟"/></td>
+					<td><input type="text" name="courier_time" id="" value="<%=@setting.courier_time%>"/>分钟</td>
 					<td><input type="checkbox" name="courier_time" id="" />不使用</td>
 </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>到达供应商验货时间</td>
-					<td><input type="text" name="store_vali_time" id="" value="<%=@setting.store_vali_time%>分钟"/></td>
+					<td><input type="text" name="store_vali_time" id="" value="<%=@setting.store_vali_time%>"/>分钟</td>
 					<td><input type="checkbox" name="store_vali_time" id="" />不使用</td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>客户（消费者）验货时间</td>
-					<td><input type="text" name="customer_vali_time" id="" value="<%=@setting.customer_vali_time%>分钟"/></td>
+					<td><input type="text" name="customer_vali_time" id="" value="<%=@setting.customer_vali_time%>"/>分钟</td>
 					<td><input type="checkbox" name="customer_vali_time" id="" />不使用</td>
 					<td></td>
 				</tr>
