@@ -23,14 +23,19 @@ def  self.get_now_node (order_id)
     setting=Setting.last
    node_way=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first.time
  node=[]
-  if surplus<(node_way+setting.customer_vali_time)
+  if surplus<setting.customer_vali_time
+        node<<order.node.name+'(客户区)'
+	nextorder=order.employee.orders.where(level:order.level+1).first
+	node<<Node.find(nextorder.firstnode).name
+
+ elsif surplus<(node_way+setting.customer_vali_time+setting.store_vali_time)
     
-    node<<order.store.node.name
-    node<<order.node.name
+    node<<order.store.node.name+'(仓库区)'
+    node<<order.node.name+'(客户区)'
   else
    
-     node<< Node.find(order.firstnode).name
-     node<<order.store.node.name
+     node<< Node.find(order.firstnode).name+"(始发区)"
+     node<<order.store.node.name+'(仓库区)'
   end
 
   return node

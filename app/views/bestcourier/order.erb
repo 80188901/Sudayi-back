@@ -13,7 +13,7 @@
 				<li>
 					<h3>按订单查看</h3>
 					<a href="add_order"><button class="button">添加新订单</button></a>
-<a href="del_all_order"><button class="button">清空订单（测试用）</button></a>
+<a href="del_all_order"><button class="button">清空订单</button></a>
 				</li>
 				<br class="clear" />
 			</ul>
@@ -53,7 +53,7 @@
 						<%@orders.each_with_index do |order,index|%>
 						<tr>
 							<td><%=index+1%></td>
-							<td><%=order.number%></td>
+							<td><a href="order_info?order_id=<%=order._id%>"><%=order.number%></a></td>
 							<td><%=order.employee.name%></td>
 							<td><%=Node.find(order.firstnode).name%></td>
 							<td><%=order.store.node.name%></td>

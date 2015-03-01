@@ -70,7 +70,7 @@ get :settime do
     order.isnow=false
                 order.level=0
     order.save
-    neworders=order.employee.orders.where(iscomplete:false)
+    neworders=order.employee.orders.where(iscomplete:false).asc(:created_at)
                           neworders.each_with_index do |neworder,index|
                             if index==0
              neworder.isnow=true
@@ -83,7 +83,7 @@ get :settime do
                         end
     end
   end
-  @orders=Order.where(account_id:@account._id,iscomplete:false)
+  @orders=Order.where(account_id:@account._id,iscomplete:false).desc(:isnow)
     render :order,:layout=>false
   end
 
@@ -104,7 +104,7 @@ end
   end
   get :order_flow do
     @courier=Employee.find(params[:courier_id])
-    @orders=@courier.orders
+    @orders=@courier.orders.asc(:created_at)
     render :order_flow,:layout=>false
   end
 get :get_node do
@@ -166,7 +166,7 @@ end
   
 
      couriers.each do |courier|
-        order=courier.orders.where(isnow:true).first  
+        order=courier.orders.desc(:level).first  
         node=Node.find(order.node_id)
        
         my_to_good_way=NodeWay.where(node_id:node._id,tonode:node_good._id).first
@@ -235,7 +235,7 @@ end
               @courier=couriers[index]
 
               @order=Order.new(usetime:queding_usetime,account_id:@account._id,employee_id:@courier._id,node_id:node_customer._id,store_id:warehouse._id)
-		   @order.firstnode=@courier.orders.where(isnow:true).first.node._id
+		   @order.firstnode=@courier.orders.desc(:level).first.node._id
                     @order.number=number
                   level=@courier.orders.where(iscomplete:false).max(:level)+1
                   @order.level=level
@@ -250,7 +250,7 @@ end
               @courier=couriers[index]
              
               @order=Order.new(usetime:queding_usetime,account_id:@account._id,employee_id:@courier._id,node_id:node_customer._id,store_id:warehouse._id)
-		   @order.firstnode=@courier.orders.where(isnow:true).first.node._id
+		   @order.firstnode=@courier.orders.desc(:level).first.node._id
      
              level=@courier.orders.where(iscomplete:false).max(:level)+1
                   @order.level=level

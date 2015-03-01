@@ -18,9 +18,9 @@
 					<th>始发</th>
 					<th>接单时间</th>
 					<th>供应商确认</th>
-					<th>01到02区取件</th>
+					<th><%=Node.find(@order.firstnode).number%>到<%=@order.store.node.number%>区取件</th>
 					<th>验货付款</th>
-					<th>02区到03区派件</th>
+					<th><%=@order.store.node.number%>区到<%=@order.node.number%>区派件</th>
 					<th>验货收款</th>
 					<th>预计结束</th>
 				</tr>

@@ -1,7 +1,7 @@
 Fancyshpv2::Admin.controllers :orders do
   get :index do
     @title = "Orders"
-    @orders = Order.all
+    @orders = Order.all.asc(:created_at)
     render 'orders/index'
   end
 

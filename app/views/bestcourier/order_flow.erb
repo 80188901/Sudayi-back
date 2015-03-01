@@ -29,9 +29,9 @@
 					<td><%=order.store.node.name%>取件<font class="red">+<%=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first.time%>分</font></td>
 					<td><%=order.node.name%>派件<font class="red">+<%=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first.time%>分</font></td>
 					<td><font class="red">+<%=Setting.alltime%>分</font></td>
-					<td><%=(order.created_at+order.usetime.minute+10.minute).strftime('%Y%m%d')%><font class="blue"><%=(order.created_at+order.usetime.minute+10.minute).strftime('%H%M')%></font></td>
+					<td><%=(order.created_at+order.usetime.minute).strftime('%Y%m%d')%><font class="blue"><%=(order.created_at+order.usetime.minute).strftime('%H%M')%></font></td>
 				<%if order.iscomplete%>
-				<td><%=(order.created_at+order.usetime.minute+20.minute).strftime('%Y%m%d')%><font class="blue"><%=(order.created_at+order.usetime.minute+20.minute).strftime('%H%M')%></font><font class="green">（+10）</font></td>
+				<td><%=(order.created_at+order.usetime.minute).strftime('%Y%m%d')%><font class="blue"><%=(order.created_at+order.usetime.minute).strftime('%H%M')%></font><font class="green">（+0）</font></td>
 				<%else%>
 				<td>未完成</td>
 				<%end%>
