@@ -1,23 +1,17 @@
-class Node
+class OrderTime
   include Mongoid::Document
   include Mongoid::Timestamps # adds created_at and updated_at fields
-  belongs_to :city
-  belongs_to :area
-  has_many :node_ways
-  has_many :orders
-
- field :name,:type=>String
- field :number,:type=>String
- field :streets,:type=>Array
-  
-
+  belongs_to :order
   # field <name>, :type => <type>, :default => <value>
-  
- def self.get_node_way(node_id)
-    node=Node.find(node_id)
-    node_ways=NodeWay.where(node_id:node._id)
-    return node_ways
- end
+    field :store_time,:type=>DateTime
+    field :courier_time,:type=>DateTime
+    field :store_vali_time,:type=>DateTime
+    field :customer_time,:type=>DateTime
+    field :first_node_way_time,:type=>DateTime
+    field :end_node_way_time,:type=>DateTime
+    field :real_complete_time,:type=>DateTime
+    field :time_diff,:type=>Integer,:default=>0
+
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>
 

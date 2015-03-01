@@ -7,6 +7,7 @@ class Order
    belongs_to :node
    belongs_to :store
    belongs_to :employee
+   has_one :order_time
    field :number,:type=>String
   field :firstnode,:type=>String
   field :price, :type => Float
@@ -14,20 +15,30 @@ class Order
   field :isnow,:type=>Boolean,:default=>false
   field :usetime,:type=>Integer,:default=>''
   field :level,:type=>Integer
+
   # field <name>, :type => <type>, :default => <value>
   
 def  self.get_now_node (order_id)
   order=Order.find(order_id)
   time=order.created_at+order.usetime.minute
+    if order.order_time
+      if order.order_time.time_diff!=0
+    time+=order.order_time.time_diff.minute
+  end
+  end
     surplus=(time.to_i-Time.now.to_i)/60
     setting=Setting.last
    node_way=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first.time
  node=[]
+
   if surplus<setting.customer_vali_time
         node<<order.node.name+'(客户区)'
 	nextorder=order.employee.orders.where(level:order.level+1).first
+     if nextorder
 	node<<Node.find(nextorder.firstnode).name
-
+        else
+          node<<order.employee.account.node.name
+      end
  elsif surplus<(node_way+setting.customer_vali_time+setting.store_vali_time)
     
     node<<order.store.node.name+'(仓库区)'
@@ -53,6 +64,11 @@ return time
   def self.get_now_process(number,order_id)
       order=Order.find(order_id)
   time=order.created_at+order.usetime.minute
+    if order.order_time
+      if order.order_time.time_diff!=0
+    time+=order.order_time.time_diff.minute
+  end
+  end
     surplus=(time.to_i-Time.now.to_i)/60
     setting=Setting.last
    node_way2=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first.time

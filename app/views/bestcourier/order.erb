@@ -28,11 +28,11 @@
 						<%@couriers.each do |courier|%>
 						<tr>
 							<td><div><%=courier.number%></div></td>
-							<td><div><%=courier.name%></div></td>
+							<td><div><a href="order_flow?courier_id=<%=courier._id%>"><%=courier.name%></a></div></td>
 							<%if courier.isfree%>
 							<td><div>待命中（<%=courier.account.node.name%>）</div></td>
 							<%else%>
-							<td><div><a href="order_flow?courier_id=<%=courier._id%>">已接到<%=courier.orders.max(:level).to_i%>张订单预计<%=courier.whenfree.strftime('%Y%m%d%H%M')%>结束</a></div></td>
+							<td><div>已接到<%=courier.orders.max(:level).to_i%>张订单预计<%=courier.whenfree.strftime('%Y%m%d%H%M')%>结束</div></td>
 							<%end%>
 						</tr>
 						<%end%>

@@ -16,6 +16,8 @@ end
 get :order_info do
 	@order=Order.find(params[:order_id])
 	@setting=Setting.last
+  if @order.order_time
+  end
 	render :order_info,:layout=>false
 end
 
@@ -89,10 +91,16 @@ get :settime do
 
 
 get :del_all_order do
- Order.all.destroy
+  Order.all.each do |order|
+    if order.order_time
+    order.order_time.destroy
+  end
+    order.destroy
+ end
 	Employee.all.each do |employee|
 	employee.update_attributes(isfree:true,whenfree:'')
 	end
+
 redirect(url(:bestcourier,:order))
 end
 
@@ -151,6 +159,7 @@ end
 
   post :create_order ,:csrf_protection => false do
     @account = Account.where(_id:params[:account_id]).first
+    puts @account
     @node = @account.node
     setting=Setting.last
     warehouse=Store.find(params[:store_id])
@@ -196,7 +205,7 @@ end
      end
   puts other_usetime
   puts '||||||'
-   number=rand(999999)
+   number=Order.count+1
 
       if index=other_usetime.size-1
 
@@ -274,6 +283,50 @@ redirect(url(:bestcourier,:table))
 
 
   end
+get :complete_process do
+  order=Order.find(params[:order_id])
+  setting=Setting.last
+    if !order.order_time
+   order_time=OrderTime.new
+     order.order_time=order_time
+    end
+  case params[:process]
+  when '1'
+   time=Order.get_start_time(order._id)+setting.store_time.minute
+   order.order_time.store_time=Time.now
+   order.order_time.time_diff=(Time.now.to_i-time.to_i)/60
+   order.order_time.save
+  when '2'
+    node_way=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first
+    time=Order.get_start_time(order._id)+setting.store_time.minute+node_way.time.minute+order.order_time.time_diff.minute
+   order.order_time.first_node_way_time=Time.now
+   order.order_time.time_diff+=(Time.now.to_i-time.to_i)/60
+   order.order_time.save
+  when '3'
+       node_way=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first
+    time=Order.get_start_time(order._id)+setting.store_time.minute+node_way.time.minute+order.order_time.time_diff.minute+setting.store_vali_time.minute
+   order.order_time.first_node_way_time=Time.now
+   order.order_time.time_diff+=(Time.now.to_i-time.to_i)/60
+   order.order_time.save
+  when '4'
+    node_way=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first
+    node_way2=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first
+    time=Order.get_start_time(order._id)+setting.store_time.minute+node_way.time.minute+order.order_time.time_diff.minute+setting.store_vali_time.minute+node_way2.time.minute
+   order.order_time.first_node_way_time=Time.now
+   order.order_time.time_diff+=(Time.now.to_i-time.to_i)/60
+   order.order_time.save
+  when '5'
+     node_way=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first
+    node_way2=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first
+    time=Order.get_start_time(order._id)+setting.store_time.minute+node_way.time.minute+order.order_time.time_diff.minute+setting.store_vali_time.minute+node_way2.time.minute+setting.customer_vali_time.minute
+   order.order_time.first_node_way_time=Time.now
+   order.order_time.time_diff+=(Time.now.to_i-time.to_i)/60
+   order.order_time.save
+  when '6'
+    puts 'ff'
+  end
+ render :html,'true'
+end
 
   post :delete_order do
      order=Order.find(params[:order_id])

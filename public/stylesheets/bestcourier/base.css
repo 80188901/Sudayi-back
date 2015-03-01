@@ -21,6 +21,28 @@ ul li{
 	margin: 10px 10px;
 	float: right;
 }
+.buntton_2{
+	width: 50px;
+	border-radius: 5px;
+	border: none;
+	color: #FFFFFF;
+	background: #009CDE;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+}
+.button_3{
+	width: 120px;
+	border-radius: 5px;
+	border: none;
+	color: #FFFFFF;
+	background: #009CDE;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+}
 .table{
 	width: 90%;
 	margin:0 auto;

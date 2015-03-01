@@ -66,7 +66,7 @@
           <td class=list-column> <%= order.cart_id %> </td>
           <td class=list-column> <%= order.account_id %> </td>
           <td class=list-column> <%= order.address_id %> </td>
-              <%if order.node%>
+             <%if order.node%>
           <td class=list-column> <%= order.node.name %> </td>
     <%end%>
     <%if order.store%>
@@ -82,7 +82,7 @@
     <%else%>
     <td class=list-column> <%= order.firstnode %> </td>
 
-    <%end%>
+    <<%end%></%end%>
           <td class=list-column> <%= order.price %> </td>
           <td class=list-column> <%= order.iscomplete %> </td>
           <td class=list-column> <%= order.isnow %> </td>

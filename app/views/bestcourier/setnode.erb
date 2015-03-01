@@ -24,12 +24,12 @@
 						</tr>
 						<tr>
 						<%Node.get_node_way(node._id).each do |node_way|%>
-							<td><button><%=node_way.time%>分</button></td>
+							<td><input type="text" value="<%=node_way.time%>分"/></td>
 							<%end%>
 						</tr>
 						<tr>
 						<%Node.get_node_way(node._id).each do |node_way|%>
-							<td><button><%=node_way.fee%></button></td>
+							<td><input type="text" value="<%=node_way.fee%>元"/></td>
 							<%end%>
 							
 						</tr>

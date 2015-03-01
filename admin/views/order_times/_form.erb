@@ -1,0 +1,81 @@
+<% error = @order_time.errors.include?(:order_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :order_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :order_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:order_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @order_time.errors.include?(:store_time) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :store_time, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :store_time, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:store_time) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @order_time.errors.include?(:courier_time) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :courier_time, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :courier_time, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:courier_time) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @order_time.errors.include?(:store_vali_time) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :store_vali_time, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :store_vali_time, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:store_vali_time) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @order_time.errors.include?(:customer_time) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :customer_time, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :customer_time, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:customer_time) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @order_time.errors.include?(:first_node_way_time) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :first_node_way_time, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :first_node_way_time, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:first_node_way_time) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @order_time.errors.include?(:end_node_way_time) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :end_node_way_time, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :end_node_way_time, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:end_node_way_time) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @order_time.errors.include?(:real_complete_time) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :real_complete_time, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :real_complete_time, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:real_complete_time) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @order_time.errors.include?(:time_diff) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :time_diff, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :time_diff, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:time_diff) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+
+
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:order_times, :index), :class => 'btn btn-default' %>
+</div>
