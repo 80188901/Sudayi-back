@@ -5,6 +5,20 @@
 		<%=stylesheet_link_tag "bestcourier/order_flow"%>
 		  <%=stylesheet_link_tag "bestcourier/base"%>
 		<title></title>
+			<%= javascript_include_tag 'jquery-1.8.2.min' %>
+		<script type="text/javascript">
+		$(function(){
+				//蓝色字
+			    $(".date").each(function(){
+			    	var st = $(this).html().substr(0,8);
+				var four = $(this).html().substr(8,12);
+			    var str ='<font class="blue">'+four+'</font>';
+			    var com = st+str;
+			    $(this).html(com);
+			    })
+			})
+		
+		</script>
 	</head>
 	<body>
 		<div class="table" style="margin-top: 40px;border: 1px solid #999999;border-radius: 5px;">
@@ -25,13 +39,13 @@
 				<%@orders.each do |order|%>
 				<tr>
 					<td><a href="order_info?order_id=<%=order._id%>"><%=order.number%></a></td>
-					<td><%=Order.get_start_time(order._id).strftime('%Y%m%d')%><font class="blue"><%=Order.get_start_time(order._id).strftime('%H%M')%></font></td>
+					<td><span class="date"><%=Order.get_start_time(order._id).strftime('%Y%m%d%H%M')%></span></td>
 					<td><%=order.store.node.name%>取件<font class="red">+<%=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first.time%>分</font></td>
 					<td><%=order.node.name%>派件<font class="red">+<%=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first.time%>分</font></td>
 					<td><font class="red">+<%=Setting.alltime%>分</font></td>
-					<td><%=(order.created_at+order.usetime.minute).strftime('%Y%m%d')%><font class="blue"><%=(order.created_at+order.usetime.minute).strftime('%H%M')%></font></td>
+					<td><span class="date"><%=(order.created_at+order.usetime.minute+OrderTime.where(order_id:order._id).first.time_diff.minute).strftime('%Y%m%d%H%M')%></span></td>
 				<%if order.iscomplete%>
-				<td><%=(order.created_at+order.usetime.minute).strftime('%Y%m%d')%><font class="blue"><%=(order.created_at+order.usetime.minute).strftime('%H%M')%></font><font class="green">（+0）</font></td>
+				<td><span class="date"><%=(order.created_at+order.usetime.minute).strftime('%Y%m%d%H%M')%></span><font class="green">（<%=OrderTime.where(order_id:order._id).first.time_diff%>）</font></td>
 				<%else%>
 				<td>未完成</td>
 				<%end%>

@@ -16,8 +16,6 @@ end
 get :order_info do
 	@order=Order.find(params[:order_id])
 	@setting=Setting.last
-  if @order.order_time
-  end
 	render :order_info,:layout=>false
 end
 
@@ -67,7 +65,11 @@ get :settime do
   @order=Order.new
   orders=Order.where(account_id:@account._id,iscomplete:false)
   orders.each do |order|
-    if (order.created_at+order.usetime.minute).to_i<Time.now.to_i
+	time=order.created_at+order.usetime.minute
+	if order.order_time
+		time+=order.order_time.time_diff.minute
+	end
+    if time.to_i<Time.now.to_i
     order.iscomplete=true
     order.isnow=false
                 order.level=0
@@ -81,10 +83,11 @@ get :settime do
                             else
                                   neworder.level=neworder.level-1
                                   neworder.save
-                end
+    		            end
                         end
     end
   end
+
   @orders=Order.where(account_id:@account._id,iscomplete:false).desc(:isnow)
     render :order,:layout=>false
   end
@@ -92,9 +95,7 @@ get :settime do
 
 get :del_all_order do
   Order.all.each do |order|
-    if order.order_time
     order.order_time.destroy
-  end
     order.destroy
  end
 	Employee.all.each do |employee|
@@ -112,7 +113,7 @@ end
   end
   get :order_flow do
     @courier=Employee.find(params[:courier_id])
-    @orders=@courier.orders.asc(:created_at)
+    @orders=@courier.orders.asc(:created_at) 
     render :order_flow,:layout=>false
   end
 get :get_node do
@@ -219,6 +220,7 @@ end
                 @order.node_id=node_customer._id
                 @order.store_id=warehouse._id
 		@order.firstnode=@account.node._id
+		@order.create_order_time
                   @order.level=1
                   @order.number=number
                 if @order.save!
@@ -248,6 +250,7 @@ end
                     @order.number=number
                   level=@courier.orders.where(iscomplete:false).max(:level)+1
                   @order.level=level
+		@order.create_order_time
               if @order.save!
                    @courier.whenfree=@order.created_at+@order.usetime.minute
  
@@ -260,7 +263,7 @@ end
              
               @order=Order.new(usetime:queding_usetime,account_id:@account._id,employee_id:@courier._id,node_id:node_customer._id,store_id:warehouse._id)
 		   @order.firstnode=@courier.orders.desc(:level).first.node._id
-     
+			@order.create_order_time
              level=@courier.orders.where(iscomplete:false).max(:level)+1
                   @order.level=level
                   @order.number=number
@@ -286,28 +289,30 @@ redirect(url(:bestcourier,:table))
 get :complete_process do
   order=Order.find(params[:order_id])
   setting=Setting.last
-    if !order.order_time
-   order_time=OrderTime.new
-     order.order_time=order_time
-    end
-  case params[:process]
+ case params[:process]
   when '1'
    time=Order.get_start_time(order._id)+setting.store_time.minute
    order.order_time.store_time=Time.now
    order.order_time.time_diff=(Time.now.to_i-time.to_i)/60
    order.order_time.save
+	order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
+	order.employee.save
   when '2'
     node_way=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first
     time=Order.get_start_time(order._id)+setting.store_time.minute+node_way.time.minute+order.order_time.time_diff.minute
    order.order_time.first_node_way_time=Time.now
    order.order_time.time_diff+=(Time.now.to_i-time.to_i)/60
    order.order_time.save
+	order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
+        order.employee.save
   when '3'
        node_way=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first
     time=Order.get_start_time(order._id)+setting.store_time.minute+node_way.time.minute+order.order_time.time_diff.minute+setting.store_vali_time.minute
    order.order_time.first_node_way_time=Time.now
    order.order_time.time_diff+=(Time.now.to_i-time.to_i)/60
    order.order_time.save
+	order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
+        order.employee.save
   when '4'
     node_way=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first
     node_way2=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first
@@ -315,6 +320,8 @@ get :complete_process do
    order.order_time.first_node_way_time=Time.now
    order.order_time.time_diff+=(Time.now.to_i-time.to_i)/60
    order.order_time.save
+	order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
+        order.employee.save
   when '5'
      node_way=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first
     node_way2=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first
@@ -322,8 +329,8 @@ get :complete_process do
    order.order_time.first_node_way_time=Time.now
    order.order_time.time_diff+=(Time.now.to_i-time.to_i)/60
    order.order_time.save
-  when '6'
-    puts 'ff'
+	order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
+        order.employee.save
   end
  render :html,'true'
 end
