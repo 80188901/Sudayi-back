@@ -56,8 +56,8 @@
 							<td><a href="order_info?order_id=<%=order._id%>"><%=order.number%></a></td>
 							<td><%=order.employee.name%></td>
 							<td><%=Node.find(order.firstnode).name%></td>
-							<td><%=order.store.node.name%></td>
-							<td><%=order.node.name%></td>
+							<td><%=order.store.node.name%><font class="green">(<%=OrderTime.get_actual_time(order._id,'3')%>)</font></td>
+							<td><%=order.node.name%><font class="green">(<%=OrderTime.get_actual_time(order._id,'5')%>)</font></td>
 							<%if  order.isnow%>
 							<td><%=Order.get_now_node(order._id)[0]%></td>
 							<%else%>

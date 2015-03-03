@@ -121,7 +121,16 @@ get :get_node do
 	render :html,store.node.name
 end
 
-
+get :update_node_way do
+    node_way=NodeWay.where(node_id:params[:node_id],tonode:params[:tonode]).first
+    if params[:time]
+    node_way.update_attribute(:time,params[:time].chop)
+  else
+    node_way.update_attribute(:fee,params[:fee].chop)
+  end
+    resp=node_way.node.number+','+Node.find(node_way.tonode).number
+   render :html,resp.to_json
+end
 post :update_time ,:csrf_protection => false do
   setting=Setting.last
   if  puts params[:store_time]=='on'
@@ -295,8 +304,13 @@ get :complete_process do
    order.order_time.store_time=Time.now
    order.order_time.time_diff=(Time.now.to_i-time.to_i)/60
    order.order_time.save
-	order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
-	order.employee.save
+   order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
+   order.employee.save
+   orders=order.employee.orders.where(:level.gt=>order.level)
+   orders.each do |a|
+        a.usetime+=(Time.now.to_i-time.to_i)/60
+        a.save
+   end
   when '2'
     node_way=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first
     time=Order.get_start_time(order._id)+setting.store_time.minute+node_way.time.minute+order.order_time.time_diff.minute
@@ -305,39 +319,64 @@ get :complete_process do
    order.order_time.save
 	order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
         order.employee.save
+          orders=order.employee.orders.where(:level.gt=>order.level)
+   orders.each do |a|
+        a.usetime+=(Time.now.to_i-time.to_i)/60
+        a.save
+   end
   when '3'
        node_way=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first
     time=Order.get_start_time(order._id)+setting.store_time.minute+node_way.time.minute+order.order_time.time_diff.minute+setting.store_vali_time.minute
-   order.order_time.first_node_way_time=Time.now
+   order.order_time.store_vali_time=Time.now
    order.order_time.time_diff+=(Time.now.to_i-time.to_i)/60
    order.order_time.save
 	order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
         order.employee.save
+          orders=order.employee.orders.where(:level.gt=>order.level)
+   orders.each do |a|
+        a.usetime+=(Time.now.to_i-time.to_i)/60
+        a.save
+   end
   when '4'
     node_way=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first
     node_way2=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first
     time=Order.get_start_time(order._id)+setting.store_time.minute+node_way.time.minute+order.order_time.time_diff.minute+setting.store_vali_time.minute+node_way2.time.minute
-   order.order_time.first_node_way_time=Time.now
+   order.order_time.end_node_way_time=Time.now
    order.order_time.time_diff+=(Time.now.to_i-time.to_i)/60
    order.order_time.save
 	order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
         order.employee.save
+          orders=order.employee.orders.where(:level.gt=>order.level)
+   orders.each do |a|
+        a.usetime+=(Time.now.to_i-time.to_i)/60
+        a.save
+   end
   when '5'
      node_way=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first
     node_way2=NodeWay.where(node_id:order.store.node._id,tonode:order.node._id).first
     time=Order.get_start_time(order._id)+setting.store_time.minute+node_way.time.minute+order.order_time.time_diff.minute+setting.store_vali_time.minute+node_way2.time.minute+setting.customer_vali_time.minute
-   order.order_time.first_node_way_time=Time.now
+   order.order_time.customer_time=Time.now
    order.order_time.time_diff+=(Time.now.to_i-time.to_i)/60
    order.order_time.save
 	order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
         order.employee.save
+          orders=order.employee.orders.where(:level.gt=>order.level)
+   orders.each do |a|
+        a.usetime+=(Time.now.to_i-time.to_i)/60
+        a.save
+   end
     when '6'
 	 time=Order.get_start_time(order._id)
-   order.order_time.store_time=Time.now
+   order.order_time.courier_time=Time.now
    order.order_time.time_diff=(Time.now.to_i-time.to_i)/60
    order.order_time.save
         order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
         order.employee.save
+          orders=order.employee.orders.where(:level.gt=>order.level)
+   orders.each do |a|
+        a.usetime+=(Time.now.to_i-time.to_i)/60
+        a.save
+   end
 
   end
  render :html,'true'

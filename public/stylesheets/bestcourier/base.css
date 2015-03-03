@@ -5,6 +5,16 @@
 ul li{
 	list-style: none;
 }
+.blue{
+	color: blue;
+}
+.red{
+	color: red;
+}
+.green{
+	color: green;
+}
+
 .clear{
 	clear: both;
 }

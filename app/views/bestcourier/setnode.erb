@@ -4,8 +4,30 @@
 		<meta charset="utf-8">
 		 <%=stylesheet_link_tag "bestcourier/set_space"%>
 		  <%=stylesheet_link_tag "bestcourier/base"%>
-
 		<title></title>
+		<%= javascript_include_tag 'jquery-1.8.2.min' %>
+		<script type="text/javascript">
+		$(function(){
+			$('table input').blur(function(){
+				
+			     var arr=$(this).attr('target').split(',');
+			     if (arr[0]=='minute'){
+			     	$.get('update_node_way',{time:$(this).val(),node_id:arr[1],tonode:arr[2]},function(obj){
+			     		respond=obj.split(',');
+			     		alert(respond[0]+"区到"+respond[1]+"区的时间修改成功");
+
+			     	},'json');
+			     }
+			     else{
+			     	$.get('update_node_way',{fee:$(this).val(),node_id:arr[1],tonode:arr[2]},function(obj){
+			     			respond=obj.split(',');
+			     		alert(respond[0]+"区到"+respond[1]+"区的费用修改成功");
+			     	},'json');
+			     }
+
+			})
+		})
+		</script>
 	</head>
 	<body>
 		<div class="table">
@@ -24,12 +46,12 @@
 						</tr>
 						<tr>
 						<%Node.get_node_way(node._id).each do |node_way|%>
-							<td><input type="text" value="<%=node_way.time%>分"/></td>
+							<td><input type="text" value="<%=node_way.time%>分" target="minute,<%=node_way.node._id%>,<%=node_way.tonode%>"/></td>
 							<%end%>
 						</tr>
 						<tr>
 						<%Node.get_node_way(node._id).each do |node_way|%>
-							<td><input type="text" value="<%=node_way.fee%>元"/></td>
+							<td><input type="text" value="<%=node_way.fee%>元" target="money,<%=node_way.node._id%>,<%=node_way.tonode%>"/></td>
 							<%end%>
 							
 						</tr>
