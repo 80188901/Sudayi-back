@@ -62,17 +62,47 @@ class OrderTime
     when '1'
       result=actual_time[0]
     when '2'
+	if actual_time[1]==0
+	result=0
+	else
       result=actual_time[1]-actual_time[0]
+	end
     when '3'
+	 if actual_time[2]==0
+        result=0
+        else
        result=actual_time[2]-actual_time[1]
+	end
     when '4'
+	 if actual_time[3]==0
+        result=0
+        else
       result=actual_time[3]-actual_time[2]
+	end
     when '5'
+	 if actual_time[4]==0
+        result=0
+        else
          result=actual_time[4]-actual_time[3]
+	end
     when '6'
+	 if actual_time[5]==0
+        result=0
+        else
        result=actual_time[5]-actual_time[4]
+	end
     when '7'
-        result=order_time.time_diff-(actual_time[2]-actual_time[1])-(actual_time[4]-actual_time[3])
+	 if actual_time[2]==0
+        first_time=0
+        else
+	first_time=actual_time[2]-actual_time[1]
+	end
+	 if actual_time[4]==0
+        end_time=0
+        else
+	end_time=actual_time[4]-actual_time[3]
+	end
+        result=order_time.time_diff-first_time-end_time
     end
 
     return result

@@ -27,14 +27,19 @@
 			    $(this).html(com);
 			    })
 			    //图片
-			    $(".hook").each(function(){
-			    	  var hook= $(this).parent().attr('class');
-			    	 if(hook){
-			    	 	$('.tic'+hook).hide();
-			    	 }else{
-			    	 	$('.tic'+hook).show();
-			    	 }
-			    })
+			$("#tb tr:last td").each(function(){
+				$(this).children().hide();
+			})
+			    if($('.hook').size()==0){
+				$('.tic1').show();
+				}
+			    else{
+				var hook=$('.hook:last').parent().attr('class');
+				var num=parseInt(hook)+1;
+				if(hook!='6'){
+					$('.tic'+num).show();
+				  }
+				}
 			})
 		
 		</script>
@@ -45,7 +50,7 @@
 				<li><%=@order.number%>的配送流程</li>
 				<li><%=Time.now.strftime('%Y-%m-%d %H:%M:%S')%></li>
 			</ul>
-			<table border="0" cellspacing="0" cellpadding="0" width="100%">
+			<table border="0" cellspacing="0" cellpadding="0" width="100%" id="tb">
 				<tr>
 					<th>配送员</th>
 					<th>始发</th>
@@ -79,12 +84,12 @@
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
-					<td><button class="buntton_2 tic1" onclick="complete_process('6')">完成</button></td>
-					<td><button class="buntton_2 tic2" onclick="complete_process('1')">完成</button></td>
-					<td><button class="buntton_2 tic3" onclick="complete_process('2')">完成</button></td>
-					<td><button class="buntton_2 tic4" onclick="complete_process('3')">完成</button></td>
-					<td><button class="buntton_2 tic5" onclick="complete_process('4')">完成</button></td>
-					<td><button class="buntton_2 tic6" onclick="complete_process('5')">完成</button></td>
+					<td><button class="buntton_2 tic1"  onclick="complete_process('6')">完成</button></td>
+					<td><button class="buntton_2 tic2"  onclick="complete_process('1')">完成</button></td>
+					<td><button class="buntton_2 tic3"  onclick="complete_process('2')">完成</button></td>
+					<td><button class="buntton_2 tic4"  onclick="complete_process('3')">完成</button></td>
+					<td><button class="buntton_2 tic5"  onclick="complete_process('4')">完成</button></td>
+					<td><button class="buntton_2 tic6"  onclick="complete_process('5')">完成</button></td>
 					<td>&nbsp;</td>
 				</tr>
 			</table>
