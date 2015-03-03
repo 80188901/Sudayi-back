@@ -123,11 +123,6 @@ end
 
 
 post :update_time ,:csrf_protection => false do
-  puts params[:store_time]
-  puts params[:courier_time]
-  puts params[:store_vali_time]
-  puts params[:customer_vali_time]
-  puts params[:complete_after]
   setting=Setting.last
   if  puts params[:store_time]=='on'
     setting.store_time=0
@@ -206,7 +201,12 @@ end
      end
   puts other_usetime
   puts '||||||'
-   number=Order.count+1
+   number=(Order.count+1).to_s
+	if number.length<6
+		(6-number.length).times do
+		number='0'+number
+		end
+	end
 
       if index=other_usetime.size-1
 
@@ -331,6 +331,14 @@ get :complete_process do
    order.order_time.save
 	order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
         order.employee.save
+    when '6'
+	 time=Order.get_start_time(order._id)
+   order.order_time.store_time=Time.now
+   order.order_time.time_diff=(Time.now.to_i-time.to_i)/60
+   order.order_time.save
+        order.employee.whenfree+=((Time.now.to_i-time.to_i)/60).minute
+        order.employee.save
+
   end
  render :html,'true'
 end

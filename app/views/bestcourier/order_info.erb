@@ -50,6 +50,7 @@
 					<th>配送员</th>
 					<th>始发</th>
 					<th>接单时间</th>
+					<th>订单间隔</th>
 					<th>供应商确认</th>
 					<th><font class="red"><%=Node.find(@order.firstnode).number%></font>到<font class="red"><%=@order.store.node.number%></font>区取件<%=image_tag 'bestcourier/u99.png', :width=>'20px',:height=>'20px'%></th>
 					<th>验货付款</th>
@@ -61,11 +62,12 @@
 					<td><%=@order.employee.name%></td>
 					<td><%=Node.find(@order.firstnode).name%>（始发点）<font class="blue"><%=Order.get_start_time(@order._id).strftime('%H%M')%></font></font></td>
 					<td><span class="date"><%=@order.created_at.strftime('%Y%m%d%H%M')%></span></td>
-					<td class="1"><font class="red">+<%=@setting.store_time%>分</font><%if Order.get_now_process(1,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px',:class=>'hook'%><%end%></td>
-					<td class="2"><font class="red">+<%=NodeWay.where(node_id:@order.firstnode,tonode:@order.store.node._id).first.time%>分</font><%if Order.get_now_process(2,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px',:class=>'hook'%><%end%></td>
-					<td class="3"><font class="red">+<%=@setting.store_vali_time%>分</font><%if Order.get_now_process(3,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px',:class=>'hook'%><%end%></td>
-					<td class="4"><font class="red">+<%=NodeWay.where(node_id:@order.store.node._id,tonode:@order.node._id).first.time%>分</font><%if Order.get_now_process(4,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px',:class=>'hook'%><%end%></td>
-					<td class="5"><font class="red">+<%=@setting.customer_vali_time%>分</font><%if Order.get_now_process(5,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px',:class=>'hook'%><%end%></td>
+					<td class="1"><font class="red">+<%=@setting.courier_time%></font><%if Order.get_now_process(1,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px',:class=>'hook'%><%end%></td>
+					<td class="2"><font class="red">+<%=@setting.store_time%>分</font><%if Order.get_now_process(2,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px',:class=>'hook'%><%end%></td>
+					<td class="3"><font class="red">+<%=NodeWay.where(node_id:@order.firstnode,tonode:@order.store.node._id).first.time%>分</font><%if Order.get_now_process(3,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px',:class=>'hook'%><%end%></td>
+					<td class="4"><font class="red">+<%=@setting.store_vali_time%>分</font><%if Order.get_now_process(4,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px',:class=>'hook'%><%end%></td>
+					<td class="5"><font class="red">+<%=NodeWay.where(node_id:@order.store.node._id,tonode:@order.node._id).first.time%>分</font><%if Order.get_now_process(5,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px',:class=>'hook'%><%end%></td>
+					<td class="6"><font class="red">+<%=@setting.customer_vali_time%>分</font><%if Order.get_now_process(6,@order._id)%><%=image_tag 'bestcourier/u555.jpg', :width=>'20px',:height=>'20px',:class=>'hook'%><%end%></td>
 					<%if @order.order_time%>
 					
 					<td><span class="date"><%=(@order.created_at+@order.usetime.minute+@order.order_time.time_diff.minute).strftime("%Y%m%d%H%M")%></span></td>
@@ -77,11 +79,12 @@
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
-					<td><button class="buntton_2 tic1" onclick="complete_process('1')">完成</button></td>
-					<td><button class="buntton_2 tic2" onclick="complete_process('2')">完成</button></td>
-					<td><button class="buntton_2 tic3" onclick="complete_process('3')">完成</button></td>
-					<td><button class="buntton_2 tic4" onclick="complete_process('4')">完成</button></td>
-					<td><button class="buntton_2 tic5" onclick="complete_process('5')">完成</button></td>
+					<td><button class="buntton_2 tic1" onclick="complete_process('6')">完成</button></td>
+					<td><button class="buntton_2 tic2" onclick="complete_process('1')">完成</button></td>
+					<td><button class="buntton_2 tic3" onclick="complete_process('2')">完成</button></td>
+					<td><button class="buntton_2 tic4" onclick="complete_process('3')">完成</button></td>
+					<td><button class="buntton_2 tic5" onclick="complete_process('4')">完成</button></td>
+					<td><button class="buntton_2 tic6" onclick="complete_process('5')">完成</button></td>
 					<td>&nbsp;</td>
 				</tr>
 			</table>

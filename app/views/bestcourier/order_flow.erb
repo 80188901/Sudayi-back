@@ -45,7 +45,7 @@
 					<td><font class="red">+<%=Setting.alltime%>分</font></td>
 					<td><span class="date"><%=(order.created_at+order.usetime.minute+OrderTime.where(order_id:order._id).first.time_diff.minute).strftime('%Y%m%d%H%M')%></span></td>
 				<%if order.iscomplete%>
-				<td><span class="date"><%=(order.created_at+order.usetime.minute).strftime('%Y%m%d%H%M')%></span><font class="green">（<%=OrderTime.where(order_id:order._id).first.time_diff%>）</font></td>
+				<td><span class="date"><%=(order.created_at+order.usetime.minute+OrderTime.where(order_id:order._id).first.time_diff.minute).strftime('%Y%m%d%H%M')%></span><font class="green">（<%=OrderTime.where(order_id:order._id).first.time_diff%>）</font></td>
 				<%else%>
 				<td>未完成</td>
 				<%end%>

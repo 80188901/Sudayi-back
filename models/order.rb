@@ -75,15 +75,17 @@ return time
    node_way1=NodeWay.where(node_id:order.firstnode,tonode:order.store.node._id).first.time
    compare=0
    if surplus<0
-    compare=5
+    compare=6
      elsif surplus<=setting.customer_vali_time
-     compare=4
+     compare=5
      elsif surplus<=node_way2+setting.customer_vali_time
-      compare=3
+      compare=4
     elsif  surplus<=node_way2+setting.customer_vali_time+setting.store_vali_time
-      compare=2
+      compare=3
     elsif surplus<=node_way2+setting.customer_vali_time+setting.store_vali_time+node_way1
-      compare=1
+      compare=2
+     elsif surplus<=node_way2+setting.customer_vali_time+setting.store_vali_time+node_way1+setting.store_time
+	compare=1
     end
     if number<=compare
       return true
