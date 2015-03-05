@@ -1,4 +1,4 @@
-Fancyshpv2::App.controllers :admin do
+Fancyshpv2::App.controllers :common do
   
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
@@ -19,9 +19,20 @@ Fancyshpv2::App.controllers :admin do
   #   'Hello world!'
   # end
 get :get_node do
-	nodes=Node.all
+	nodes=Node.where(area_id:params[:area_id])
 	nodes.to_json
 end
-  
+get :country do
+	Country.all.to_json
+end  
+get :province do
+	Province.where(country_id:params[:country_id]).to_json
+end
+get :city do
+	City.where(province_id:params[:province_id]).to_json
+end 
+get :area do
+	Area.where(city_id:params[:city_id]).to_json
+end
 
 end
