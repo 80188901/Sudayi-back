@@ -34,5 +34,9 @@ end
 get :area do
 	Area.where(city_id:params[:city_id]).to_json
 end
+get :set_customer_node do
+	session[:user_node]=params[:user_node]
+	render :html,'shabi'
+end
 
 end

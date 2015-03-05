@@ -76,71 +76,42 @@ end
     end  
   end
 
+  get :is_authentication do
+        account=Account.find(params[:user_id])
+        if account.credit_info
+          render :html,'true'
+        else
+          render :html,"false"
+        end
+  end
+
   get :find_account do
     @account =Account.where(:name => params[:username]).first;
     @account.to_json
   end
 
-  post :update_account_url, :csrf_protection => false  do
-    @account =Account.where(:_id => params[:userid]).first;
-    @firm_type = FirmType.where(:name => '个人').first;
-    if @account
-       url = params[:url]
-       if url
-          @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => url, :firm_type => @firm_type._id)
-           @state=State.all.first
-         @credit_info.state = @state._id
-         @credit_info.save
-         @account.credit_info_id = @credit_info._id
-         @account.save
-         @credit_info.to_json
-       else
-        @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area])
-         @credit_info.state = @state._id
-         @credit_info.save
-         @account.credit_info_id=@credit_info._id
-         @account.save
-         @credit_info.to_json
-       end
-    else
-         1.to_json
-    end
-  end
 
 get :get_firm_type do
  @firm_types =FirmType.all
  @firm_types.to_json
 end
 
- post :insert_url2_to_account_info, :csrf_protection =>false do
-  @credit_info = CreditInfo.find(params[:credit_info_id])
-  @credit_info.url2 = params[:url2]
-  @credit_info.save
-  @credit_info.to_json
- end
 
-  post :update_account_2url, :csrf_protection =>false do
-    @account =Account.where(:_id => params[:userid]).first;
+  post :update_account_3url, :csrf_protection =>false do
+    @account =Account.where(:_id => params[:user_id]).first;
     if @account
        @state=State.where(:code => 0).first
        url = params[:url]
        url2 = params[:url2]
-       if url and url2
-          @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area], :url => url,:url2 => url2, :firm_type => params[:p_type])
-         @credit_info.state = @state._id
+	url3=params[:url3]
+          @credit_info = CreditInfo.new(:name => params[:name], :card_id => params[:card_number] ,:url => url,:url2 => url2,:url3=>url3)
          @credit_info.save
          @account.credit_info_id=@credit_info._id
+	 @account.address.detail=Detail.create(name:params[:address])
+	 @account.address.save
          @account.save
          @credit_info.to_json
-       else
-        @credit_info = CreditInfo.new(:name => params[:p_principal], :email => params[:p_email], :card_id => params[:p_iden], :province_id => params[:p_province], :city_id => params[:p_city], :area_id => params[:p_area])
-         @credit_info.state = @state._id
-         @credit_info.save
-         @account.credit_info_id=@credit_info._id
-         @account.save
-         @credit_info.to_json
-       end
-    else
+   else
          1.to_json
     end
 

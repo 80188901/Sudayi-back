@@ -13,8 +13,10 @@ class CreditInfo
   field :card_id, :type => String
   mount_uploader :url, CreditUploader
   mount_uploader :url2, CreditAgainUploader
+  mount_uploader :url3, CreditAgainUploader
   field :url, :type => String
   field :url2, :type =>String
+  field :url3,:type=>String
 
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>
