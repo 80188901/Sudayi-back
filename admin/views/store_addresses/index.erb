@@ -38,7 +38,6 @@
         </th>
                 <th class=header> <%= mat(:store_address, :created_at) %></th>
                 <th class=header> <%= mat(:store_address, :updated_at) %></th>
-                <th class=header> <%= mat(:store_address, :store_id) %></th>
                 <th class=header> <%= mat(:store_address, :area_id) %></th>
                 <th class=header> <%= mat(:store_address, :details) %></th>
                 <th class="header list-row-action-header"></th>
@@ -53,7 +52,6 @@
            </td>
           <td class=list-column> <%= time_ago_in_words store_address.created_at %></td>
           <td class=list-column> <%= time_ago_in_words store_address.updated_at %></td>
-          <td class=list-column> <%= store_address.store_id %> </td>
           <td class=list-column> <%= store_address.area_id %> </td>
           <td class=list-column> <%= store_address.details %> </td>
           <td class="list-column list-row-action">

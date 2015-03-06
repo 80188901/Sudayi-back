@@ -26,7 +26,12 @@ get :country do
 	Country.all.to_json
 end  
 get :province do
+	if !params[:country_id]
+	country=Country.where(name:'中国').first
+        Province.where(country_id:country._id).to_json
+	else
 	Province.where(country_id:params[:country_id]).to_json
+	end
 end
 get :city do
 	City.where(province_id:params[:province_id]).to_json

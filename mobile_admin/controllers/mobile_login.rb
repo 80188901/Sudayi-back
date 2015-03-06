@@ -72,17 +72,22 @@ end
     if @account.save
       @account.to_json
     else
-              @account.errors.fullmessage.to_json
+              '注册失败'.to_json
     end  
   end
 
   get :is_authentication do
+	if params[:user_id] and params[:user_id]!='null'
         account=Account.find(params[:user_id])
+	result='false'
         if account.credit_info
-          render :html,'true'
-        else
-          render :html,"false"
+	 result=account.credit_info.name
         end
+	if firm_info=FirmInfo.where(account_id:params[:user_id]).first
+	 result=firm_info.legal_person
+	end	
+       render:html,result.to_json	
+	end
   end
 
   get :find_account do
@@ -97,17 +102,19 @@ get :get_firm_type do
 end
 
 
-  post :update_account_3url, :csrf_protection =>false do
-    @account =Account.where(:_id => params[:user_id]).first;
+  post :update_account_info, :csrf_protection =>false do
+    @account =Account.where(:_id=>params[:user_id]).first
     if @account
        @state=State.where(:code => 0).first
-       url = params[:url]
+       url1 = params[:url1]
        url2 = params[:url2]
 	url3=params[:url3]
-          @credit_info = CreditInfo.new(:name => params[:name], :card_id => params[:card_number] ,:url => url,:url2 => url2,:url3=>url3)
+          @credit_info = CreditInfo.new(:name => params[:name], :card_id => params[:card_number] ,:url => url1,:url2 => url2,:url3=>url3)
+	 @credit_info.state=@state
          @credit_info.save
          @account.credit_info_id=@credit_info._id
-	 @account.address.detail=Detail.create(name:params[:address])
+	 detail=Detail.create(name:params[:address])
+	 @account.address.detail_id=detail._id
 	 @account.address.save
          @account.save
          @credit_info.to_json
@@ -116,6 +123,29 @@ end
     end
 
   end
+post :update_firm_info,:csrf_protection=>false do
+	  @account =Account.find(params[:user_id])
+    if @account
+	@state=State.where(:code => 0).first
+       # firm_type=FirmType.where(name:params[:firm_type]).first
+       url1 = params[:url1]
+       url2 = params[:url2]
+        url3=params[:url3]
+    	@firm_info=FirmInfo.new(firm_name:params[:name],legal_person:params[:legal_person],business_license_number:params[:number],org_code:params[:code],url:url1,url2:url2,url3:url3)	
+	 @firm_info.state=@state
+	 @firm_info.account=@account
+	 detail=Detail.create(name:params[:address])
+	 @firm_info.address=Address.create
+	 @firm_info.address.detail=detail
+         @firm_info.address.save
+	# @firm_info.firm_type=firm_type
+         @firm_info.save
+         @account.save
+         @firm_info.to_json
+    else
+	 1.to_json
+    end
+end
 
   get :get_account_credit do
     @account =Account.find(params[:userid]);

@@ -42,11 +42,13 @@
                 <th class=header> <%= mat(:credit_info, :city_id) %></th>
                 <th class=header> <%= mat(:credit_info, :area_id) %></th>
                 <th class=header> <%= mat(:credit_info, :state_id) %></th>
+                <th class=header> <%= mat(:credit_info, :firm_type_id) %></th>
                 <th class=header> <%= mat(:credit_info, :name) %></th>
                 <th class=header> <%= mat(:credit_info, :email) %></th>
                 <th class=header> <%= mat(:credit_info, :card_id) %></th>
                 <th class=header> <%= mat(:credit_info, :url) %></th>
                 <th class=header> <%= mat(:credit_info, :url2) %></th>
+                <th class=header> <%= mat(:credit_info, :url3) %></th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -63,11 +65,13 @@
           <td class=list-column> <%= credit_info.city_id %> </td>
           <td class=list-column> <%= credit_info.area_id %> </td>
           <td class=list-column> <%= credit_info.state_id %> </td>
+          <td class=list-column> <%= credit_info.firm_type_id %> </td>
           <td class=list-column> <%= credit_info.name %> </td>
           <td class=list-column> <%= credit_info.email %> </td>
           <td class=list-column> <%= credit_info.card_id %> </td>
-          <td class=list-column> <%= image_tag credit_info.url.thumb if credit_info.url? %></td>
+	  <td class=list-column> <%= image_tag credit_info.url.thumb if credit_info.url? %></td>
           <td class=list-column> <%= image_tag credit_info.url2.thumb if credit_info.url2? %></td>
+	  <td class=list-column> <%= image_tag credit_info.url3.thumb if credit_info.url3? %></td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:credit_infos, :edit, :id => credit_info.id), :rel => :tooltip, :title => "#{pat(:edit)} credit_info", :class => 'list-row-action-wrapper-link' %>

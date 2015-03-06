@@ -3,10 +3,10 @@ class Store
   include Mongoid::Timestamps # adds created_at and updated_at fields
   belongs_to :website
   belongs_to :account
-  belongs_to :address
+ # belongs_to :address
   has_many :orders
  belongs_to :node
-
+  belongs_to :store_address
   # field <name>, :type => <type>, :default => <value>
   field :name, :type => String
   field :in_charge, :type => String

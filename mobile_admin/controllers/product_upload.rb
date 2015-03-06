@@ -16,6 +16,8 @@ post :create_product, :csrf_protection=>false do
     @product.price=params[:ck_price].to_f
     @product.specification=params[:ck_spec]
   #  @product.store=Store.create()
+	logger.info params["ck_name"]
+	logger.info params.length
          if params[:uploadkey1]
          image_item = ImageItem.new
        image_item.url = params[:uploadkey1]
