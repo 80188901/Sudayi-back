@@ -7,14 +7,12 @@ class Product
   belongs_to :state
   belongs_to :category
   belongs_to :account
-  has_many :image_items
+  has_many :product_collections,:dependent=>:delete
+  has_many :image_items,:dependent=>:delete
   # field <name>, :type => <type>, :default => <value>
   field :name, :type => String
   field :description, :type => String
-  field :price, :type => Float
-  field :storage, :type => Integer
   field :level,  :type => Integer
-  field :specification,:type=>String
   def self.qcode(id)
     #二维码
     product = find(id)

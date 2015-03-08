@@ -13,9 +13,12 @@ post :create_order, :csrf_protection=>false do
     @node = @account.node
     setting=Setting.last
     product=Product.find(params[:product_id])
-    warehouse=product.store
+	      logger.info product.product_collections.first.price
+        logger.info product.product_collections.first.product_stores.first
+        logger.info product.product_collections.first.product_stores.first.amount
+    warehouse=product.product_collections.first.product_stores.first.store
     node_good=warehouse.node
-    node_customer=Node.find(session[:user_node])
+    node_customer=Node.find(params[:user_node])
     to_good_way=NodeWay.where(node_id:@node._id,tonode:node_good._id).first
     to_customer_way=NodeWay.where(node_id:node_good._id,tonode:node_customer._id).first
     company_usetime=to_good_way.time+to_customer_way.time+setting.store_time+setting.store_vali_time+setting.courier_time+setting.customer_vali_time
@@ -69,6 +72,9 @@ post :create_order, :csrf_protection=>false do
                 @order.store_id=warehouse._id
 		@order.firstnode=@account.node._id
 		@order.create_order_time
+		product_collection=product.product_collections.first
+		product_collection.storage-=1
+		product_collection.save
                   @order.level=1
                   @order.number=number
                 if @order.save!
@@ -101,7 +107,9 @@ post :create_order, :csrf_protection=>false do
 		@order.create_order_time
               if @order.save!
                    @courier.whenfree=@order.created_at+@order.usetime.minute
- 
+		 product_collection=product.product_collections.first
+                product_collection.storage-=1
+                product_collection.save
                     @courier.save
               end
               end
@@ -117,9 +125,13 @@ post :create_order, :csrf_protection=>false do
                   @order.number=number
              if @order.save!
                     @courier.whenfree=@order.created_at+@order.usetime.minute
+			 product_collection=product.product_collections.first
+                product_collection.storage-=1
+                product_collection.save
                     @courier.save
              end      
       end
+	render :html,queding_usetime.to_s
 end
 
   

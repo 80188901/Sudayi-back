@@ -3,6 +3,7 @@ class Store
   include Mongoid::Timestamps # adds created_at and updated_at fields
   belongs_to :website
   belongs_to :account
+  belongs_to :state
  # belongs_to :address
   has_many :orders
  belongs_to :node
@@ -15,6 +16,7 @@ class Store
   field :open_time_in_one_week, :type=> String
   mount_uploader :credit_url, StoreUploader
   field :credit_url, :type => String
+  field :end_date,:type=>Date
 
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>

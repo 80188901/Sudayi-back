@@ -1,4 +1,6 @@
 Fancyshpv2::MobileAdmin.controllers :store_manager do
+ require 'date'
+ require 'json'
   use Rack::Cors do
   allow do
     # put real origins here
@@ -20,8 +22,11 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
    # @store.open_time_begin_day = params[:first_time]
    # @store.open_time_end_day = params[:last_time]
    # @store.open_time_in_one_week = params[:day]
+    @store.end_date=Date.parse(params[:end_date])
     @store.account_id = params[:user_id]
     @store.node_id=params[:node_id] 
+    state=State.where(code:0).first
+    @store.state=state
       @store_address = StoreAddress.new
     @store_address.details = params[:warehouse_address]
     @store_address.save
@@ -36,6 +41,10 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
   get :get_store_id do
     @store=Store.where(:name => params[:warehouse_name]).first
     @store._id.to_json
+  end
+  get :get_all_store do
+ 	stores=Store.where(account_id:params[:user_id])
+	stores.to_json(:include=>{:store_address=>{:only=>:details},:node=>{:include=>{:city=>{:only=>:name},:area=>{:only=>:name}},:only=>[:city]}},:only=>[:_id,:name])
   end
 
   get :judge_store_name do
@@ -72,7 +81,23 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
     @account.to_json
   end
 
-
+  post :insert_product_to_store,:csrf_protection => false do
+	store=Store.find(params[:store_id])
+	(params.size-1)/2.times do |index|
+	if params['amount'+index.to_s]
+	logger.info params['amount'+index.to_s]
+	product_collection=ProductCollection.find(params['c_id'+index.to_s])
+	amount=params['amount'+index.to_s].to_i
+	product_store=ProductStore.new
+	product_store.store=store
+	product_store.product_collection=product_collection
+	product_store.amount=amount
+	product_store.save
+ 	product_collection.no_store-=amount
+	end
+	end
+	1.to_json
+  end
 
 
   post :assign_employee_job, :csrf_protection => false do

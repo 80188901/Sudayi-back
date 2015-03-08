@@ -41,6 +41,8 @@ get :area do
 end
 get :set_customer_node do
 	session[:user_node]=params[:user_node]
+	logger.info session[:user_node] 
+	session[:abc]=params[:user_node]
 	render :html,'shabi'
 end
 

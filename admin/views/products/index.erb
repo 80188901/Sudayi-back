@@ -36,19 +36,17 @@
             </ul>
           </div>
         </th>
-                <th class=header>创建于</th>
-                <th class=header>更新于</th>
-                <th class=header>所属网站</th>
-                <th class=header>付款方式</th>
-                <th class=header>所属仓库</th>
-                <th class=header>状态</th>
-                <th class=header>分类</th>
-                <th class=header>商品名</th>
-                <th class=header>商品描述</th>
-                <th class=header>价格</th>
-                <th class=header>库存</th>
-                <th class=header> 商品级别</th>
-                  <th class=header>用户ＩＤ</th>
+                <th class=header> <%= mat(:product, :created_at) %></th>
+                <th class=header> <%= mat(:product, :updated_at) %></th>
+                <th class=header> <%= mat(:product, :website_id) %></th>
+                <th class=header> <%= mat(:product, :payment_id) %></th>
+                <th class=header> <%= mat(:product, :store_id) %></th>
+                <th class=header> <%= mat(:product, :state_id) %></th>
+                <th class=header> <%= mat(:product, :category_id) %></th>
+                <th class=header> <%= mat(:product, :account_id) %></th>
+                <th class=header> <%= mat(:product, :name) %></th>
+                <th class=header> <%= mat(:product, :description) %></th>
+                <th class=header> <%= mat(:product, :level) %></th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -66,12 +64,10 @@
           <td class=list-column> <%= product.store_id %> </td>
           <td class=list-column> <%= product.state_id %> </td>
           <td class=list-column> <%= product.category_id %> </td>
+          <td class=list-column> <%= product.account_id %> </td>
           <td class=list-column> <%= product.name %> </td>
           <td class=list-column> <%= product.description %> </td>
-          <td class=list-column> <%= product.price %> </td>
-          <td class=list-column> <%= product.storage %> </td>
           <td class=list-column> <%= product.level %> </td>
-          <td class=list-column> <%= product.account_id %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:products, :edit, :id => product.id), :rel => :tooltip, :title => "#{pat(:edit)} product", :class => 'list-row-action-wrapper-link' %>

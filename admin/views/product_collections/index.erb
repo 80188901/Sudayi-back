@@ -36,10 +36,13 @@
             </ul>
           </div>
         </th>
-                <th class=header>创建于</th>
-                <th class=header>更新于</th>
-                <th class=header>商品编号</th>
-                <th class=header>用户编号</th>
+                <th class=header> <%= mat(:product_collection, :created_at) %></th>
+                <th class=header> <%= mat(:product_collection, :updated_at) %></th>
+                <th class=header> <%= mat(:product_collection, :product_id) %></th>
+                <th class=header> <%= mat(:product_collection, :price) %></th>
+                <th class=header> <%= mat(:product_collection, :storage) %></th>
+                <th class=header> <%= mat(:product_collection, :specification) %></th>
+                <th class=header> <%= mat(:product_collection, :no_store) %></th>
                 <th class="header list-row-action-header"></th>
       </tr>
     </thead>
@@ -50,10 +53,13 @@
           <td class="list-column list-selectable">
             <%= check_box_tag 'product_collection_ids[]', :value => product_collection.id, :class => 'list-selectable-checkbox' %>
            </td>
-          <td class=list-column> <%= time_ago_in_words product_collection.created_at %>前</td>
-          <td class=list-column> <%= time_ago_in_words product_collection.updated_at %>前</td>
+          <td class=list-column> <%= time_ago_in_words product_collection.created_at %></td>
+          <td class=list-column> <%= time_ago_in_words product_collection.updated_at %></td>
           <td class=list-column> <%= product_collection.product_id %> </td>
-          <td class=list-column> <%= product_collection.account_id %> </td>
+          <td class=list-column> <%= product_collection.price %> </td>
+          <td class=list-column> <%= product_collection.storage %> </td>
+          <td class=list-column> <%= product_collection.specification %> </td>
+          <td class=list-column> <%= product_collection.no_store %> </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
                <%= link_to tag_icon(:edit), :href => url(:product_collections, :edit, :id => product_collection.id), :rel => :tooltip, :title => "#{pat(:edit)} product_collection", :class => 'list-row-action-wrapper-link' %>

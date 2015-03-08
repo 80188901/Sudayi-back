@@ -12,12 +12,16 @@ post :create_product, :csrf_protection=>false do
    if params[:ck_name]
     @product=Product.new()
     @product.name=params[:ck_name]
+    @product.account_id=params[:user_id]
     @product.description=params[:ck_des]
-    @product.price=params[:ck_price].to_f
-    @product.specification=params[:ck_spec]
+	product_collection=ProductCollection.new
+    product_collection.price=params[:ck_price].to_f
+    product_collection.product=@product
+    product_collection.specification=params[:ck_spec]
+    product_collection.storage=params[:ck_storage].to_i
+    product_collection.no_store=params[:ck_storage].to_i
+    product_collection.save
   #  @product.store=Store.create()
-	logger.info params["ck_name"]
-	logger.info params.length
          if params[:uploadkey1]
          image_item = ImageItem.new
        image_item.url = params[:uploadkey1]
@@ -53,6 +57,20 @@ post :create_product, :csrf_protection=>false do
 end
   end
 
+get :warehouse_all_product do
+        if params[:user_id]
+	product_collections=ProductCollection.where(:no_store.gt=>0)
+	products=[]
+	product_collections.each do |product_collection|
+	 if Product.where(account_id:params[:user_id],:_id=>product_collection.product._id).first
+	products<<product_collection.product
+	 end
+	end
+	products.to_json(:include=>:product_collections)
+ 	else
+	'1'.to_json
+	end
+end
   
 
 end
