@@ -13,10 +13,10 @@ post :create_order, :csrf_protection=>false do
     @node = @account.node
     setting=Setting.last
     product=Product.find(params[:product_id])
-	      logger.info product.product_collections.first.price
-        logger.info product.product_collections.first.product_stores.first
-        logger.info product.product_collections.first.product_stores.first.amount
-    warehouse=product.product_collections.first.product_stores.first.store
+	logger.info product.product_collections.first.product_stores.first.amount
+	logger.info product.product_collections.first.storage
+	if product.product_collections.first.product_stores.first.amount>0
+   warehouse=product.product_collections.first.product_stores.first.store
     node_good=warehouse.node
     node_customer=Node.find(params[:user_node])
     to_good_way=NodeWay.where(node_id:@node._id,tonode:node_good._id).first
@@ -74,6 +74,9 @@ post :create_order, :csrf_protection=>false do
 		@order.create_order_time
 		product_collection=product.product_collections.first
 		product_collection.storage-=1
+		product_store=product_collection.product_stores.first
+		product_store.amount-=1
+		product_store.save
 		product_collection.save
                   @order.level=1
                   @order.number=number
@@ -109,6 +112,9 @@ post :create_order, :csrf_protection=>false do
                    @courier.whenfree=@order.created_at+@order.usetime.minute
 		 product_collection=product.product_collections.first
                 product_collection.storage-=1
+		product_store=product_collection.product_stores.first
+                product_store.amount-=1
+                product_store.save
                 product_collection.save
                     @courier.save
               end
@@ -127,11 +133,17 @@ post :create_order, :csrf_protection=>false do
                     @courier.whenfree=@order.created_at+@order.usetime.minute
 			 product_collection=product.product_collections.first
                 product_collection.storage-=1
+		product_store=product_collection.product_stores.first
+                product_store.amount-=1
+                product_store.save
                 product_collection.save
                     @courier.save
              end      
       end
-	render :html,queding_usetime.to_s
+	render :html,(queding_usetime-setting.customer_vali_time).to_s+"分钟"
+	else
+	render :html,'商品已经没货了'
+	end
 end
 
   

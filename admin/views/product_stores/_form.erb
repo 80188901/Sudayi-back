@@ -2,7 +2,7 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :product_collection_id, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_field :product_collection_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <%=f.select(:product_collection_id,:collection=>ProductCollection.all,:fields=>[:product,:id],:class => 'form-control input-xlarge input-with-feedback', :autofocus => true)%>
     <span class='help-inline'><%= error ? f.error_message_on(:product_collection_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
@@ -10,7 +10,7 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :store_id, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_field :store_id, :class => 'form-control input-xlarge input-with-feedback' %>
+    <%= f.select(:store_id,:collection=>Store.all,:fields=>[:name,:id], :class => 'form-control input-xlarge input-with-feedback') %>
     <span class='help-inline'><%= error ? f.error_message_on(:store_id) : "Ex: a simple text" %></span>
   </div>
 </fieldset>

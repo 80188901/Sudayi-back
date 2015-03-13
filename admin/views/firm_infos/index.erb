@@ -62,8 +62,8 @@
           <td class=list-column> <%= time_ago_in_words firm_info.created_at %></td>
           <td class=list-column> <%= time_ago_in_words firm_info.updated_at %></td>
           <td class=list-column> <%= firm_info.firm_type_id %> </td>
-          <td class=list-column> <%= firm_info.address_id %> </td>
-          <td class=list-column> <%= firm_info.account_id %> </td>
+          <td class=list-column> <%= firm_info.address.detail.name %> </td>
+          <td class=list-column> <%= firm_info.account.mobile %> </td>
           <td class=list-column> <%= firm_info.state_id %> </td>
           <td class=list-column> <%= firm_info.firm_name %> </td>
           <td class=list-column> <%= firm_info.legal_person %> </td>

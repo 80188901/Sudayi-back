@@ -133,25 +133,25 @@ get :update_node_way do
 end
 post :update_time ,:csrf_protection => false do
   setting=Setting.last
-  if  puts params[:store_time]=='on'
+  if   params[:store_time]=='on'
     setting.store_time=0
   else
 
     setting.store_time=params[:store_time].to_i
   end
-   if  puts params[:courier_time]=='on'
+   if   params[:courier_time]=='on'
     setting.courier_time=0
      else
 
     setting.courier_time=params[:courier_time].to_i
   end
-   if  puts params[:store_vali_time]=='on'
+   if   params[:store_vali_time]=='on'
     setting.store_vali_time=0
      else
 
     setting.store_vali_time=params[:store_vali_time].to_i
   end
-   if  puts params[:customer_vali_time]=='on'
+   if  params[:customer_vali_time]=='on'
     setting.customer_vali_time=0
      else
 

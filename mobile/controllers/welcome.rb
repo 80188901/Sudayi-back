@@ -15,7 +15,11 @@ Fancyshpv2::Mobile.controllers :welcome do
   end
 
   get :get_pics_a do
-   @products = Product.all.order_by(:created_at.desc)
+  # @products = Product.all.order_by(:created_at.desc)
+	@products=[]
+	ProductStore.all.each do |product_store|
+		@products<<product_store.product_collection.product
+	end
     @products.to_json(:include=>{:image_items=>{:only=>[:url]},:product_collections=>{:only=>[:price,:storage,:specification]}})
 
   end
