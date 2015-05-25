@@ -1,0 +1,49 @@
+<% error = @auth_code.errors.include?(:code) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :code, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :code, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:code) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @auth_code.errors.include?(:token) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :token, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :token, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:token) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @auth_code.errors.include?(:refresh_token) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :refresh_token, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :refresh_token, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:refresh_token) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @auth_code.errors.include?(:appid) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :appid, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :appid, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:appid) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @auth_code.errors.include?(:func_info) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :func_info, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :func_info, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:func_info) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+
+
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:auth_codes, :index), :class => 'btn btn-default' %>
+</div>

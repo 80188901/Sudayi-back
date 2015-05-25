@@ -1,0 +1,89 @@
+<ul class="nav nav-tabs">
+  <li class=active> <%= link_to tag_icon(:list, pat(:list)), url(:wechat_infos, :index) %></li>
+  <li> <%= link_to tag_icon(:plus, pat(:new)), url(:wechat_infos, :new) %></li>
+</ul>
+<div class=tabs-content>
+  <table id=list class="table table-striped table-hover table-condensed">
+    <thead>
+      <tr>
+        <th class="header list-menu">
+          <div class=dropdown>
+            <a href="#" class="list-menu-toggle dropdown-toggle" data-toggle='dropdown'>
+              <%= tag_icon :magic %> <span class=caret></span>
+            </a>
+            <ul class="list-menu dropdown-menu" role=menu>
+              <li class=ist-menu-wrapper>
+                <%= link_to tag_icon('check-square-o', pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link' %>
+              </li>
+              <li class=list-menu-wrapper.list-menu-wrapper-disabled>
+                <%= link_to tag_icon('square-o', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled' %>
+              </li>
+              <li class="list-menu-divider divider"></li>
+              <li class=list-menu-wrapper.list-menu-wrapper-disabled>
+                <%=link_to tag_icon('trash-o', pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled' %>
+                <div class='list-menu-popover-delete-selected popover right'>
+                  <div class=arrow></div>
+                  <h3 class=popover-title><%= pat(:delete_selected_title) %></h3>
+                  <div class=popover-content>
+                    <% form_tag url(:wechat_infos, :destroy_many), :method => :delete do %>
+                      <%=hidden_field_tag :wechat_info_ids, :'data-delete-many-ids' => true %>
+                      <%=submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small' %>
+                      <div class='btn btn-default btn-small cancel'><%= pat(:cancel) %></div>
+                    <% end %>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </th>
+                <th class=header> <%= mat(:wechat_info, :created_at) %></th>
+                <th class=header> <%= mat(:wechat_info, :updated_at) %></th>
+                <th class=header> <%= mat(:wechat_info, :appid) %></th>
+                <th class=header> <%= mat(:wechat_info, :appsecret) %></th>
+                <th class=header> <%= mat(:wechat_info, :encodingkey) %></th>
+                <th class=header> <%= mat(:wechat_info, :token) %></th>
+                <th class=header> <%= mat(:wechat_info, :pre_auth_code) %></th>
+                <th class=header> <%= mat(:wechat_info, :auth_code) %></th>
+                <th class=header> <%= mat(:wechat_info, :access_token) %></th>
+                <th class=header> <%= mat(:wechat_info, :ticket) %></th>
+                <th class="header list-row-action-header"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @wechat_infos.each do |wechat_info| %>
+        <tr class=list-row>
+          <td class="list-column list-selectable">
+            <%= check_box_tag 'wechat_info_ids[]', :value => wechat_info.id, :class => 'list-selectable-checkbox' %>
+           </td>
+          <td class=list-column> <%= time_ago_in_words wechat_info.created_at %></td>
+          <td class=list-column> <%= time_ago_in_words wechat_info.updated_at %></td>
+          <td class=list-column> <%= wechat_info.appid %> </td>
+          <td class=list-column> <%= wechat_info.appsecret %> </td>
+          <td class=list-column> <%= wechat_info.encodingkey %> </td>
+          <td class=list-column> <%= wechat_info.token %> </td>
+          <td class=list-column> <%= wechat_info.pre_auth_code %> </td>
+          <td class=list-column> <%= wechat_info.auth_code %> </td>
+          <td class=list-column> <%= wechat_info.access_token %> </td>
+          <td class=list-column> <%= wechat_info.ticket %> </td>
+          <td class="list-column list-row-action">
+            <div class='list-row-action-wrapper'>
+               <%= link_to tag_icon(:edit), :href => url(:wechat_infos, :edit, :id => wechat_info.id), :rel => :tooltip, :title => "#{pat(:edit)} wechat_info", :class => 'list-row-action-wrapper-link' %>
+               <%= link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} wechat_info", :class => 'list-row-action-delete-one list-row-action-wrapper-link' %>
+               <div class="popover list-row-action-popover-delete-one left">
+                 <div class=arrow> </div>
+                 <h3 class=popover-title><%= pat(:delete, :model => "wechat_info") %></h3>
+                 <div class=popover-content>
+                   <%- form_tag url(:wechat_infos, :destroy, :id => wechat_info.id), :method => :delete do %>
+                     <%= submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small' %>
+                     <div class="btn btn-default btn-small cancel"><%= pat(:cancel) %></div>
+                   <% end %>
+                 </div>
+               </div>
+             </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

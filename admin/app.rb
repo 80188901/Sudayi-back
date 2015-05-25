@@ -33,6 +33,9 @@ module Fancyshpv2
     end
 
     access_control.roles_for :admin do |role|
+      role.project_module :gzh_infos, '/gzh_infos'
+      role.project_module :auth_codes, '/auth_codes'
+      role.project_module :wechat_infos, '/wechat_infos'
       role.project_module :product_stores, '/product_stores'
       role.project_module :firm_infos, '/firm_infos'
       role.project_module :order_times, '/order_times'

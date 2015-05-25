@@ -63,5 +63,10 @@ get :distance do
     product=Product.find(params[:product_id])
     
 end
-
+get :test do
+	Order.all.to_json(:include=>{:employee=>{:only=>[:name]},:store=>{:include=>:node,:only=>[:name]},:node=>{:only=>[:name]}},:only=>[:_id,:usetime,:firstnode])
+end
+get :test1 do
+	Node.find(params[:node_id]).to_json
+end
 end

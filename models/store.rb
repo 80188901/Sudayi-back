@@ -7,7 +7,8 @@ class Store
  # belongs_to :address
   has_many :orders
  belongs_to :node
-  belongs_to :store_address
+  belongs_to :store_address,:dependent=>:delete
+  has_many :product_store,:dependent=>:delete
   # field <name>, :type => <type>, :default => <value>
   field :name, :type => String
   field :in_charge, :type => String

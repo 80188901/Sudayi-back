@@ -8,6 +8,7 @@ class Order
    belongs_to :store
    belongs_to :employee
    has_one :order_time
+   has_one :error
    field :number,:type=>String
   field :firstnode,:type=>String
   field :price, :type => Float

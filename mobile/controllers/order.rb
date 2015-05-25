@@ -7,14 +7,11 @@ Fancyshpv2::Mobile.controllers :order do
     resource '*', :headers => :any, :methods => [:get, :post, :options]
   end
 end 
-
 post :create_order, :csrf_protection=>false do
 	@account = Account.find('54d4819fcc3007823d000001')
     @node = @account.node
     setting=Setting.last
     product=Product.find(params[:product_id])
-	logger.info product.product_collections.first.product_stores.first.amount
-	logger.info product.product_collections.first.storage
 	if product.product_collections.first.product_stores.first.amount>0
    warehouse=product.product_collections.first.product_stores.first.store
     node_good=warehouse.node
@@ -23,7 +20,6 @@ post :create_order, :csrf_protection=>false do
     to_customer_way=NodeWay.where(node_id:node_good._id,tonode:node_customer._id).first
     company_usetime=to_good_way.time+to_customer_way.time+setting.store_time+setting.store_vali_time+setting.courier_time+setting.customer_vali_time
       other_usetime=[]
-  
 
      couriers=Employee.where(account_id:@account._id,isfree:false)
   

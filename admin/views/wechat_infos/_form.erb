@@ -1,0 +1,73 @@
+<% error = @wechat_info.errors.include?(:appid) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :appid, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :appid, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:appid) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @wechat_info.errors.include?(:appsecret) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :appsecret, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :appsecret, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:appsecret) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @wechat_info.errors.include?(:encodingkey) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :encodingkey, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :encodingkey, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:encodingkey) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @wechat_info.errors.include?(:token) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :token, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :token, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:token) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @wechat_info.errors.include?(:pre_auth_code) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :pre_auth_code, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :pre_auth_code, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:pre_auth_code) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @wechat_info.errors.include?(:auth_code) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :auth_code, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :auth_code, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:auth_code) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @wechat_info.errors.include?(:access_token) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :access_token, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :access_token, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:access_token) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @wechat_info.errors.include?(:ticket) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :ticket, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :ticket, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:ticket) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+
+
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:wechat_infos, :index), :class => 'btn btn-default' %>
+</div>

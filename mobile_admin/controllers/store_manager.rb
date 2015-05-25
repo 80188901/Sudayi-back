@@ -15,7 +15,8 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
   end
 
   post :new_store,:csrf_protection => false do
-   if params[:url] and params[:warehouse_name] and params[:end_date] and params[:user_id] and params[:node_id] and params[:warehouse_addres]
+	logger.info params
+   if params[:url] and params[:warehouse_name] and params[:end_date] and params[:user_id] and params[:node_id] and params[:warehouse_address]
     if !Store.where(name:params[:warehouse_name]).first	
      @store = Store.new
      @store.credit_url = params[:url]
@@ -92,13 +93,15 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
   post :insert_product_to_store,:csrf_protection => false do
 	store=Store.find(params[:store_id])
 	if store
-	  (params.size-1)/2.times do |index|
-	    if params['amount'+index.to_s]
+	  ((params.size-1)/2).times do |index|
+	    if params['amount'+index.to_s]!=""
 	      product_collection=ProductCollection.find(params['c_id'+index.to_s])
 	      amount=params['amount'+index.to_s].to_i
-		if product_collection.no_store<=amount
+		if product_collection.no_store>=amount
+	logger.info "d"
 	           product_store= ProductStore.where(product_collection_id:params['c_id'+index.to_s],store_id:params[:store_id]).first
 	           if !product_store
+	logger.info "f"
 	             product_store=ProductStore.new
 	             product_store.store=store
 	             product_store.product_collection=product_collection
@@ -110,7 +113,7 @@ Fancyshpv2::MobileAdmin.controllers :store_manager do
  	           product_collection.no_store-=amount
 	           product_collection.save
                  else
-			"请填写真确的数量".to_json
+			render :html,"请填写真确的数量"
 		 end
 	    end
 	  end

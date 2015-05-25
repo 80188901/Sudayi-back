@@ -45,5 +45,14 @@ get :set_customer_node do
 	session[:abc]=params[:user_node]
 	render :html,'shabi'
 end
-
+get :test do
+  render :test 
+end
+post :test1 do
+logger.info params
+logger.info params[:url].class
+  store=Store.new
+  store.credit_url=params[:url]
+  store.save
+  end
 end

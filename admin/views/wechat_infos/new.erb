@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs">
+  <li> <%= link_to tag_icon(:list, pat(:list)), url(:wechat_infos, :index) %></li>
+  <li class="active"> <%= link_to tag_icon(:plus, pat(:new)), url(:wechat_infos, :new) %></li>
+</ul>
+<div class="tabs-content">
+  <% form_for :wechat_info, url(:wechat_infos, :create), :class => 'form-horizontal' do |f| %>
+    <%= partial 'wechat_infos/form', :locals => { :f => f } %>
+ <% end %>
+</div>

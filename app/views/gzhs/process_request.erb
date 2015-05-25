@@ -1,0 +1,11 @@
+<xml>
+<ToUserName><![CDATA[<%=@root.get_elements('FromUserName')[0][0]%>]]></ToUserName>
+<FromUserName><![CDATA[<%= @root.get_elements('ToUserName')[0][0]%>]]></FromUserName>
+<CreateTime><%=Time.now.to_i%></CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<%if @root.get_elements('Event')[0][0]=='subscribe'%>
+<Content><![CDATA[你好!thank for your subscribe!]]></Content>
+<%else%>
+<Content><![CDATA[thank you!]]></Content>
+<%end%>
+</xml>

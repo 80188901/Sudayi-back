@@ -1,0 +1,95 @@
+<ul class="nav nav-tabs">
+  <li class=active> <%= link_to tag_icon(:list, pat(:list)), url(:gzh_infos, :index) %></li>
+  <li> <%= link_to tag_icon(:plus, pat(:new)), url(:gzh_infos, :new) %></li>
+</ul>
+<div class=tabs-content>
+  <table id=list class="table table-striped table-hover table-condensed">
+    <thead>
+      <tr>
+        <th class="header list-menu">
+          <div class=dropdown>
+            <a href="#" class="list-menu-toggle dropdown-toggle" data-toggle='dropdown'>
+              <%= tag_icon :magic %> <span class=caret></span>
+            </a>
+            <ul class="list-menu dropdown-menu" role=menu>
+              <li class=ist-menu-wrapper>
+                <%= link_to tag_icon('check-square-o', pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link' %>
+              </li>
+              <li class=list-menu-wrapper.list-menu-wrapper-disabled>
+                <%= link_to tag_icon('square-o', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled' %>
+              </li>
+              <li class="list-menu-divider divider"></li>
+              <li class=list-menu-wrapper.list-menu-wrapper-disabled>
+                <%=link_to tag_icon('trash-o', pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled' %>
+                <div class='list-menu-popover-delete-selected popover right'>
+                  <div class=arrow></div>
+                  <h3 class=popover-title><%= pat(:delete_selected_title) %></h3>
+                  <div class=popover-content>
+                    <% form_tag url(:gzh_infos, :destroy_many), :method => :delete do %>
+                      <%=hidden_field_tag :gzh_info_ids, :'data-delete-many-ids' => true %>
+                      <%=submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small' %>
+                      <div class='btn btn-default btn-small cancel'><%= pat(:cancel) %></div>
+                    <% end %>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </th>
+                <th class=header> <%= mat(:gzh_info, :created_at) %></th>
+                <th class=header> <%= mat(:gzh_info, :updated_at) %></th>
+                <th class=header> <%= mat(:gzh_info, :auth_code_id) %></th>
+                <th class=header> <%= mat(:gzh_info, :nick_name) %></th>
+                <th class=header> <%= mat(:gzh_info, :head_image) %></th>
+                <th class=header> <%= mat(:gzh_info, :service_type) %></th>
+                <th class=header> <%= mat(:gzh_info, :verify_type) %></th>
+                <th class=header> <%= mat(:gzh_info, :alias) %></th>
+                <th class=header> <%= mat(:gzh_info, :user_name) %></th>
+                <th class=header> <%= mat(:gzh_info, :qrcode_url) %></th>
+                <th class=header> <%= mat(:gzh_info, :location_report) %></th>
+                <th class=header> <%= mat(:gzh_info, :voice_recognize) %></th>
+                <th class=header> <%= mat(:gzh_info, :customer_service) %></th>
+                <th class="header list-row-action-header"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @gzh_infos.each do |gzh_info| %>
+        <tr class=list-row>
+          <td class="list-column list-selectable">
+            <%= check_box_tag 'gzh_info_ids[]', :value => gzh_info.id, :class => 'list-selectable-checkbox' %>
+           </td>
+          <td class=list-column> <%= time_ago_in_words gzh_info.created_at %></td>
+          <td class=list-column> <%= time_ago_in_words gzh_info.updated_at %></td>
+          <td class=list-column> <%= gzh_info.auth_code_id %> </td>
+          <td class=list-column> <%= gzh_info.nick_name %> </td>
+          <td class=list-column> <%= gzh_info.head_image %> </td>
+          <td class=list-column> <%= gzh_info.service_type %> </td>
+          <td class=list-column> <%= gzh_info.verify_type %> </td>
+          <td class=list-column> <%= gzh_info.alias %> </td>
+          <td class=list-column> <%= gzh_info.user_name %> </td>
+          <td class=list-column> <%= gzh_info.qrcode_url %> </td>
+          <td class=list-column> <%= gzh_info.location_report %> </td>
+          <td class=list-column> <%= gzh_info.voice_recognize %> </td>
+          <td class=list-column> <%= gzh_info.customer_service %> </td>
+          <td class="list-column list-row-action">
+            <div class='list-row-action-wrapper'>
+               <%= link_to tag_icon(:edit), :href => url(:gzh_infos, :edit, :id => gzh_info.id), :rel => :tooltip, :title => "#{pat(:edit)} gzh_info", :class => 'list-row-action-wrapper-link' %>
+               <%= link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} gzh_info", :class => 'list-row-action-delete-one list-row-action-wrapper-link' %>
+               <div class="popover list-row-action-popover-delete-one left">
+                 <div class=arrow> </div>
+                 <h3 class=popover-title><%= pat(:delete, :model => "gzh_info") %></h3>
+                 <div class=popover-content>
+                   <%- form_tag url(:gzh_infos, :destroy, :id => gzh_info.id), :method => :delete do %>
+                     <%= submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small' %>
+                     <div class="btn btn-default btn-small cancel"><%= pat(:cancel) %></div>
+                   <% end %>
+                 </div>
+               </div>
+             </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

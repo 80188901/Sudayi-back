@@ -9,9 +9,11 @@ Fancyshpv2::MobileAdmin.controllers :product_upload do
 end 
 
 post :create_product, :csrf_protection=>false do
-   if params[:ck_name] and params[:ck_des] and params[:cd_price] and params[:spec] and params[:cd_storage] and params[:ck_uploadkey1]
-    if !Product.where(account_id:params[:user_id],name:params[:ck_name]).first
-     if !params[:ck_price].to_f<=0.0 and !params[:ck_storage].to_i<=0
+	logger.info params
+   if params[:ck_name] and params[:ck_des] and params[:ck_price] and params[:ck_spec] and params[:ck_storage] and params[:uploadkey1]
+   if !Product.where(account_id:params[:user_id],name:params[:ck_name]).first
+     if params[:ck_price].to_f>0.0 and params[:ck_storage].to_i>0
+	logger.info 'vv'
       @product=Product.new()
       @product.name=params[:ck_name]
       @product.account_id=params[:user_id]
@@ -57,13 +59,13 @@ post :create_product, :csrf_protection=>false do
         end
     @product.save!
      else
-	"请正确填写价格和库存".to_json
+	render :html,"请正确填写价格和库存"
      end
     else
-	"商品名已存在".to_json
+	render :html,"商品名已存在"
     end
    else
-	"请将信息填写完整".to_json
+	render :html,"请将信息填写完整"
    end
  end
 

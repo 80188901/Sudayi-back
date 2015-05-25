@@ -1,0 +1,97 @@
+<% error = @gzh_info.errors.include?(:auth_code_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :auth_code_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :auth_code_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:auth_code_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @gzh_info.errors.include?(:nick_name) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :nick_name, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :nick_name, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:nick_name) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @gzh_info.errors.include?(:head_image) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :head_image, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :head_image, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:head_image) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @gzh_info.errors.include?(:service_type) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :service_type, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :service_type, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:service_type) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @gzh_info.errors.include?(:verify_type) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :verify_type, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :verify_type, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:verify_type) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @gzh_info.errors.include?(:alias) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :alias, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :alias, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:alias) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @gzh_info.errors.include?(:user_name) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :user_name, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :user_name, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:user_name) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @gzh_info.errors.include?(:qrcode_url) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :qrcode_url, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :qrcode_url, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:qrcode_url) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @gzh_info.errors.include?(:location_report) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :location_report, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :location_report, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:location_report) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @gzh_info.errors.include?(:voice_recognize) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :voice_recognize, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :voice_recognize, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:voice_recognize) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @gzh_info.errors.include?(:customer_service) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :customer_service, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :customer_service, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:customer_service) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+
+
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:gzh_infos, :index), :class => 'btn btn-default' %>
+</div>

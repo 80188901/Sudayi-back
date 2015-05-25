@@ -22,6 +22,8 @@ get :get_node do
 	nodes=Node.all
 	nodes.to_json
 end
-  
+get :test do
+	Order.all
+end  
 
 end
